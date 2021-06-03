@@ -16,13 +16,29 @@ const InputAnswer = ({ q }) => {
 }
 
 const MultipleChoice = ({ q }) => {
-  const shuffledOptions = _.shuffle(q.options)
+  const [activeButton, setActiveButton] = useState(null)
+  const [shuffledOptions, setShuffledOptions] = useState([])
+
+  useEffect(() => {
+    setShuffledOptions(_.shuffle(q.options))
+  }, [])
+
   return (
     <>
       <Typography paragraph>hi</Typography>
-      {shuffledOptions.map((o) => (
-        <Button variant="outlined">{o}</Button>
-      ))}
+      {shuffledOptions.map((o) => {
+        const selected = activeButton === o
+        console.log(selected)
+        return (
+          <Button
+            variant={selected ? "contained" : "outlined"}
+            color={selected ? "primary" : "default"}
+            onClick={() => setActiveButton(o)}
+          >
+            {o}
+          </Button>
+        )
+      })}
     </>
   )
 }
