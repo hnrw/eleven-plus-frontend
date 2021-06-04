@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast"
 
 import Component from "./components/Component"
 import Results from "./components/Results"
+import LandingPage from "./components/LandingPage"
 
 const App = () => {
   return (
@@ -21,6 +22,9 @@ const App = () => {
       <Switch>
         <Route path="/results">
           <Results />
+        </Route>
+        <Route path="/landing">
+          <LandingPage />
         </Route>
         <Route path="/">
           <Component />
