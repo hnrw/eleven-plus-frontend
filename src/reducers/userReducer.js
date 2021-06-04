@@ -2,6 +2,10 @@ export const clearUser = () => {
   console.log(null)
 }
 
+export const setUser = () => {
+  console.log(null)
+}
+
 const userReducer = (state = null, action) => {
   switch (action.type) {
     case "":

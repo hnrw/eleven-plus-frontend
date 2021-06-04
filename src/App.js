@@ -7,6 +7,8 @@ import Component from "./components/Component"
 import Results from "./components/Results"
 import LandingPage from "./components/LandingPage"
 import Header from "./components/Header"
+import LoginForm from "./components/LoginForm"
+import RegisterForm from "./components/RegisterForm"
 
 const App = () => {
   return (
@@ -27,6 +29,12 @@ const App = () => {
         </Route>
         <Route path="/landing">
           <LandingPage />
+        </Route>
+        <Route path="/signup">
+          <RegisterForm />
+        </Route>
+        <Route path="/login">
+          <LoginForm />
         </Route>
         <Route path="/">
           <Component />
