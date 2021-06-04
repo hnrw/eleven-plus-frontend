@@ -8,9 +8,9 @@ import Results from "./components/Results"
 import LandingPage from "./components/LandingPage"
 import Header from "./components/Header"
 import LoginForm from "./components/account/LoginForm"
-import RegisterForm from "./components/RegisterForm"
+import RegisterForm from "./components/account/RegisterForm"
 import ForgotPassword from "./components/account/ForgotPassword"
-import ResetPassword from "./components/ResetPassword"
+import ResetPassword from "./components/account/ResetPassword"
 
 const App = () => {
   return (

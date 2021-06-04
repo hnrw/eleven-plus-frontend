@@ -9,9 +9,9 @@ import {
 import { useDispatch } from "react-redux"
 import { Alert } from "@material-ui/lab"
 import { useHistory, Link } from "react-router-dom"
-import logo from "../assets/logo.png"
-import userService from "../services/userService"
-import { setUser } from "../reducers/userReducer"
+import logo from "../../assets/logo.png"
+import userService from "../../services/userService"
+import { setUser } from "../../reducers/userReducer"
 
 const RegisterForm = () => {
   const history = useHistory()
@@ -19,7 +19,7 @@ const RegisterForm = () => {
   const [error, setError] = useState(null)
   const [savedQuestion, setSavedQuestion] = useState(null)
   const [requestUser, setRequestUser] = useState(null)
-  document.title = "Backstage - sign up"
+  document.title = "Waterfront - sign up"
 
   useEffect(() => {
     const storedQuestionJSON = window.sessionStorage.getItem("savedQuestion")

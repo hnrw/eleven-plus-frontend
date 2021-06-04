@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core"
 import { Link, useParams } from "react-router-dom"
 import { Alert } from "@material-ui/lab"
-import passwordService from "../services/passwordService"
+import passwordService from "../../services/passwordService"
 
 const ResetPassword = () => {
   const params = useParams()
@@ -18,7 +18,7 @@ const ResetPassword = () => {
   const [success, setSuccess] = useState(null)
   const [newPassword, setNewPassword] = useState("")
   const [verifyPassword, setVerifyPassword] = useState("")
-  document.title = "Backstage - reset password"
+  document.title = "Waterfront - reset password"
 
   const paperStyle = {
     display: "flex",
