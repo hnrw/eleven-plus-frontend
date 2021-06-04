@@ -9,6 +9,8 @@ import LandingPage from "./components/LandingPage"
 import Header from "./components/Header"
 import LoginForm from "./components/LoginForm"
 import RegisterForm from "./components/RegisterForm"
+import ForgotPassword from "./components/ForgotPassword"
+import ResetPassword from "./components/ResetPassword"
 
 const App = () => {
   return (
@@ -35,6 +37,12 @@ const App = () => {
         </Route>
         <Route path="/login">
           <LoginForm />
+        </Route>
+        <Route path="/forgot-password">
+          <ForgotPassword />
+        </Route>
+        <Route path="/reset-password/:token/:id">
+          <ResetPassword />
         </Route>
         <Route path="/">
           <Component />
