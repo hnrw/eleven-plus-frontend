@@ -29,7 +29,6 @@ const Component = () => {
   useEffect(() => {
     testsService.getTest().then((t) => dispatch(setTest(t)))
   }, [])
-  console.log(test)
 
   if (!test) return null
 

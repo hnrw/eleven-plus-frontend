@@ -35,11 +35,11 @@ const MultipleChoice = ({ problem }) => {
 
 const Problem = ({ problem }) => {
   return (
-    <>
+    <div style={{ marginBottom: 20 }}>
       <Typography>{problem.question}</Typography>
       {problem.image && <img style={{ width: 200 }} src={problem.image} />}
       <MultipleChoice problem={problem} />
-    </>
+    </div>
   )
 }
 
