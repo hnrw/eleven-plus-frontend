@@ -47,6 +47,7 @@ const Question = ({ q }) => {
   return (
     <>
       <Typography>{q.question}</Typography>
+      {q.image && <img style={{ width: 200 }} src={q.image} />}
       {q.multi ? <MultipleChoice q={q} /> : <InputAnswer q={q} />}
     </>
   )

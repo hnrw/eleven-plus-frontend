@@ -16,6 +16,7 @@ const questions = [
   },
   {
     question: "What is 2 + 3?",
+    image: "https://i.imgur.com/3KBLn2d.jpeg",
     multi: true,
     correct: 5,
     options: [5, 12, 6, 1],
