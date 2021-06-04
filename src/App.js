@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast"
 import Component from "./components/Component"
 import Results from "./components/Results"
 import LandingPage from "./components/LandingPage"
+import Header from "./components/Header"
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           }}
         />
       </div>
+      <Header />
       <Switch>
         <Route path="/results">
           <Results />
