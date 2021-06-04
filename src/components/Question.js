@@ -7,9 +7,7 @@ import _ from "lodash"
 
 const MultipleChoice = ({ q }) => {
   const dispatch = useDispatch()
-  const test = useSelector((state) => state.test)
 
-  const [activeButton, setActiveButton] = useState(null)
   const [shuffledOptions, setShuffledOptions] = useState([])
 
   useEffect(() => {
@@ -18,15 +16,15 @@ const MultipleChoice = ({ q }) => {
 
   return (
     <>
-      {shuffledOptions.map((o) => {
-        const selected = q.selected === o
+      {shuffledOptions.map((option) => {
+        const selected = q.selected === option
         return (
           <Button
             variant={selected ? "contained" : "outlined"}
             color={selected ? "primary" : "default"}
-            onClick={() => dispatch(selectOption(q.question, o))}
+            onClick={() => dispatch(selectOption(q.question, option))}
           >
-            {o}
+            {option}
           </Button>
         )
       })}
