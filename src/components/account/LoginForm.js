@@ -9,8 +9,8 @@ import {
 import { useHistory, Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { Alert } from "@material-ui/lab"
-import loginService from "../services/loginService"
-import { setUser } from "../reducers/userReducer"
+import loginService from "../../services/loginService"
+import { setUser } from "../../reducers/userReducer"
 
 const LoginForm = () => {
   const dispatch = useDispatch()

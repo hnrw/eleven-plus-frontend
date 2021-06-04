@@ -7,9 +7,9 @@ import Component from "./components/Component"
 import Results from "./components/Results"
 import LandingPage from "./components/LandingPage"
 import Header from "./components/Header"
-import LoginForm from "./components/LoginForm"
+import LoginForm from "./components/account/LoginForm"
 import RegisterForm from "./components/RegisterForm"
-import ForgotPassword from "./components/ForgotPassword"
+import ForgotPassword from "./components/account/ForgotPassword"
 import ResetPassword from "./components/ResetPassword"
 
 const App = () => {
