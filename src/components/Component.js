@@ -22,6 +22,14 @@ const Component = () => {
   }, [])
   console.log(test)
 
+  const submitTest = () => {
+    const marks = test.filter((q) => q.selected === q.correct).length
+    const totalMarks = test.length
+    const percent = Math.round((100 / totalMarks) * marks)
+    console.log(marks)
+    console.log(percent)
+  }
+
   if (!test) return null
 
   return (
@@ -30,7 +38,7 @@ const Component = () => {
         <Question q={q} />
       ))}
       <div>
-        <Button>Submit</Button>
+        <Button onClick={submitTest}>Submit</Button>
       </div>
     </Container>
   )
