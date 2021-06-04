@@ -4,28 +4,29 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
 
 import Component from "./components/Component"
+import Results from "./components/Results"
 
 const App = () => {
   return (
-    <Container>
-      <Router>
-        <div>
-          <Toaster
-            toastOptions={{
-              style: {
-                fontFamily: "Roboto",
-              },
-            }}
-          />
-        </div>
-        <Switch>
-          <Route path="/test">hello</Route>
-          <Route path="/">
-            <Component />
-          </Route>
-        </Switch>
-      </Router>
-    </Container>
+    <Router>
+      <div>
+        <Toaster
+          toastOptions={{
+            style: {
+              fontFamily: "Roboto",
+            },
+          }}
+        />
+      </div>
+      <Switch>
+        <Route path="/results">
+          <Results />
+        </Route>
+        <Route path="/">
+          <Component />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 

@@ -6,6 +6,14 @@ import {
   Typography,
   Grid,
 } from "@material-ui/core"
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Link,
+  Switch,
+  Route,
+  useHistory,
+} from "react-router-dom"
 import _ from "lodash"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -15,20 +23,13 @@ import { setTest } from "../reducers/testsReducer"
 
 const Component = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const test = useSelector((state) => state.test)
 
   useEffect(() => {
     testsService.getTest().then((t) => dispatch(setTest(t)))
   }, [])
   console.log(test)
-
-  const submitTest = () => {
-    const marks = test.filter((q) => q.selected === q.correct).length
-    const totalMarks = test.length
-    const percent = Math.round((100 / totalMarks) * marks)
-    console.log(marks)
-    console.log(percent)
-  }
 
   if (!test) return null
 
@@ -38,7 +39,7 @@ const Component = () => {
         <Problem problem={problem} />
       ))}
       <div>
-        <Button onClick={submitTest}>Submit</Button>
+        <Button onClick={() => history.push("/results")}>Submit</Button>
       </div>
     </Container>
   )
