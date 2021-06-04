@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import {
   TextField,
   Container,
@@ -6,29 +6,32 @@ import {
   Typography,
   Grid,
 } from "@material-ui/core"
+import _ from "lodash"
+import { useDispatch, useSelector } from "react-redux"
 
 import Question from "./Question"
-
-const questions = [
-  {
-    question: "What is 2 + 3?",
-    correct: 5,
-  },
-  {
-    question: "What is 2 + 3?",
-    image: "https://i.imgur.com/3KBLn2d.jpeg",
-    multi: true,
-    correct: 5,
-    options: [5, 12, 6, 1],
-  },
-]
+import testsService from "../services/testsService"
+import { setTest } from "../reducers/testsReducer"
 
 const Component = () => {
+  const dispatch = useDispatch()
+  const test = useSelector((state) => state.test)
+
+  useEffect(() => {
+    testsService.getTest().then((t) => dispatch(setTest(t)))
+  }, [])
+  console.log(test)
+
+  if (!test) return null
+
   return (
     <Container>
-      {questions.map((q) => (
+      {test.map((q) => (
         <Question q={q} />
       ))}
+      <div>
+        <Button>Submit</Button>
+      </div>
     </Container>
   )
 }

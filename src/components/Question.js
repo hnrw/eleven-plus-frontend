@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from "react"
 import { TextField, Typography, Container, Button } from "@material-ui/core"
+import { useDispatch, useSelector } from "react-redux"
+
+import { selectOption } from "../reducers/testsReducer"
 import _ from "lodash"
 
-const InputAnswer = ({ q }) => {
-  return (
-    <>
-      <div>
-        <TextField variant="outlined" />
-      </div>
-      <div>
-        <Button>Submit</Button>
-      </div>
-    </>
-  )
-}
-
 const MultipleChoice = ({ q }) => {
+  const dispatch = useDispatch()
+  const test = useSelector((state) => state.test)
+
   const [activeButton, setActiveButton] = useState(null)
   const [shuffledOptions, setShuffledOptions] = useState([])
 
@@ -25,15 +18,13 @@ const MultipleChoice = ({ q }) => {
 
   return (
     <>
-      <Typography paragraph>hi</Typography>
       {shuffledOptions.map((o) => {
-        const selected = activeButton === o
-        console.log(selected)
+        const selected = q.selected === o
         return (
           <Button
             variant={selected ? "contained" : "outlined"}
             color={selected ? "primary" : "default"}
-            onClick={() => setActiveButton(o)}
+            onClick={() => dispatch(selectOption(q.question, o))}
           >
             {o}
           </Button>

@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from "redux"
 import { composeWithDevTools } from "redux-devtools-extension"
-import testReducer from "./reducers/testReducer"
+import testsReducer from "./reducers/testsReducer"
 
 const reducer = combineReducers({
-  tests: testReducer,
+  test: testsReducer,
 })
 
 const store = createStore(reducer, composeWithDevTools())
