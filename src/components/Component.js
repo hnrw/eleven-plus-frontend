@@ -9,7 +9,7 @@ import {
 import _ from "lodash"
 import { useDispatch, useSelector } from "react-redux"
 
-import Question from "./Question"
+import Problem from "./Problem"
 import testsService from "../services/testsService"
 import { setTest } from "../reducers/testsReducer"
 
@@ -34,8 +34,8 @@ const Component = () => {
 
   return (
     <Container>
-      {test.map((q) => (
-        <Question q={q} />
+      {test.map((problem) => (
+        <Problem problem={problem} />
       ))}
       <div>
         <Button onClick={submitTest}>Submit</Button>

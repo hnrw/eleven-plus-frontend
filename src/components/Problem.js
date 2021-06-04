@@ -5,24 +5,24 @@ import { useDispatch, useSelector } from "react-redux"
 import { selectOption } from "../reducers/testsReducer"
 import _ from "lodash"
 
-const MultipleChoice = ({ q }) => {
+const MultipleChoice = ({ problem }) => {
   const dispatch = useDispatch()
 
   const [shuffledOptions, setShuffledOptions] = useState([])
 
   useEffect(() => {
-    setShuffledOptions(_.shuffle(q.options))
+    setShuffledOptions(_.shuffle(problem.options))
   }, [])
 
   return (
     <>
       {shuffledOptions.map((option) => {
-        const selected = q.selected === option
+        const selected = problem.selected === option
         return (
           <Button
             variant={selected ? "contained" : "outlined"}
             color={selected ? "primary" : "default"}
-            onClick={() => dispatch(selectOption(q.question, option))}
+            onClick={() => dispatch(selectOption(problem.question, option))}
           >
             {option}
           </Button>
@@ -32,14 +32,14 @@ const MultipleChoice = ({ q }) => {
   )
 }
 
-const Question = ({ q }) => {
+const Problem = ({ problem }) => {
   return (
     <>
-      <Typography>{q.question}</Typography>
-      {q.image && <img style={{ width: 200 }} src={q.image} />}
-      {q.multi ? <MultipleChoice q={q} /> : <InputAnswer q={q} />}
+      <Typography>{problem.question}</Typography>
+      {problem.image && <img style={{ width: 200 }} src={problem.image} />}
+      <MultipleChoice problem={problem} />
     </>
   )
 }
 
-export default Question
+export default Problem
