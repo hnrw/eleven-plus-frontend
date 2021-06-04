@@ -9,7 +9,7 @@ const Answers = () => {
       {test.map((problem) => {
         const correct = problem.correct === problem.selected
         return (
-          <div style={{ marginBottom: 20 }}>
+          <div key={problem.question} style={{ marginBottom: 20 }}>
             <Typography>{problem.question}</Typography>
             <Typography>You answered: {problem.selected}</Typography>
             <Typography>{correct ? "correct" : "wrong"}</Typography>

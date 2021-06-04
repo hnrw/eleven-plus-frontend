@@ -36,7 +36,7 @@ const Component = () => {
   return (
     <Container>
       {test.map((problem) => (
-        <Problem problem={problem} />
+        <Problem key={problem.question} problem={problem} />
       ))}
       <div>
         <Button onClick={() => history.push("/results")}>Submit</Button>

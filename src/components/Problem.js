@@ -23,6 +23,7 @@ const MultipleChoice = ({ problem }) => {
             variant={selected ? "contained" : "outlined"}
             color={selected ? "primary" : "default"}
             onClick={() => dispatch(selectOption(problem.question, option))}
+            key={option}
           >
             {option}
           </Button>
