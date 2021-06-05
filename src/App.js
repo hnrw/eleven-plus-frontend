@@ -7,6 +7,8 @@ import Component from "./components/Component"
 import Results from "./components/Results"
 import LandingPage from "./components/LandingPage"
 import Header from "./components/Header"
+import Stats from "./components/Stats"
+
 import LoginForm from "./components/account/LoginForm"
 import RegisterForm from "./components/account/RegisterForm"
 import ForgotPassword from "./components/account/ForgotPassword"
@@ -28,6 +30,9 @@ const App = () => {
       <Switch>
         <Route path="/results">
           <Results />
+        </Route>
+        <Route path="/stats">
+          <Stats />
         </Route>
         <Route path="/landing">
           <LandingPage />

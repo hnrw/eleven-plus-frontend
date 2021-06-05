@@ -27,6 +27,7 @@ const Header = () => {
 
   const loggedOut = () => (
     <>
+      <HeaderItem link="stats">Stats</HeaderItem>
       <HeaderItem link="login">Log in</HeaderItem>
       <HeaderItem link="signup">Sign up</HeaderItem>
     </>
