@@ -13,31 +13,37 @@ const data = [
     id: "1",
     label: "1",
     value: 20,
-    color: "hsl(133, 70%, 50%)",
+    color: "#db4f4f",
   },
   {
     id: "2",
     label: "2",
     value: 20,
-    color: "hsl(241, 70%, 50%)",
+    color: "#ffbb00",
   },
   {
     id: "3",
     label: "3",
     value: 20,
-    color: "hsl(314, 70%, 50%)",
+    color: "#faff6b",
   },
   {
     id: "4",
     label: "4",
     value: 20,
-    color: "hsl(264, 70%, 50%)",
+    color: "#8CED5D",
   },
   {
     id: "5",
     label: "5",
-    value: 20,
-    color: "hsl(197, 70%, 50%)",
+    value: 10,
+    color: "#00d939",
+  },
+  {
+    id: "6",
+    label: "6",
+    value: 10,
+    color: "#00e1ff",
   },
 ]
 
@@ -72,6 +78,8 @@ const HalfPie = () => (
       arcLabelsSkipAngle={10}
       arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
       enableArcLinkLabels={false}
+      // colors={{ scheme: "yellow_green" }}
+      colors={{ datum: "data.color" }}
     />
     <span
       style={{
