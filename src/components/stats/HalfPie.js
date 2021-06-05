@@ -10,38 +10,32 @@ import pointer from "../../assets/pointer.svg"
 
 const data = [
   {
-    id: "1",
-    label: "1",
+    id: "20%",
     value: 20,
     color: "#db4f4f",
   },
   {
-    id: "2",
-    label: "2",
+    id: "40%",
     value: 20,
     color: "#ffbb00",
   },
   {
-    id: "3",
-    label: "3",
+    id: "60%",
     value: 20,
     color: "#faff6b",
   },
   {
-    id: "4",
-    label: "4",
+    id: "80%",
     value: 20,
     color: "#8CED5D",
   },
   {
-    id: "5",
-    label: "5",
+    id: "90%",
     value: 10,
     color: "#00d939",
   },
   {
-    id: "6",
-    label: "6",
+    id: "100%",
     value: 10,
     color: "#00e1ff",
   },
@@ -75,11 +69,11 @@ const HalfPie = () => (
       activeOuterRadiusOffset={8}
       borderWidth={1}
       borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
-      arcLabelsSkipAngle={10}
+      arcLabel="id"
       arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
       enableArcLinkLabels={false}
-      // colors={{ scheme: "yellow_green" }}
       colors={{ datum: "data.color" }}
+      theme={{ fontSize: 14 }}
     />
     <span
       style={{
