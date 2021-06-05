@@ -42,6 +42,29 @@ const data = [
 
 const margin = { top: 40, right: 80, bottom: 80, left: 80 }
 
+const Arrow = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      style={{
+        height: 150,
+        transform: "scaleY(2)",
+      }}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M8 7l4-4m0 0l4 4m-4-4v18"
+      />
+    </svg>
+  )
+}
+
 const HalfPie = () => (
   <div
     style={{
@@ -78,9 +101,7 @@ const HalfPie = () => (
         pointerEvents: "none",
       }}
     >
-      <Typography>Henry marks are better than</Typography>
-      <Typography variant="h3">83%</Typography>
-      <Typography>of Waterfront students</Typography>
+      <Arrow />
     </span>
   </div>
 )

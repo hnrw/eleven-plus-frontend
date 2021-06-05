@@ -87,6 +87,18 @@ const Stats = () => {
           ]}
         />
       </div>
+      <Container
+        maxWidth="md"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography>Henry marks are better than</Typography>
+        <Typography variant="h3">83%</Typography>
+        <Typography>of Waterfront students</Typography>
+      </Container>
       <HalfPie />
     </>
   )
