@@ -6,35 +6,36 @@ import {
   Typography,
   Grid,
 } from "@material-ui/core"
+import pointer from "../../assets/pointer.svg"
 
 const data = [
   {
-    id: "lisp",
-    // el: "lisp",
+    id: "1",
+    label: "1",
     value: 20,
     color: "hsl(133, 70%, 50%)",
   },
   {
-    id: "elixir",
-    label: "elixir",
+    id: "2",
+    label: "2",
     value: 20,
     color: "hsl(241, 70%, 50%)",
   },
   {
-    id: "make",
-    label: "make",
+    id: "3",
+    label: "3",
     value: 20,
     color: "hsl(314, 70%, 50%)",
   },
   {
-    id: "sass",
-    label: "sass",
+    id: "4",
+    label: "4",
     value: 20,
     color: "hsl(264, 70%, 50%)",
   },
   {
-    id: "hack",
-    label: "hack",
+    id: "5",
+    label: "5",
     value: 20,
     color: "hsl(197, 70%, 50%)",
   },
@@ -42,27 +43,12 @@ const data = [
 
 const margin = { top: 40, right: 80, bottom: 80, left: 80 }
 
-const Arrow = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      style={{
-        height: 150,
-        transform: "scaleY(2)",
-      }}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M8 7l4-4m0 0l4 4m-4-4v18"
-      />
-    </svg>
-  )
+const angle = (percent) => {
+  // pointer is positioned slightly above the bottom of the chart
+  // so needs slightly larger than 180deg to cover full arc
+
+  // pointer is slightly unsymmetrical, so needs a bit extra to reach 100%
+  return -95 + percent * 1.91
 }
 
 const HalfPie = () => (
@@ -90,9 +76,9 @@ const HalfPie = () => (
     <span
       style={{
         position: "absolute",
-        top: 100,
+        // top: 100,
         right: margin.right,
-        bottom: 0,
+        bottom: -140,
         left: margin.left,
         display: "flex",
         flexDirection: "column",
@@ -101,7 +87,14 @@ const HalfPie = () => (
         pointerEvents: "none",
       }}
     >
-      <Arrow />
+      <img
+        src={pointer}
+        style={{
+          height: 500,
+          transform: "rotate(20deg)",
+          transform: `rotate(${angle(83)}deg)`,
+        }}
+      />
     </span>
   </div>
 )
