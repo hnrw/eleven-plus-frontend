@@ -2,29 +2,36 @@ import React, { useEffect, useState } from "react"
 import { TextField, Typography, Container, Button } from "@material-ui/core"
 import { ResponsiveRadar } from "@nivo/radar"
 
+import HalfPie from "./graphs/HalfPie"
+
 const Stats = () => {
   const percentile = 90
 
   const radar = [
     {
       skill: "Arithmatic",
-      rating: 50,
+      henry: 50,
+      average: 50,
     },
     {
       skill: "Numbers",
-      rating: 86,
+      henry: 86,
+      average: 50,
     },
     {
       skill: "Shapes",
-      rating: 30,
+      henry: 30,
+      average: 50,
     },
     {
       skill: "Units",
-      rating: 60,
+      henry: 60,
+      average: 50,
     },
     {
       skill: "Test",
-      rating: 90,
+      henry: 90,
+      average: 50,
     },
   ]
 
@@ -33,7 +40,7 @@ const Stats = () => {
       <div style={{ height: 500, fontFamily: "Roboto" }}>
         <ResponsiveRadar
           data={radar}
-          keys={["rating"]}
+          keys={["henry", "average"]}
           indexBy="skill"
           maxValue={100}
           margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
@@ -80,6 +87,7 @@ const Stats = () => {
           ]}
         />
       </div>
+      <HalfPie />
     </>
   )
 }
