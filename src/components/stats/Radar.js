@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { TextField, Typography, Container, Button } from "@material-ui/core"
 import { ResponsiveRadar } from "@nivo/radar"
 
-import HalfPie from "./graphs/HalfPie"
-
-const Stats = () => {
-  const percentile = 90
-
+const Radar = () => {
   const radar = [
     {
       skill: "Arithmatic",
@@ -34,7 +29,6 @@ const Stats = () => {
       average: 50,
     },
   ]
-
   return (
     <>
       <div style={{ height: 500, fontFamily: "Roboto" }}>
@@ -87,21 +81,8 @@ const Stats = () => {
           ]}
         />
       </div>
-      <Container
-        maxWidth="md"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography>Henry marks are better than</Typography>
-        <Typography variant="h3">83%</Typography>
-        <Typography>of Waterfront students</Typography>
-      </Container>
-      <HalfPie />
     </>
   )
 }
 
-export default Stats
+export default Radar

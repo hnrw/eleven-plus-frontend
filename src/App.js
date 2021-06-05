@@ -7,7 +7,7 @@ import Component from "./components/Component"
 import Results from "./components/Results"
 import LandingPage from "./components/LandingPage"
 import Header from "./components/Header"
-import Stats from "./components/Stats"
+import Stats from "./components/stats/Stats"
 
 import LoginForm from "./components/account/LoginForm"
 import RegisterForm from "./components/account/RegisterForm"
