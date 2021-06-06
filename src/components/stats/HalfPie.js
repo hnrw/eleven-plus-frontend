@@ -10,32 +10,32 @@ import pointer from "../../assets/pointer.svg"
 
 const data = [
   {
-    id: "20%",
+    id: "0 - 20%",
     value: 20,
     color: "#db4f4f",
   },
   {
-    id: "40%",
+    id: "20 - 40%",
     value: 20,
     color: "#ffbb00",
   },
   {
-    id: "60%",
+    id: "40 - 60%",
     value: 20,
     color: "#faff6b",
   },
   {
-    id: "80%",
+    id: "60 - 80%",
     value: 20,
     color: "#8CED5D",
   },
   {
-    id: "90%",
+    id: "80 - 90%",
     value: 10,
     color: "#00d939",
   },
   {
-    id: "100%",
+    id: "90 - 100%",
     value: 10,
     color: "#00e1ff",
   },
