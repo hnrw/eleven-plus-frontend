@@ -10,9 +10,8 @@ import {
 import { Toaster } from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 
-import autoLogin from "./helpers/autoLogin"
-
-import Component from "./components/Component"
+import Home from "./components/Home"
+import Test from "./components/Test"
 import Results from "./components/Results"
 import LandingPage from "./components/LandingPage"
 import Header from "./components/Header"
@@ -22,6 +21,8 @@ import LoginForm from "./components/account/LoginForm"
 import RegisterForm from "./components/account/RegisterForm"
 import ForgotPassword from "./components/account/ForgotPassword"
 import ResetPassword from "./components/account/ResetPassword"
+
+import autoLogin from "./helpers/autoLogin"
 
 const App = () => {
   const dispatch = useDispatch()
@@ -50,6 +51,9 @@ const App = () => {
         <Route path="/stats">
           <Stats />
         </Route>
+        <Route path="/tests">
+          <Test />
+        </Route>
         <Route path="/signup">
           <RegisterForm />
         </Route>
@@ -63,7 +67,7 @@ const App = () => {
           <ResetPassword />
         </Route>
         <Route path="/home">
-          <Component />
+          <Home />
         </Route>
         <Route path="/">
           {user && <Redirect to="/home" />}
