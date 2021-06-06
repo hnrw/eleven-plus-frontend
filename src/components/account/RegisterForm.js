@@ -71,11 +71,6 @@ const RegisterForm = () => {
 
       dispatch(setUser(userResponse))
 
-      if (savedQuestion) {
-        history.push(`/${savedQuestion.username}`)
-        return
-      }
-
       history.push(`/`)
     } catch (err) {
       const serverError = err.response && err.response.data.error
