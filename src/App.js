@@ -1,7 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Container } from "@material-ui/core"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
+import { useDispatch, useSelector } from "react-redux"
+
+import autoLogin from "./helpers"
 
 import Component from "./components/Component"
 import Results from "./components/Results"
@@ -15,6 +18,11 @@ import ForgotPassword from "./components/account/ForgotPassword"
 import ResetPassword from "./components/account/ResetPassword"
 
 const App = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    autoLogin(dispatch)
+  }, [])
+
   return (
     <Router>
       <div>
