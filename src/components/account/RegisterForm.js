@@ -49,10 +49,9 @@ const RegisterForm = () => {
     event.preventDefault()
     const email = event.target.email.value
     const name = event.target.name.value
-    const username = event.target.username.value
     const password = event.target.password.value
 
-    if (!(email && name && username && password)) {
+    if (!(email && name && password)) {
       showError("Please complete your details")
       return
     }
@@ -66,7 +65,6 @@ const RegisterForm = () => {
       const userResponse = await userService.newUser(
         email,
         name,
-        username,
         password,
         requestUser
       )
@@ -78,23 +76,11 @@ const RegisterForm = () => {
         return
       }
 
-      if (requestUser) {
-        history.push(`/${username}/unanswered`)
-        localStorage.removeItem("requestUser")
-        // gmail app needs reload to display questions
-        location.reload()
-        return
-      }
-
-      history.push(`/${userResponse.username}`)
+      history.push(`/`)
     } catch (err) {
       const serverError = err.response && err.response.data.error
       if (serverError === "email already in use") {
         showError("email already in use")
-        return
-      }
-      if (serverError === "username already in use") {
-        showError("username already in use")
         return
       }
 
@@ -139,7 +125,7 @@ const RegisterForm = () => {
 
             <form onSubmit={handleSubmit}>
               <div>
-                <Typography variant="subtitle2">Email</Typography>
+                <Typography variant="subtitle2">Parent's Email</Typography>
                 <TextField
                   variant="outlined"
                   type="email"
@@ -151,22 +137,11 @@ const RegisterForm = () => {
                 />
               </div>
               <div>
-                <Typography variant="subtitle2">Name</Typography>
+                <Typography variant="subtitle2">Parent's Name</Typography>
                 <TextField
                   variant="outlined"
                   placeholder="Tommy Wiseau"
                   name="name"
-                  size="small"
-                  style={itemStyle}
-                  fullWidth
-                />
-              </div>
-              <div>
-                <Typography variant="subtitle2">Username</Typography>
-                <TextField
-                  variant="outlined"
-                  placeholder="twiseua"
-                  name="username"
                   size="small"
                   style={itemStyle}
                   fullWidth

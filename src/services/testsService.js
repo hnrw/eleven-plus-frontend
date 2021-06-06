@@ -7,13 +7,4 @@ const getTest = async () => {
   return response.data
 }
 
-requestUser.getQuestions.map(async (q) => {
-  await questionService.createQuestion(
-    q.content,
-    q.fromUser.id,
-    savedUser.username,
-    q.date
-  )
-})
-
 export default { getTest }

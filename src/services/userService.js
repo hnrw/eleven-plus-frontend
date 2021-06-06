@@ -32,13 +32,11 @@ const fetchUsers = async (token) => {
   return response.data
 }
 
-const newUser = async (email, name, username, password, requestUser) => {
+const newUser = async (email, name, password) => {
   const object = {
     email,
     name,
-    username,
     password,
-    requestUser,
   }
 
   const response = await axios.post(baseUrl, object)
