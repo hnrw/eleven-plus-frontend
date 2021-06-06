@@ -21,7 +21,8 @@ import Problem from "./Problem"
 import testService from "../services/testService"
 import { setTest } from "../reducers/testReducer"
 
-const Component = () => {
+const Test = ({ manualTest }) => {
+  console.log(manualTest)
   const dispatch = useDispatch()
   const history = useHistory()
   const test = useSelector((state) => state.test)
@@ -30,11 +31,13 @@ const Component = () => {
     testService.getTest().then((t) => dispatch(setTest(t)))
   }, [])
 
-  if (!test) return null
+  const renderedTest = manualTest || test
+
+  if (!renderedTest) return null
 
   return (
     <Container>
-      {test.problems.map((problem) => (
+      {renderedTest.problems.map((problem) => (
         <Problem key={problem.question} problem={problem} />
       ))}
       <div>
@@ -44,4 +47,4 @@ const Component = () => {
   )
 }
 
-export default Component
+export default Test
