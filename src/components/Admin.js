@@ -8,6 +8,7 @@ import { setTest } from "../reducers/testReducer"
 
 const Admin = () => {
   const [tests, setTests] = useState(null)
+  console.log(tests)
   const dispatch = useDispatch()
   const test = useSelector((state) => state.test)
 
@@ -15,24 +16,27 @@ const Admin = () => {
     testService.fetchTests().then((t) => setTests(t))
   }, [])
 
-  const selectTest = (t) => {
-    dispatch(setTest(t))
+  const selectTest = (id) => {
+    const newTests = tests.map((t) =>
+      t.id === id ? { ...t, open: !t.open } : t
+    )
+    setTests(newTests)
   }
 
   return (
     <>
       {tests &&
-        !test &&
         tests.map((t) => (
           <div key={t.id} style={{ marginBottom: 20 }}>
-            <Button onClick={() => selectTest(t)} variant="outlined">
+            <Button onClick={() => selectTest(t.id)} variant="outlined">
               Test {t.num}
             </Button>
             <Typography>{t.problems.length} questions</Typography>
+
+            {t.open && <Test manualTest={t} />}
           </div>
         ))}
 
-      {test && <Test />}
       <Typography>This is line one</Typography>
       <Button>This is a button</Button>
     </>
