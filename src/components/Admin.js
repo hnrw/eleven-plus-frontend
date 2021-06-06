@@ -8,9 +8,6 @@ import { setTest } from "../reducers/testReducer"
 
 const Admin = () => {
   const [tests, setTests] = useState(null)
-  console.log(tests)
-  const dispatch = useDispatch()
-  const test = useSelector((state) => state.test)
 
   useEffect(() => {
     testService.fetchTests().then((t) => setTests(t))
