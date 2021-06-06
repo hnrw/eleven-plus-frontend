@@ -62,12 +62,7 @@ const RegisterForm = () => {
     }
 
     try {
-      const userResponse = await userService.newUser(
-        email,
-        name,
-        password,
-        requestUser
-      )
+      const userResponse = await userService.newUser(email, name, password)
 
       dispatch(setUser(userResponse))
 
