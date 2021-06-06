@@ -36,9 +36,6 @@ const Admin = () => {
             {t.open && <Test manualTest={t} />}
           </div>
         ))}
-
-      <Typography>This is line one</Typography>
-      <Button>This is a button</Button>
     </>
   )
 }
