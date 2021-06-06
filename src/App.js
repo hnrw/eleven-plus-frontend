@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 
-import autoLogin from "./helpers"
+import autoLogin from "./helpers/autoLogin"
 
 import Component from "./components/Component"
 import Results from "./components/Results"
