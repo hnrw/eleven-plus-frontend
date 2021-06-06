@@ -1,11 +1,11 @@
 import { createStore, combineReducers } from "redux"
 import { composeWithDevTools } from "redux-devtools-extension"
 import userReducer from "./reducers/userReducer"
-import testsReducer from "./reducers/testsReducer"
+import testReducer from "./reducers/testReducer"
 
 const reducer = combineReducers({
   user: userReducer,
-  test: testsReducer,
+  test: testReducer,
 })
 
 const store = createStore(reducer, composeWithDevTools())

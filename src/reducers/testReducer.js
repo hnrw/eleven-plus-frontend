@@ -13,7 +13,7 @@ export const selectOption = (question, option) => {
   }
 }
 
-const testsReducer = (state = [], action) => {
+const testReducer = (state = null, action) => {
   switch (action.type) {
     case "SET_TEST":
       return action.test
@@ -26,4 +26,4 @@ const testsReducer = (state = [], action) => {
   }
 }
 
-export default testsReducer
+export default testReducer

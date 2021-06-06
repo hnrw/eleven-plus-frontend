@@ -18,8 +18,8 @@ import _ from "lodash"
 import { useDispatch, useSelector } from "react-redux"
 
 import Problem from "./Problem"
-import testsService from "../services/testsService"
-import { setTest } from "../reducers/testsReducer"
+import testService from "../services/testService"
+import { setTest } from "../reducers/testReducer"
 
 const Component = () => {
   const dispatch = useDispatch()
@@ -27,14 +27,14 @@ const Component = () => {
   const test = useSelector((state) => state.test)
 
   useEffect(() => {
-    testsService.getTest().then((t) => dispatch(setTest(t)))
+    testService.getTest().then((t) => dispatch(setTest(t)))
   }, [])
 
   if (!test) return null
 
   return (
     <Container>
-      {test.map((problem) => (
+      {test.problems.map((problem) => (
         <Problem key={problem.question} problem={problem} />
       ))}
       <div>

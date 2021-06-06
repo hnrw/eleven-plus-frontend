@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { TextField, Typography, Container, Button } from "@material-ui/core"
 import { useDispatch, useSelector } from "react-redux"
 
-import { selectOption } from "../reducers/testsReducer"
+import { selectOption } from "../reducers/testReducer"
 import _ from "lodash"
 
 const MultipleChoice = ({ problem }) => {

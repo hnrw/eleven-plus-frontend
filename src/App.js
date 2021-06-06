@@ -10,6 +10,7 @@ import {
 import { Toaster } from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 
+import Admin from "./components/Admin"
 import Home from "./components/Home"
 import Test from "./components/Test"
 import Results from "./components/Results"
@@ -53,6 +54,9 @@ const App = () => {
         </Route>
         <Route path="/tests">
           <Test />
+        </Route>
+        <Route path="/admin">
+          <Admin />
         </Route>
         <Route path="/signup">
           <RegisterForm />
