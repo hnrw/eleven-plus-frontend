@@ -27,7 +27,6 @@ const Header = () => {
 
   const loggedOut = () => (
     <>
-      <HeaderItem link="stats">Stats</HeaderItem>
       <HeaderItem link="login">Log in</HeaderItem>
       <HeaderItem link="signup">Sign up</HeaderItem>
     </>
@@ -36,10 +35,8 @@ const Header = () => {
   const loggedIn = () => (
     <>
       {user.isTeacher && <HeaderItem link="students">Students</HeaderItem>}
-      {!user.isTeacher && (
-        <HeaderItem link="/flashcard/f">Flashcards</HeaderItem>
-      )}
-      {user.email === "henry@henrywu.co.uk" && (
+      <HeaderItem link="stats">Stats</HeaderItem>
+      {user.email === "pannicope@gmail.com" && (
         <HeaderItem link="/admin">Admin</HeaderItem>
       )}
       <Button onClick={handleLogout}>Log out</Button>
