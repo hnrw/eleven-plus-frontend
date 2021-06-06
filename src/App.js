@@ -1,6 +1,12 @@
 import React, { useEffect } from "react"
 import { Container } from "@material-ui/core"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+  Redirect,
+} from "react-router-dom"
 import { Toaster } from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -19,6 +25,8 @@ import ResetPassword from "./components/account/ResetPassword"
 
 const App = () => {
   const dispatch = useDispatch()
+  const user = useSelector((state) => state.user)
+
   useEffect(() => {
     autoLogin(dispatch)
   }, [])
@@ -42,9 +50,6 @@ const App = () => {
         <Route path="/stats">
           <Stats />
         </Route>
-        <Route path="/landing">
-          <LandingPage />
-        </Route>
         <Route path="/signup">
           <RegisterForm />
         </Route>
@@ -57,8 +62,12 @@ const App = () => {
         <Route path="/reset-password/:token/:id">
           <ResetPassword />
         </Route>
-        <Route path="/">
+        <Route path="/home">
           <Component />
+        </Route>
+        <Route path="/">
+          {user && <Redirect to="/home" />}
+          <LandingPage />
         </Route>
       </Switch>
     </Router>

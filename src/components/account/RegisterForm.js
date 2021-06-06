@@ -66,7 +66,7 @@ const RegisterForm = () => {
 
       dispatch(setUser(userResponse))
 
-      history.push(`/`)
+      history.push(`/home`)
     } catch (err) {
       const serverError = err.response && err.response.data.error
       if (serverError === "email already in use") {

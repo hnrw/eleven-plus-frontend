@@ -35,7 +35,7 @@ const LoginForm = () => {
         password,
       })
       dispatch(setUser(user))
-      history.push(`/`)
+      history.push(`/home`)
     } catch (err) {
       const serverError = err?.response?.data?.error
       if (serverError === "invalid email or password") {
