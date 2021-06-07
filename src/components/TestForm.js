@@ -2,11 +2,21 @@ import React, { useEffect, useState } from "react"
 import { TextField, Typography, Container, Button } from "@material-ui/core"
 import { v4 as uuid } from "uuid"
 import testService from "../services/testService"
+import { toast } from "react-hot-toast"
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Link,
+  Switch,
+  Route,
+  useHistory,
+} from "react-router-dom"
 
 const TestForm = () => {
   const [problems, setProblems] = useState([])
+  const history = useHistory()
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     event.preventDefault()
 
     const createOptions = problems.map((p) => ({
@@ -18,7 +28,12 @@ const TestForm = () => {
       problems: createOptions,
     }
 
-    testService.createTest(test)
+    try {
+      await testService.createTest(test)
+      history.push("/admin")
+    } catch (err) {
+      toast.error("unexpected error")
+    }
   }
 
   return (
