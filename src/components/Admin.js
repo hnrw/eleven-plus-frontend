@@ -83,9 +83,9 @@ const Admin = () => {
               {t.open && (
                 <>
                   {t.problems.map((p) => (
-                    <>
+                    <div key={p.question}>
                       <Problem problem={p} viewOnly />
-                    </>
+                    </div>
                   ))}
 
                   <Button
