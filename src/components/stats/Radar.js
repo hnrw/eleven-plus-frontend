@@ -4,29 +4,29 @@ import { ResponsiveRadar } from "@nivo/radar"
 const Radar = () => {
   const radar = [
     {
-      skill: "Arithmatic",
-      henry: 50,
-      average: 50,
+      skill: "Arithmetic",
+      Simon: 50,
+      Average: 50,
     },
     {
       skill: "Numbers",
-      henry: 86,
-      average: 50,
+      Simon: 86,
+      Average: 50,
     },
     {
       skill: "Shapes",
-      henry: 30,
-      average: 50,
+      Simon: 30,
+      Average: 50,
     },
     {
       skill: "Units",
-      henry: 60,
-      average: 50,
+      Simon: 60,
+      Average: 50,
     },
     {
-      skill: "Test",
-      henry: 90,
-      average: 50,
+      skill: "Algebra",
+      Simon: 90,
+      Average: 50,
     },
   ]
   return (
@@ -34,7 +34,7 @@ const Radar = () => {
       <div style={{ height: 500, fontFamily: "Roboto" }}>
         <ResponsiveRadar
           data={radar}
-          keys={["henry", "average"]}
+          keys={["Simon", "Average"]}
           indexBy="skill"
           maxValue={100}
           margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
