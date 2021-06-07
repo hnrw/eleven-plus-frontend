@@ -31,13 +31,10 @@ const Results = () => {
 
   if (!gradedTest) return null
 
-  const { marks, percent } = gradedTest
-  const total = gradedTest.gradedProblems.length
-
   return (
     <>
-      <Typography>{`${marks}/${total}`}</Typography>
-      <Typography>{percent}%</Typography>
+      <Typography>{`${gt.marks}/${gt.total}`}</Typography>
+      <Typography>{gt.percent}%</Typography>
       <Answers gradedProblems={gradedTest.gradedProblems} />
     </>
   )

@@ -24,16 +24,25 @@ const ResultsList = () => {
   }, [user])
 
   return (
-    <>
+    <Container>
       {gradedTestsList.map((gt) => (
         <Link
           to={`/results/${gt.id}`}
           style={{ textDecoration: "none", color: "black" }}
         >
-          <Button>{gt.id}</Button>
+          <Typography variant="h4">Maths Test {1}</Typography>
+          <Typography>
+            {gt.marks}/{gt.total} - {gt.percent}%
+          </Typography>
+
+          <Button>
+            <div>dsflj</div>
+            <div>akdfj</div>
+            {gt.id}
+          </Button>
         </Link>
       ))}
-    </>
+    </Container>
   )
 }
 
