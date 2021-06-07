@@ -6,7 +6,7 @@ const Answers = () => {
   const test = useSelector((state) => state.test)
   return (
     <>
-      {test.map((problem) => {
+      {test.problems.map((problem) => {
         const correct = problem.correct === problem.selected
         return (
           <div key={problem.question} style={{ marginBottom: 20 }}>

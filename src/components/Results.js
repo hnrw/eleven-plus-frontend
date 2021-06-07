@@ -7,8 +7,8 @@ import Answers from "./Answers"
 const Results = () => {
   const test = useSelector((state) => state.test)
 
-  const marks = test.filter((q) => q.selected === q.correct).length
-  const totalMarks = test.length
+  const marks = test.problems.filter((q) => q.selected === q.correct).length
+  const totalMarks = test.problems.length
   const percent = Math.round((100 / totalMarks) * marks)
 
   return (
