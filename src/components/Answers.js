@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react"
 import { TextField, Typography, Container, Button } from "@material-ui/core"
 import { useDispatch, useSelector } from "react-redux"
 
-const Answers = () => {
+const Answers = ({ gradedProblems }) => {
   const test = useSelector((state) => state.test)
   return (
     <>
-      {test.problems.map((problem) => {
+      {gradedProblems.map((problem) => {
         const correct = problem.correct === problem.selected
         return (
           <div key={problem.question} style={{ marginBottom: 20 }}>
