@@ -15,7 +15,7 @@ const TestForm = () => {
     <>
       <form onSubmit={handleSubmit}>
         {problems.map((p, index) => (
-          <>
+          <div key={p.uuid}>
             <Typography>Question {index + 1}</Typography>
             <ProblemDisplay
               problem={p}
@@ -23,7 +23,7 @@ const TestForm = () => {
               problems={problems}
               setProblems={setProblems}
             />
-          </>
+          </div>
         ))}
 
         <ProblemForm problems={problems} setProblems={setProblems} />
