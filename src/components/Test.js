@@ -36,7 +36,6 @@ const Test = ({ manualTest }) => {
   }, [])
 
   const renderedTest = manualTest || test
-  console.log(renderedTest)
 
   const handleSubmit = async () => {
     const data = {
