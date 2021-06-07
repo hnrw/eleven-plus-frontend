@@ -27,7 +27,8 @@ const LandingHeader = ({ textBlack }) => {
               style={{ color: "#121D1E", fontSize: 20, marginBottom: 20 }}
             >
               Only 1 in 10 children who take the 11+ qualify for grammar
-              schools. See how your child ranks against the competition.
+              schools. See how your child is doing.
+              {/* See how your child ranks against the competition. */}
             </Typography>
             <Button
               variant="contained"

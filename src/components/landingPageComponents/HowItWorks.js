@@ -32,8 +32,9 @@ const HowItWorks = ({ textBlack }) => {
               2
             </Typography>
             <Typography align="center" paragraph variant="body1">
-              Compare their results compres to other children competing for
-              grammar school spots
+              {/* Compare their results compres to other children competing for
+              grammar school spots */}
+              We analyse their results and see where they can improve
             </Typography>
           </Grid>
           <Grid item xs={4}>
