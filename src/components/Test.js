@@ -22,7 +22,6 @@ import testService from "../services/testService"
 import { setTest } from "../reducers/testReducer"
 
 const Test = ({ manualTest }) => {
-  console.log(manualTest)
   const dispatch = useDispatch()
   const history = useHistory()
   const test = useSelector((state) => state.test)

@@ -7,7 +7,7 @@ const getTest = async (id) => {
   return response.data
 }
 
-const fetchTests = async (id) => {
+const fetchTests = async () => {
   const response = await axios.get(url)
   return response.data
 }
