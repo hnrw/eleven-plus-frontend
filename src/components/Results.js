@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react"
 import { TextField, Typography, Container, Button } from "@material-ui/core"
 import { useDispatch, useSelector } from "react-redux"
+import gradedTestService from "../services/gradedTestService"
 
 import Answers from "./Answers"
 
 const Results = () => {
-  const test = useSelector((state) => state.test)
+  const [gradedTest, setGradedTest] = useState(nul)
 
-  const marks = test.problems.filter((q) => q.selected === q.correct).length
-  const totalMarks = test.problems.length
-  const percent = Math.round((100 / totalMarks) * marks)
+  const { id } = useParams()
+  useEffect(() => {
+    gradedTestService
+      .getTest({ token: user.token, testId: id })
+      .then((gt) => setGradedTest(gt))
+  }, [])
 
   return (
     <>
