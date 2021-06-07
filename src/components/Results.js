@@ -33,8 +33,8 @@ const Results = () => {
 
   return (
     <>
-      <Typography>{`${gt.marks}/${gt.total}`}</Typography>
-      <Typography>{gt.percent}%</Typography>
+      <Typography>{`${gradedTest.marks}/${gradedTest.total}`}</Typography>
+      <Typography>{gradedTest.percent}%</Typography>
       <Answers gradedProblems={gradedTest.gradedProblems} />
     </>
   )
