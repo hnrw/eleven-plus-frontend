@@ -16,7 +16,6 @@ const ResultsList = () => {
   const user = useSelector((state) => state.user)
 
   useEffect(() => {
-    console.log(user)
     if (user) {
       gradedTestService
         .fetchTests(user.token)

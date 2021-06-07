@@ -27,15 +27,15 @@ const Header = () => {
 
   const loggedOut = () => (
     <>
-      <HeaderItem link="login">Log in</HeaderItem>
-      <HeaderItem link="signup">Sign up</HeaderItem>
+      <HeaderItem link="/login">Log in</HeaderItem>
+      <HeaderItem link="/signup">Sign up</HeaderItem>
     </>
   )
 
   const loggedIn = () => (
     <>
-      <HeaderItem link="results">Results</HeaderItem>
-      <HeaderItem link="stats">Stats</HeaderItem>
+      <HeaderItem link="/results">Results</HeaderItem>
+      <HeaderItem link="/stats">Stats</HeaderItem>
       {user.email === "pannicope@gmail.com" && (
         <HeaderItem link="/admin">Admin</HeaderItem>
       )}
