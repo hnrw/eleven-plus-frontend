@@ -25,6 +25,8 @@ import RegisterForm from "./components/account/RegisterForm"
 import ForgotPassword from "./components/account/ForgotPassword"
 import ResetPassword from "./components/account/ResetPassword"
 
+import { setMobile } from "./reducers/mobileReducer"
+
 import autoLogin from "./helpers/autoLogin"
 
 const App = () => {
@@ -33,6 +35,12 @@ const App = () => {
 
   useEffect(() => {
     autoLogin(dispatch)
+  }, [])
+
+  useEffect(() => {
+    if (window.innerWidth < 500) {
+      dispatch(setMobile())
+    }
   }, [])
 
   return (

@@ -8,6 +8,7 @@ import {
   Grid,
 } from "@material-ui/core"
 import pointer from "../../assets/pointer.svg"
+import { useDispatch, useSelector } from "react-redux"
 
 const data = [
   {
@@ -52,13 +53,7 @@ const angle = (percent) => {
 }
 
 const HalfPie = () => {
-  const [mobile, setMobile] = useState(false)
-
-  useEffect(() => {
-    if (window.innerWidth < 500) {
-      setMobile(true)
-    }
-  }, [])
+  const mobile = useSelector((state) => state.mobile)
 
   return (
     <div
