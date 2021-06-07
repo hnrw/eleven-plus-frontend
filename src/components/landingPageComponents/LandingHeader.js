@@ -41,7 +41,7 @@ const LandingHeader = ({ textBlack }) => {
           <Grid item xs={12} sm={6}>
             {!mobile && (
               <img
-                style={{ width: "75%" }}
+                style={{ width: "75%", marginLeft: 20 }}
                 src="https://i.imgur.com/QQeT3fk.png"
                 alt="backstage"
               />
