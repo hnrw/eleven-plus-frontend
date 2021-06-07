@@ -18,9 +18,12 @@ const testReducer = (state = null, action) => {
     case "SET_TEST":
       return action.test
     case "SELECT_OPTION":
-      return state.map((q) =>
-        q.question === action.question ? { ...q, selected: action.option } : q
-      )
+      return {
+        ...state,
+        problems: state.problems.map((p) =>
+          p.question === action.question ? { ...p, selected: action.option } : p
+        ),
+      }
     default:
       return state
   }

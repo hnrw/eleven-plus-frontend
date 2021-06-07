@@ -28,11 +28,12 @@ const Test = ({ manualTest }) => {
 
   useEffect(() => {
     if (!manualTest) {
-      testService.getTest().then((t) => dispatch(setTest(t)))
+      testService.fetchTests().then((t) => dispatch(setTest(t[0])))
     }
   }, [])
 
   const renderedTest = manualTest || test
+  console.log(renderedTest)
 
   if (!renderedTest) return null
 
