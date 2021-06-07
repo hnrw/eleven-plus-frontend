@@ -19,7 +19,6 @@ const Results = () => {
   const user = useSelector((state) => state.user)
 
   const { id } = useParams()
-  // const id = "60be448549610017bc3a06bf"
 
   useEffect(() => {
     console.log(user)
