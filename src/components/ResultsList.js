@@ -31,15 +31,10 @@ const ResultsList = () => {
           style={{ textDecoration: "none", color: "black" }}
         >
           <Typography variant="h4">Maths Test {1}</Typography>
+          <Typography>{gt.percent}%</Typography>
           <Typography>
-            {gt.marks}/{gt.total} - {gt.percent}%
+            {gt.marks}/{gt.total} marks
           </Typography>
-
-          <Button>
-            <div>dsflj</div>
-            <div>akdfj</div>
-            {gt.id}
-          </Button>
         </Link>
       ))}
     </Container>
