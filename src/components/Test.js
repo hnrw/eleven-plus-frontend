@@ -39,31 +39,22 @@ const Test = ({ manualTest }) => {
   console.log(renderedTest)
 
   const handleSubmit = async () => {
-    // try {
-    //   await testproblems.reduce(async (memo, problem) => {
-    //     await memo
-    //     await submitAnswer(problem)
-    //   }, undefined)
-    //   toast.success("done")
-    // } catch (err) {
-    //   toast.error("master err")
-    // }
-    await test.problems.reduce(async (memo, problem) => {
-      await memo
+    try {
+      await test.problems.reduce(async (memo, problem) => {
+        await memo
 
-      await submitAnswer(problem)
-    }, undefined)
+        await submitAnswer(problem)
+      }, undefined)
+      toast.success("done")
+      history.push("/results")
+    } catch (err) {
+      toast.error("error")
+    }
   }
 
   const submitAnswer = async (problem) => {
     const { id, selected } = problem
-
     answerService.submitAnswer({ selected, problemId: id, token: user.token })
-    // try {
-    //   answerService.submitAnswer({ selected, problemId: id })
-    // } catch (err) {
-    //   toast.error("error")
-    // }
   }
 
   if (!renderedTest) return null
