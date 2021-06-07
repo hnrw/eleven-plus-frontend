@@ -31,6 +31,8 @@ const TestForm = () => {
     try {
       await testService.createTest(test)
       history.push("/admin")
+      // problems aren't saved in db instantly because of the way the tests controller works
+      location.reload()
     } catch (err) {
       toast.error("unexpected error")
     }
