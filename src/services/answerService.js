@@ -1,8 +1,8 @@
 import axios from "axios"
 const baseUrl = process.env.REACT_APP_API
-const url = `${baseUrl}/answers/`
+const url = `${baseUrl}/answers`
 
-const submitAnswers = async (data) => {
+const submitAnswer = async (data) => {
   const { token, problemId, selected } = data
   const config = {
     headers: {
@@ -20,5 +20,5 @@ const submitAnswers = async (data) => {
 }
 
 export default {
-  submitAnswers,
+  submitAnswer,
 }
