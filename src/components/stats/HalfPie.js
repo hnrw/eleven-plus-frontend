@@ -74,6 +74,7 @@ const HalfPie = () => (
       enableArcLinkLabels={false}
       colors={{ datum: "data.color" }}
       theme={{ fontSize: 14 }}
+      isInteractive={false}
     />
     <span
       style={{
