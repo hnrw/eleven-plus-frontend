@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 
 import Admin from "./components/Admin"
+import ResultsList from "./components/ResultsList"
 import TestForm from "./components/TestForm"
 import Home from "./components/Home"
 import Test from "./components/Test"
@@ -47,8 +48,11 @@ const App = () => {
       </div>
       <Header />
       <Switch>
-        <Route path="/results">
+        <Route path="/results/:id">
           <Results />
+        </Route>
+        <Route path="/results">
+          <ResultsList />
         </Route>
         <Route path="/stats">
           <Stats />

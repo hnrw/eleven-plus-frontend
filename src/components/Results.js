@@ -18,8 +18,8 @@ const Results = () => {
   const [gradedTest, setGradedTest] = useState(null)
   const user = useSelector((state) => state.user)
 
-  // const { id } = useParams()
-  const id = "60be448549610017bc3a06bf"
+  const { id } = useParams()
+  // const id = "60be448549610017bc3a06bf"
 
   useEffect(() => {
     console.log(user)
