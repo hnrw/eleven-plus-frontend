@@ -1,9 +1,12 @@
 import React from "react"
 import { Typography, Button, Container, Grid } from "@material-ui/core"
 import { useHistory } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 
 const LandingHeader = ({ textBlack }) => {
   const history = useHistory()
+  const mobile = useSelector((state) => state.mobile)
+
   return (
     <Container
       maxWidth={false}
@@ -36,11 +39,13 @@ const LandingHeader = ({ textBlack }) => {
             </Button>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <img
-              style={{ width: "75%" }}
-              src="https://i.imgur.com/QQeT3fk.png"
-              alt="backstage"
-            />
+            {!mobile && (
+              <img
+                style={{ width: "75%" }}
+                src="https://i.imgur.com/QQeT3fk.png"
+                alt="backstage"
+              />
+            )}
           </Grid>
         </Grid>
       </Container>
