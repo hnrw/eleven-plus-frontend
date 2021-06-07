@@ -11,6 +11,7 @@ import {
 } from "react-router-dom"
 
 import Test from "./Test"
+import Problem from "./Problem"
 import testService from "../services/testService"
 import { setTest } from "../reducers/testReducer"
 
@@ -57,7 +58,7 @@ const Admin = () => {
             </Typography>
             <Typography>{t.problems.length} questions</Typography>
 
-            {t.open && <Test manualTest={t} />}
+            {t.open && t.problems.map((p) => <Problem problem={p} viewOnly />)}
           </div>
         ))}
     </Container>

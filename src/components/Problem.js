@@ -5,7 +5,17 @@ import { useDispatch, useSelector } from "react-redux"
 import { selectOption } from "../reducers/testReducer"
 import _ from "lodash"
 
-const MultipleChoice = ({ problem }) => {
+const Problem = ({ problem, viewOnly }) => {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <Typography>{problem.question}</Typography>
+      {problem.image && <img style={{ width: 200 }} src={problem.image} />}
+      <MultipleChoice problem={problem} viewOnly={viewOnly} />
+    </div>
+  )
+}
+
+const MultipleChoice = ({ problem, viewOnly }) => {
   const dispatch = useDispatch()
 
   const [shuffledOptions, setShuffledOptions] = useState([])
@@ -22,7 +32,11 @@ const MultipleChoice = ({ problem }) => {
           <Button
             variant={selected ? "contained" : "outlined"}
             color={selected ? "primary" : "default"}
-            onClick={() => dispatch(selectOption(problem.question, option))}
+            onClick={
+              viewOnly
+                ? null
+                : () => dispatch(selectOption(problem.question, option))
+            }
             key={option}
           >
             {option}
@@ -30,16 +44,6 @@ const MultipleChoice = ({ problem }) => {
         )
       })}
     </>
-  )
-}
-
-const Problem = ({ problem }) => {
-  return (
-    <div style={{ marginBottom: 20 }}>
-      <Typography>{problem.question}</Typography>
-      {problem.image && <img style={{ width: 200 }} src={problem.image} />}
-      <MultipleChoice problem={problem} />
-    </div>
   )
 }
 

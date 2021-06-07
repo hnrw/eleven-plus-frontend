@@ -29,8 +29,7 @@ const Test = ({ manualTest }) => {
 
   useEffect(() => {
     if (!manualTest) {
-
-    testService.getTest().then((t) => dispatch(setTest(t)))
+      testService.getTest().then((t) => dispatch(setTest(t)))
     }
   }, [])
 
