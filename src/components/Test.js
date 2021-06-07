@@ -28,7 +28,9 @@ const Test = ({ manualTest }) => {
   const test = useSelector((state) => state.test)
 
   useEffect(() => {
-    testService.getTest().then((t) => dispatch(setTest(t)))
+    if (!manualTest) {
+      testService.getTest().then((t) => dispatch(setTest(t)))
+    }
   }, [])
 
   const renderedTest = manualTest || test
