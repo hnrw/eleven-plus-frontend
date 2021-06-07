@@ -34,7 +34,7 @@ const Header = () => {
 
   const loggedIn = () => (
     <>
-      {user.isTeacher && <HeaderItem link="students">Students</HeaderItem>}
+      <HeaderItem link="results">Results</HeaderItem>
       <HeaderItem link="stats">Stats</HeaderItem>
       {user.email === "pannicope@gmail.com" && (
         <HeaderItem link="/admin">Admin</HeaderItem>
