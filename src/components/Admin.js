@@ -14,6 +14,17 @@ import Test from "./Test"
 import testService from "../services/testService"
 import { setTest } from "../reducers/testReducer"
 
+const styles = {
+  testTitle: {
+    textDecoration: "underlined",
+    cursor: "pointer",
+  },
+  testDiv: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+}
+
 const Admin = () => {
   const [tests, setTests] = useState(null)
   const history = useHistory()
@@ -30,20 +41,26 @@ const Admin = () => {
   }
 
   return (
-    <>
-      <Button onClick={() => history.push("/admin/new-test")}>New Test</Button>
+    <Container>
+      <Button variant="outlined" Click={() => history.push("/admin/new-test")}>
+        New Test
+      </Button>
       {tests &&
         tests.map((t) => (
-          <div key={t.id} style={{ marginBottom: 20 }}>
-            <Button onClick={() => selectTest(t.id)} variant="outlined">
+          <div key={t.id} style={styles.testDiv}>
+            <Typography
+              variant="h5"
+              style={styles.testTitle}
+              onClick={() => selectTest(t.id)}
+            >
               Test {t.num}
-            </Button>
+            </Typography>
             <Typography>{t.problems.length} questions</Typography>
 
             {t.open && <Test manualTest={t} />}
           </div>
         ))}
-    </>
+    </Container>
   )
 }
 
