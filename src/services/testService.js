@@ -12,4 +12,9 @@ const fetchTests = async (id) => {
   return response.data
 }
 
-export default { getTest, fetchTests }
+const createTest = async (test) => {
+  const response = await axios.post(url, test)
+  return response.data
+}
+
+export default { getTest, fetchTests, createTest }

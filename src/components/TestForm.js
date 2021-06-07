@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
 import { TextField, Typography, Container, Button } from "@material-ui/core"
 import { v4 as uuid } from "uuid"
+import testService from "../services/testService"
 
 const TestForm = () => {
   const [problems, setProblems] = useState([])
 
   const handleSubmit = () => {
     event.preventDefault()
-    console.log({
-      problems,
-    })
+    testService.createTest({ problems })
   }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
