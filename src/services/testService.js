@@ -17,4 +17,16 @@ const createTest = async (test) => {
   return response.data
 }
 
-export default { getTest, fetchTests, createTest }
+const deleteTest = async (data) => {
+  const { token, id } = data
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.delete(`${url}/${id}`, config)
+  return response.data
+}
+
+export default { getTest, fetchTests, createTest, deleteTest }

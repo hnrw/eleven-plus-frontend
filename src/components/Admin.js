@@ -26,6 +26,8 @@ const styles = {
   testDiv: {
     marginTop: 20,
     marginBottom: 20,
+  },
+  clickableTest: {
     cursor: "pointer",
   },
   divider: { marginTop: 20 },
@@ -46,6 +48,12 @@ const Admin = () => {
     setTests(newTests)
   }
 
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this?")) {
+      null
+    }
+  }
+
   return (
     <Container>
       <Button
@@ -56,17 +64,29 @@ const Admin = () => {
       </Button>
       {tests &&
         tests.map((t) => (
-          <div
-            onClick={() => selectTest(t.id)}
-            key={t.id}
-            style={styles.testDiv}
-          >
-            <Typography variant="h5" style={styles.testTitle}>
-              Test {t.num}
-            </Typography>
-            <Typography>{t.problems.length} questions</Typography>
-            {t.open && t.problems.map((p) => <Problem problem={p} viewOnly />)}
-            <Divider style={styles.divider} />
+          <div key={t.id} style={styles.testDiv}>
+            <div onClick={() => selectTest(t.id)} style={styles.clickableTest}>
+              <Typography variant="h5" style={styles.testTitle}>
+                Test {t.num}
+              </Typography>
+              <Typography>{t.problems.length} questions</Typography>
+            </div>
+            <div>
+              {t.open &&
+                t.problems.map((p) => (
+                  <>
+                    <Problem problem={p} viewOnly />
+                    <Button
+                      variant="outlined"
+                      onClick={handleDelete}
+                      color="secondary"
+                    >
+                      Delete
+                    </Button>
+                  </>
+                ))}
+              <Divider style={styles.divider} />
+            </div>
           </div>
         ))}
     </Container>
