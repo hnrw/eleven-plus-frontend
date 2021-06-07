@@ -9,13 +9,13 @@ const TestForm = () => {
   const handleSubmit = () => {
     event.preventDefault()
 
-    const commaSplitOptions = problems.map((p) => ({
+    const createOptions = problems.map((p) => ({
       ...p,
-      options: p.options.split(","),
+      options: p.options.split(",").concat(p.correct),
     }))
 
     const test = {
-      problems: commaSplitOptions,
+      problems: createOptions,
     }
 
     testService.createTest(test)
