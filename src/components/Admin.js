@@ -7,6 +7,7 @@ import {
   Button,
 } from "@material-ui/core"
 import { useDispatch, useSelector } from "react-redux"
+import { toast } from "react-hot-toast"
 import {
   BrowserRouter as Router,
   Redirect,
@@ -49,9 +50,15 @@ const Admin = () => {
     setTests(newTests)
   }
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this?")) {
-      testService.deleteTest({ token: user.token, id })
+      try {
+        await testService.deleteTest({ token: user.token, id })
+        const newTests = tests.filter((t) => t.id !== id)
+        setTests(newTests)
+      } catch (err) {
+        toast.error("error")
+      }
     }
   }
 
