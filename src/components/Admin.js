@@ -35,6 +35,7 @@ const styles = {
 
 const Admin = () => {
   const [tests, setTests] = useState(null)
+  const user = useSelector((state) => state.user)
   const history = useHistory()
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const Admin = () => {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this?")) {
-      null
+      testService.deleteTest({ token: user.token, id })
     }
   }
 
@@ -72,19 +73,24 @@ const Admin = () => {
               <Typography>{t.problems.length} questions</Typography>
             </div>
             <div>
-              {t.open &&
-                t.problems.map((p) => (
-                  <>
-                    <Problem problem={p} viewOnly />
-                    <Button
-                      variant="outlined"
-                      onClick={handleDelete}
-                      color="secondary"
-                    >
-                      Delete
-                    </Button>
-                  </>
-                ))}
+              {t.open && (
+                <>
+                  {t.problems.map((p) => (
+                    <>
+                      <Problem problem={p} viewOnly />
+                    </>
+                  ))}
+
+                  <Button
+                    variant="outlined"
+                    onClick={() => handleDelete(t.id)}
+                    color="secondary"
+                  >
+                    Delete
+                  </Button>
+                </>
+              )}
+
               <Divider style={styles.divider} />
             </div>
           </div>
