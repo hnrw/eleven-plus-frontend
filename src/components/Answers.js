@@ -3,23 +3,29 @@ import { TextField, Typography, Container, Button } from "@material-ui/core"
 import { useDispatch, useSelector } from "react-redux"
 
 const Answers = ({ gradedProblems }) => {
-  const test = useSelector((state) => state.test)
   return (
-    <>
-      {gradedProblems.map((problem) => {
+    <Container>
+      {gradedProblems.map((problem, index) => {
         const correct = problem.correct === problem.selected
         return (
           <div key={problem.question} style={{ marginBottom: 20 }}>
+            <Typography>
+              <b>Question {index + 1}</b>
+            </Typography>
             <Typography>{problem.question}</Typography>
-            <Typography>You answered: {problem.selected}</Typography>
-            <Typography>{correct ? "correct" : "wrong"}</Typography>
+            <Typography>
+              <i>{problem.selected} </i>
+              {correct ? "✔️" : "❌"}
+            </Typography>
             {!correct && (
-              <Typography>The correct answer was {problem.correct}</Typography>
+              <Typography>
+                The correct answer was <b>{problem.correct}</b>
+              </Typography>
             )}
           </div>
         )
       })}
-    </>
+    </Container>
   )
 }
 

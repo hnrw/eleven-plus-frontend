@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { TextField, Typography, Container, Button } from "@material-ui/core"
+import {
+  Paper,
+  TextField,
+  Typography,
+  Container,
+  Button,
+} from "@material-ui/core"
 import { useDispatch, useSelector } from "react-redux"
 import gradedTestService from "../services/gradedTestService"
 import {
@@ -14,8 +20,25 @@ import {
 
 import Answers from "./Answers"
 
+const styles = {
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  paper: {
+    paddingRight: 90,
+    paddingLeft: 90,
+    paddingTop: 20,
+    paddingBottom: 20,
+  },
+  centerText: {
+    textAlign: "center",
+  },
+}
+
 const Results = () => {
-  const [gradedTest, setGradedTest] = useState(null)
+  const [gt, setGt] = useState(null)
   const user = useSelector((state) => state.user)
 
   const { id } = useParams()
@@ -25,18 +48,27 @@ const Results = () => {
     if (user) {
       gradedTestService
         .getTest({ token: user.token, testId: id })
-        .then((gt) => setGradedTest(gt))
+        .then((gt) => setGt(gt))
     }
   }, [user])
 
-  if (!gradedTest) return null
+  if (!gt) return null
 
   return (
-    <>
-      <Typography>{`${gradedTest.marks}/${gradedTest.total}`}</Typography>
-      <Typography>{gradedTest.percent}%</Typography>
-      <Answers gradedProblems={gradedTest.gradedProblems} />
-    </>
+    <Container style={styles.root}>
+      <Paper style={styles.paper}>
+        <Typography style={styles.centerText} variant="h6">
+          You scored
+        </Typography>
+        <Typography style={styles.centerText} variant="h3">
+          {gt.percent}%
+        </Typography>
+        <Typography style={{ textAlign: "center" }}>
+          {`${gt.marks}/${gt.total}`} marks
+        </Typography>
+      </Paper>
+      <Answers gradedProblems={gt.gradedProblems} />
+    </Container>
   )
 }
 
