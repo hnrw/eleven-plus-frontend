@@ -24,22 +24,13 @@ const LandingPage = () => {
 
       <Container
         style={{
-          backgroundColor: "#D8E2FC",
+          backgroundColor: "#FFEEE2",
+          marginTop: 30,
+          paddingTop: 20,
         }}
       >
-        <Container
-          style={{
-            borderColor: "red",
-            // border: "10px solid #D8E2FC",
-            backgroundColor: "#D8E2FC",
-            // width: 800,
-            marginTop: 30,
-            paddingTop: 20,
-          }}
-        >
-          <Percentile />
-          <HalfPie />
-        </Container>
+        <Percentile />
+        <HalfPie />
       </Container>
       <HowItWorks textBlack={textBlack} />
 

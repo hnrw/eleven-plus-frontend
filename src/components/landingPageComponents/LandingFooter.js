@@ -8,7 +8,7 @@ const LandingFooter = ({ textBlack }) => {
     <Container
       maxWidth={false}
       style={{
-        backgroundColor: "#FFEEE2",
+        backgroundColor: "#D8E2FC",
         paddingTop: 40,
         paddingBottom: 40,
       }}
