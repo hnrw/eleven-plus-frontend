@@ -48,7 +48,10 @@ const Admin = () => {
 
   return (
     <Container>
-      <Button variant="outlined" Click={() => history.push("/admin/new-test")}>
+      <Button
+        variant="outlined"
+        onClick={() => history.push("/admin/new-test")}
+      >
         New Test
       </Button>
       {tests &&
