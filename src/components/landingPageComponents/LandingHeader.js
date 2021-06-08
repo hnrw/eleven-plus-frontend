@@ -3,7 +3,7 @@ import { Typography, Button, Container, Grid } from "@material-ui/core"
 import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 
-import stripeService from "../services/stripeService"
+import stripeService from "../../services/stripeService"
 
 const LandingHeader = ({ textBlack }) => {
   const history = useHistory()
@@ -36,7 +36,8 @@ const LandingHeader = ({ textBlack }) => {
               variant="contained"
               color="primary"
               style={{ marginBottom: 20, paddingTop: 10, paddingBottom: 10 }}
-              onClick={() => history.push("/signup")}
+              // onClick={() => history.push("/signup")}
+              onClick={() => stripeService.stripeCheckout({ item: "27" })}
             >
               Get Started
             </Button>
