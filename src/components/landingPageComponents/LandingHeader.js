@@ -3,6 +3,8 @@ import { Typography, Button, Container, Grid } from "@material-ui/core"
 import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 
+import stripeService from "../services/stripeService"
+
 const LandingHeader = ({ textBlack }) => {
   const history = useHistory()
   const mobile = useSelector((state) => state.mobile)
