@@ -14,7 +14,7 @@ import HalfPie from "./stats/HalfPie"
 
 const LandingPage = () => {
   const user = useSelector((state) => state.user)
-  document.title = "Backstage"
+  document.title = "Waterfront 11+ Exam Preparation"
 
   const textBlack = "#121D1E"
   const landingPage = () => (

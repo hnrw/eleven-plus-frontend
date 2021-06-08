@@ -28,6 +28,7 @@ const Test = ({ manualTest }) => {
   const history = useHistory()
   const test = useSelector((state) => state.test)
   const user = useSelector((state) => state.user)
+  document.title = "Waterfront"
 
   useEffect(() => {
     if (!manualTest) {

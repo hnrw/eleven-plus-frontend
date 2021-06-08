@@ -40,6 +40,7 @@ const styles = {
 const Results = () => {
   const [gt, setGt] = useState(null)
   const user = useSelector((state) => state.user)
+  document.title = "Waterfront - Results"
 
   const { id } = useParams()
 

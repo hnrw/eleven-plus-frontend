@@ -38,6 +38,7 @@ const Admin = () => {
   const [tests, setTests] = useState(null)
   const user = useSelector((state) => state.user)
   const history = useHistory()
+  document.title = "Waterfront"
 
   useEffect(() => {
     testService.fetchTests().then((t) => setTests(t))

@@ -11,6 +11,7 @@ import {
 
 const Home = () => {
   const history = useHistory()
+  document.title = "Waterfront"
   return (
     <>
       <Typography variant="h2">Home</Typography>

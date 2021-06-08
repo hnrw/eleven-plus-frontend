@@ -7,7 +7,7 @@ import { Alert } from "@material-ui/lab"
 const ForgotPassword = () => {
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(null)
-  document.title = "Backstage - forgot password"
+  document.title = "Waterfront - Forgot Password"
 
   const handleSubmit = async (event) => {
     event.preventDefault()

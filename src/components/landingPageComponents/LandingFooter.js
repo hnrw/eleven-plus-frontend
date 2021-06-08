@@ -1,6 +1,7 @@
 import React from "react"
 import { Typography, Button, Container } from "@material-ui/core"
 import { useHistory } from "react-router-dom"
+import stripeService from "../../services/stripeService"
 
 const LandingFooter = ({ textBlack }) => {
   const history = useHistory()
@@ -29,7 +30,7 @@ const LandingFooter = ({ textBlack }) => {
           variant="contained"
           color="primary"
           fullWidth
-          onClick={() => history.push("/signup")}
+          onClick={() => stripeService.stripeCheckout({ item: "27" })}
           style={{ marginBottom: 20, paddingTop: 10, paddingBottom: 10 }}
         >
           Sign up

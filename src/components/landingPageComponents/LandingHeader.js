@@ -47,7 +47,7 @@ const LandingHeader = ({ textBlack }) => {
               <img
                 style={{ width: "75%", marginLeft: 20 }}
                 src="https://i.imgur.com/QQeT3fk.png"
-                alt="backstage"
+                alt="waterfront"
               />
             )}
           </Grid>

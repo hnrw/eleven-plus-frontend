@@ -16,6 +16,7 @@ const LoginForm = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [error, setError] = useState(null)
+  document.title = "Waterfront - Login"
 
   const showError = (message, duration = 3000) => {
     setError(message)

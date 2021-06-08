@@ -9,7 +9,7 @@ import {
 import { useDispatch } from "react-redux"
 import { Alert } from "@material-ui/lab"
 import { useHistory, Link } from "react-router-dom"
-import logo from "../../assets/logo.png"
+import wave from "../../assets/wave.png"
 import userService from "../../services/userService"
 import { setUser } from "../../reducers/userReducer"
 
@@ -50,6 +50,7 @@ const RegisterForm = () => {
     const email = event.target.email.value
     const name = event.target.name.value
     const password = event.target.password.value
+    document.title = "Waterfront - Sign Up"
 
     if (!(email && name && password)) {
       showError("Please complete your details")
@@ -90,7 +91,7 @@ const RegisterForm = () => {
         <Grid item sm={4} xs={8}>
           <Container maxWidth="md">
             <img
-              src={logo}
+              src={wave}
               style={{
                 marginLeft: "auto",
                 marginRight: "auto",

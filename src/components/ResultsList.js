@@ -14,6 +14,7 @@ import {
 const ResultsList = () => {
   const [gradedTestsList, setGradedTestsList] = useState([])
   const user = useSelector((state) => state.user)
+  document.title = "Waterfront - Results"
 
   useEffect(() => {
     if (user) {

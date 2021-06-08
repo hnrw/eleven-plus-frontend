@@ -18,7 +18,7 @@ const ResetPassword = () => {
   const [success, setSuccess] = useState(null)
   const [newPassword, setNewPassword] = useState("")
   const [verifyPassword, setVerifyPassword] = useState("")
-  document.title = "Waterfront - reset password"
+  document.title = "Waterfront - Reset Password"
 
   const paperStyle = {
     display: "flex",

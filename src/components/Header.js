@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
 import { AppBar, Toolbar, Typography, Button, Divider } from "@material-ui/core"
 import toast from "react-hot-toast"
+import stripeService from "../services/stripeService"
+import wave from "../assets/wave.png"
+import logotext from "../assets/logotext.png"
 
 import { clearUser } from "../reducers/userReducer"
 
@@ -28,7 +31,9 @@ const Header = () => {
   const loggedOut = () => (
     <>
       <HeaderItem link="/login">Log in</HeaderItem>
-      <HeaderItem link="/signup">Sign up</HeaderItem>
+      <Button onClick={() => stripeService.stripeCheckout({ item: "27" })}>
+        Get Started
+      </Button>
     </>
   )
 
@@ -51,9 +56,9 @@ const Header = () => {
       <AppBar position="fixed" style={{ margin: 0, backgroundColor: "white" }}>
         <Toolbar>
           <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-            <Typography variant="h6" noWrap>
-              Waterfront
-            </Typography>
+            <span>
+              <img src={logotext} style={{ height: 20, display: "inline" }} />
+            </span>
           </Link>
           {/* somehow sets to the right of the app bar marginRight not needed here, but could play with positioning */}
           <section style={{ marginLeft: "auto", marginRight: 0 }}>
