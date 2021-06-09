@@ -79,7 +79,7 @@ const RegisterForm = () => {
     }
 
     await stripeService.checkout({
-      item: monthly ? "27" : "270",
+      item: monthly ? "month" : "year",
       email,
       parentName: name,
       password,
