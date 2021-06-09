@@ -31,9 +31,7 @@ const Header = () => {
   const loggedOut = () => (
     <>
       <HeaderItem link="/login">Log in</HeaderItem>
-      <Button onClick={() => stripeService.stripeCheckout({ item: "27" })}>
-        Get Started
-      </Button>
+      <HeaderItem link="/signup">Get Started</HeaderItem>
     </>
   )
 
