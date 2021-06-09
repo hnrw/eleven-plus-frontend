@@ -16,6 +16,7 @@ import TestForm from "./components/TestForm"
 import Home from "./components/Home"
 import Test from "./components/Test"
 import Results from "./components/Results"
+import Footer from "./components/Footer"
 import LandingPage from "./components/LandingPage"
 import Header from "./components/Header"
 import Stats from "./components/stats/Stats"
@@ -45,55 +46,60 @@ const App = () => {
 
   return (
     <Router>
-      <div>
-        <Toaster
-          toastOptions={{
-            style: {
-              fontFamily: "Roboto",
-            },
-          }}
-        />
+      <div style={{ minHeight: "100vh", position: "relative" }}>
+        <div style={{ paddingBottom: "2.5rem" }}>
+          <div>
+            <Toaster
+              toastOptions={{
+                style: {
+                  fontFamily: "Roboto",
+                },
+              }}
+            />
+          </div>
+          <Header />
+          <Switch>
+            <Route path="/results/:id">
+              <Results />
+            </Route>
+            <Route path="/results">
+              <ResultsList />
+            </Route>
+            <Route path="/stats">
+              <Stats />
+            </Route>
+            <Route path="/tests">
+              <Test />
+            </Route>
+            <Route path="/admin/new-test">
+              <TestForm />
+            </Route>
+            <Route path="/admin">
+              <Admin />
+            </Route>
+            <Route path="/signup">
+              <RegisterForm />
+            </Route>
+            <Route path="/login">
+              <LoginForm />
+            </Route>
+            <Route path="/forgot-password">
+              <ForgotPassword />
+            </Route>
+            <Route path="/reset-password/:token/:id">
+              <ResetPassword />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/">
+              {user && <Redirect to="/home" />}
+              <LandingPage />
+            </Route>
+          </Switch>
+        </div>
+        <Footer />
       </div>
-      <Header />
-      <Switch>
-        <Route path="/results/:id">
-          <Results />
-        </Route>
-        <Route path="/results">
-          <ResultsList />
-        </Route>
-        <Route path="/stats">
-          <Stats />
-        </Route>
-        <Route path="/tests">
-          <Test />
-        </Route>
-        <Route path="/admin/new-test">
-          <TestForm />
-        </Route>
-        <Route path="/admin">
-          <Admin />
-        </Route>
-        <Route path="/signup">
-          <RegisterForm />
-        </Route>
-        <Route path="/login">
-          <LoginForm />
-        </Route>
-        <Route path="/forgot-password">
-          <ForgotPassword />
-        </Route>
-        <Route path="/reset-password/:token/:id">
-          <ResetPassword />
-        </Route>
-        <Route path="/home">
-          <Home />
-        </Route>
-        <Route path="/">
-          {user && <Redirect to="/home" />}
-          <LandingPage />
-        </Route>
-      </Switch>
     </Router>
   )
 }
