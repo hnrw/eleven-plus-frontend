@@ -6,8 +6,7 @@ const api = process.env.REACT_APP_API
 
 const stripePromise = loadStripe(stripePublic)
 
-// const stripeCheckout = async (item, username, email, returnToUser = null) => {
-const stripeCheckout = async (data) => {
+const checkout = async (data) => {
   // Get Stripe.js instance
   const stripe = await stripePromise
 
@@ -37,5 +36,5 @@ const stripeCheckout = async (data) => {
 }
 
 export default {
-  stripeCheckout,
+  checkout,
 }
