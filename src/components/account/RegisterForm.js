@@ -66,7 +66,6 @@ const RegisterForm = () => {
     const email = event.target.email.value
     const name = event.target.name.value
     const password = event.target.password.value
-    document.title = "Waterfront - Sign Up"
 
     if (!(email && name && password)) {
       showError("Please complete your details")
@@ -79,11 +78,14 @@ const RegisterForm = () => {
     }
 
     try {
-      const userResponse = await userService.newUser(email, name, password)
+      const userResponse = await stripeService.checkout({
+        email,
+        parentName: name,
+        password,
+      })
 
-      dispatch(setUser(userResponse))
-
-      history.push(`/home`)
+      // dispatch(setUser(userResponse))
+      // history.push(`/home`)
     } catch (err) {
       const serverError = err.response && err.response.data.error
       if (serverError === "email already in use") {
