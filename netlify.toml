@@ -3,6 +3,7 @@
 [context.production]
   [context.production.environment]
     REACT_APP_API="https://eleven-plus-6311.herokuapp.com"
+    REACT_APP_STRIPE_PUBLIC="pk_live_51Izp2UBuQnaTJroH4hEbMakMdUiHZhO2qDGE8ULhKSkHbsDd7uNtIgGwYfPshcwuxPl95WNj3zyHXu5PfQglmXzU00LWQwvv4y"
 
 # The following redirect is intended for use with most SPAs that handle
 # routing internally.
