@@ -2,7 +2,7 @@
 # deploy contexts will inherit these settings.
 [context.production]
   [context.production.environment]
-    REACT_APP_API="https://eleven-plus-6311.herokuapp.com/"
+    REACT_APP_API="https://eleven-plus-6311.herokuapp.com"
 
 # The following redirect is intended for use with most SPAs that handle
 # routing internally.
