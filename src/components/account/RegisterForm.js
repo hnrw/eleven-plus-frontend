@@ -5,6 +5,7 @@ import {
   Container,
   TextField,
   Grid,
+  Paper,
 } from "@material-ui/core"
 import { useDispatch } from "react-redux"
 import { Alert } from "@material-ui/lab"
@@ -13,12 +14,27 @@ import wave from "../../assets/wave.png"
 import userService from "../../services/userService"
 import { setUser } from "../../reducers/userReducer"
 
+const paper = {
+  marginTop: 20,
+  paddingTop: 20,
+  paddingBottom: 20,
+  width: 280,
+  textAlign: "center",
+  cursor: "pointer",
+}
+
+const styles = {
+  paper: { ...paper, border: "2px solid white" }, // invisible border preserve space
+  activePaper: { ...paper, border: "2px solid #303F9F" },
+}
+
 const RegisterForm = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const [error, setError] = useState(null)
   const [savedQuestion, setSavedQuestion] = useState(null)
   const [requestUser, setRequestUser] = useState(null)
+  const [monthly, setMonthly] = useState(true)
   document.title = "Waterfront - sign up"
 
   useEffect(() => {
@@ -150,6 +166,31 @@ const RegisterForm = () => {
                   fullWidth
                 />
               </div>
+              <Typography variant="subtitle2">
+                Which plan works best for you?
+              </Typography>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Paper
+                  onClick={() => setMonthly(true)}
+                  style={monthly ? styles.activePaper : styles.paper}
+                >
+                  <Typography>Monthly</Typography>
+                  <Typography>£47 / month</Typography>
+                </Paper>
+                <Paper
+                  onClick={() => setMonthly(false)}
+                  style={!monthly ? styles.activePaper : styles.paper}
+                >
+                  <Typography>Annual (2 months free)</Typography>
+                  <Typography>£39 / month</Typography>
+                </Paper>
+              </div>
 
               <div style={{ marginTop: 15, marginBottom: 45 }}>
                 <Button
@@ -158,7 +199,7 @@ const RegisterForm = () => {
                   color="primary"
                   fullWidth
                 >
-                  Sign up
+                  Next step
                 </Button>
               </div>
             </form>
