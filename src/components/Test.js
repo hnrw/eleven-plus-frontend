@@ -13,6 +13,7 @@ import {
   Switch,
   Route,
   useHistory,
+  useParams,
 } from "react-router-dom"
 import _ from "lodash"
 import { useDispatch, useSelector } from "react-redux"
@@ -28,11 +29,12 @@ const Test = ({ manualTest }) => {
   const history = useHistory()
   const test = useSelector((state) => state.test)
   const user = useSelector((state) => state.user)
+  const testId = useParams().id
   document.title = "Waterfront"
 
   useEffect(() => {
     if (!manualTest) {
-      testService.fetchTests().then((t) => dispatch(setTest(t[0])))
+      testService.getTest(testId).then((t) => dispatch(setTest(t)))
     }
   }, [])
 

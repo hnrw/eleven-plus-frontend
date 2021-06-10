@@ -58,7 +58,7 @@ const App = () => {
             <Route path="/stats">
               <Stats />
             </Route>
-            <Route path="/tests">
+            <Route path="/tests/:id">
               <Test />
             </Route>
             <Route path="/admin/new-test">
