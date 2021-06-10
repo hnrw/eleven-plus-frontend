@@ -1,10 +1,8 @@
 import React, { useEffect } from "react"
-import { Container } from "@material-ui/core"
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useHistory,
   Redirect,
 } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
@@ -36,13 +34,13 @@ const App = () => {
 
   useEffect(() => {
     autoLogin(dispatch)
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     if (window.innerWidth < 500) {
       dispatch(setMobile())
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <Router>
