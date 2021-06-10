@@ -36,6 +36,10 @@ const Test = ({ manualTest }) => {
     }
   }, [])
 
+  useEffect(() => {
+    window.localStorage.setItem("waterfrontTest", JSON.stringify(test))
+  }, [test])
+
   const renderedTest = manualTest || test
 
   const handleSubmit = async () => {
