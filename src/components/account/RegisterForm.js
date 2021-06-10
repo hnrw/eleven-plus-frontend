@@ -34,24 +34,19 @@ const RegisterForm = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const [error, setError] = useState(null)
-  const [savedQuestion, setSavedQuestion] = useState(null)
-  const [requestUser, setRequestUser] = useState(null)
   const [monthly, setMonthly] = useState(true)
+  const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
+  const [password, setPassword] = useState("")
+
   document.title = "Waterfront - sign up"
 
   useEffect(() => {
-    const storedQuestionJSON = window.sessionStorage.getItem("savedQuestion")
-
-    if (storedQuestionJSON) {
-      const storedQuestion = JSON.parse(storedQuestionJSON)
-      setSavedQuestion(storedQuestion)
-    }
-
-    const storedRequestUserJSON = window.localStorage.getItem("requestUser")
-
-    if (storedRequestUserJSON) {
-      const storedRequestUser = JSON.parse(storedRequestUserJSON)
-      setRequestUser(storedRequestUser)
+    const storedFormJSON = window.localStorage.getItem("register")
+    if (storedFormJSON) {
+      const storedForm = JSON.parse(storedFormJSON)
+      setEmail(storedForm.email)
+      setName(storedForm.name)
     }
   }, [])
 
@@ -79,6 +74,7 @@ const RegisterForm = () => {
       return
     }
 
+    window.localStorage.setItem("register", JSON.stringify({ email, name }))
     try {
       await bouncedUserService.createBouncedUser({ email, parentName: name })
       await stripeService.checkout({
