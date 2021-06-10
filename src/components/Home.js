@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { TextField, Typography, Container, Button } from "@material-ui/core"
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Link,
-  Switch,
-  Route,
-  useHistory,
-} from "react-router-dom"
+import { Redirect, Link, Switch, Route, useHistory } from "react-router-dom"
 
 const Home = () => {
   const history = useHistory()
   document.title = "Waterfront"
   return (
-    <>
-      <Typography variant="h2">Home</Typography>
+    <Container>
+      <Typography variant="h4">Home</Typography>
       <Button onClick={() => history.push("/tests")}>Tests</Button>
-    </>
+    </Container>
   )
 }
 export default Home
