@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { TextField, Typography, Container, Button } from "@material-ui/core"
-import { useDispatch, useSelector } from "react-redux"
+import React from "react"
+import { Typography, Container } from "@material-ui/core"
 
 const Answers = ({ gradedProblems }) => {
   return (
