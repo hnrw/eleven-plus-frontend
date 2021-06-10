@@ -3,6 +3,7 @@ import axios from "axios"
 
 const stripePublic = process.env.REACT_APP_STRIPE_PUBLIC
 const api = process.env.REACT_APP_API
+const url = `${api}/stripe`
 
 const stripePromise = loadStripe(stripePublic)
 
@@ -19,7 +20,7 @@ const checkout = async (data) => {
     password,
     parentName,
   }
-  const response = await axios.post(`${api}/checkout`, checkoutData)
+  const response = await axios.post(`${url}/checkout`, checkoutData)
 
   const session = response.data
 
@@ -35,6 +36,13 @@ const checkout = async (data) => {
   }
 }
 
+const portal = async (customerId) => {
+  const response = await axios.post(`${url}/customer-portal`, { customerId })
+
+  return response.data.url
+}
+
 export default {
   checkout,
+  portal,
 }

@@ -20,6 +20,11 @@ const Header = () => {
     history.push("/login")
   }
 
+  const handlePortal = async () => {
+    const url = await stripeService.portal("cus_JdpOfqNdv2VRhP")
+    window.location.replace(url)
+  }
+
   const HeaderItem = (props) => {
     return (
       <Link to={props.link} style={{ textDecoration: "none", color: "black" }}>
@@ -39,6 +44,7 @@ const Header = () => {
     <>
       <HeaderItem link="/results">Results</HeaderItem>
       <HeaderItem link="/stats">Stats</HeaderItem>
+      <Button onClick={handlePortal}>Portal</Button>
       {user.email === "pannicope@gmail.com" && (
         <HeaderItem link="/admin">Admin</HeaderItem>
       )}
