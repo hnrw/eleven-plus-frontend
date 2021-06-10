@@ -1,26 +1,11 @@
 import React, { useEffect, useState } from "react"
-import {
-  Divider,
-  TextField,
-  Typography,
-  Container,
-  Button,
-} from "@material-ui/core"
-import { useDispatch, useSelector } from "react-redux"
+import { Divider, Typography, Container, Button } from "@material-ui/core"
+import { useSelector } from "react-redux"
 import { toast } from "react-hot-toast"
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Link,
-  Switch,
-  Route,
-  useHistory,
-} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
-import Test from "./Test"
 import Problem from "./Problem"
 import testService from "../services/testService"
-import { setTest } from "../reducers/testReducer"
 
 const styles = {
   testTitle: {},
