@@ -5,9 +5,9 @@ import {
   Route,
   Redirect,
 } from "react-router-dom"
-import { Toaster } from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 
+import MyToaster from "./components/MyToaster"
 import Admin from "./components/Admin"
 import ResultsList from "./components/ResultsList"
 import TestForm from "./components/TestForm"
@@ -46,15 +46,7 @@ const App = () => {
     <Router>
       <div style={{ minHeight: "100vh", position: "relative" }}>
         <div style={{ paddingBottom: "2.5rem" }}>
-          <div>
-            <Toaster
-              toastOptions={{
-                style: {
-                  fontFamily: "Roboto",
-                },
-              }}
-            />
-          </div>
+          <MyToaster />
           <Header />
           <Switch>
             <Route path="/results/:id">
