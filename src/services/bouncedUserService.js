@@ -1,11 +1,11 @@
 import axios from "axios"
 
 const api = process.env.REACT_APP_API
-const baseUrl = `api/bounced-user`
+const url = `${api}/bounced-users`
 
 const createBouncedUser = async (data) => {
   const { email, parentName } = data
-  const response = await axios.post({ email, parentName })
+  const response = await axios.post(url, { email, parentName })
 
   return response.data
 }

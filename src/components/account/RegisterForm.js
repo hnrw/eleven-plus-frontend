@@ -13,6 +13,7 @@ import { useHistory, Link } from "react-router-dom"
 import wave from "../../assets/wave.png"
 import userService from "../../services/userService"
 import stripeService from "../../services/stripeService"
+import bouncedUserService from "../../services/bouncedUserService"
 import { setUser } from "../../reducers/userReducer"
 
 const paper = {
@@ -78,30 +79,23 @@ const RegisterForm = () => {
       return
     }
 
-    await stripeService.checkout({
-      item: monthly ? "month" : "year",
-      email,
-      parentName: name,
-      password,
-    })
-    // try {
-    //   const userResponse = await stripeService.checkout({
-    //     email,
-    //     parentName: name,
-    //     password,
-    //   })
+    try {
+      await bouncedUserService.createBouncedUser({ email, parentName: name })
+      await stripeService.checkout({
+        item: monthly ? "month" : "year",
+        email,
+        parentName: name,
+        password,
+      })
+    } catch (err) {
+      const serverError = err.response && err.response.data.error
+      if (serverError === "email already in use") {
+        showError("email already in use")
+        return
+      }
 
-    //   // dispatch(setUser(userResponse))
-    //   // history.push(`/home`)
-    // } catch (err) {
-    //   const serverError = err.response && err.response.data.error
-    //   if (serverError === "email already in use") {
-    //     showError("email already in use")
-    //     return
-    //   }
-
-    //   showError("unexpected error")
-    // }
+      showError("unexpected error")
+    }
   }
 
   const itemStyle = {
