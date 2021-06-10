@@ -7,14 +7,11 @@ import {
   Grid,
   Paper,
 } from "@material-ui/core"
-import { useDispatch } from "react-redux"
 import { Alert } from "@material-ui/lab"
-import { useHistory, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import wave from "../../assets/wave.png"
-import userService from "../../services/userService"
 import stripeService from "../../services/stripeService"
 import bouncedUserService from "../../services/bouncedUserService"
-import { setUser } from "../../reducers/userReducer"
 
 const paper = {
   marginTop: 20,
@@ -31,8 +28,6 @@ const styles = {
 }
 
 const RegisterForm = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
   const [error, setError] = useState(null)
   const [monthly, setMonthly] = useState(true)
   const [email, setEmail] = useState("")
