@@ -26,18 +26,22 @@ const ResultsList = () => {
 
   return (
     <Container>
-      {gradedTestsList.map((gt) => (
-        <Link
-          to={`/results/${gt.id}`}
-          style={{ textDecoration: "none", color: "black" }}
-        >
-          <Typography variant="h4">Maths Test {1}</Typography>
-          <Typography>{gt.percent}%</Typography>
-          <Typography>
-            {gt.marks}/{gt.total} marks
-          </Typography>
-        </Link>
-      ))}
+      {gradedTestsList.map((gt) => {
+        const d = new Date(gt.date)
+        return (
+          <Link
+            to={`/results/${gt.id}`}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <Typography variant="h4">Maths Test {gt.num}</Typography>
+            <Typography>{d.toDateString()}</Typography>
+            <Typography>{gt.percent}%</Typography>
+            <Typography>
+              {gt.marks}/{gt.total} marks
+            </Typography>
+          </Link>
+        )
+      })}
     </Container>
   )
 }
