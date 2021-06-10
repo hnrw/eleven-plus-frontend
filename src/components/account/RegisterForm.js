@@ -42,7 +42,7 @@ const RegisterForm = () => {
   document.title = "Waterfront - sign up"
 
   useEffect(() => {
-    const storedFormJSON = window.localStorage.getItem("register")
+    const storedFormJSON = window.localStorage.getItem("WaterfrontRegisterForm")
     if (storedFormJSON) {
       const storedForm = JSON.parse(storedFormJSON)
       setEmail(storedForm.email)
@@ -60,10 +60,6 @@ const RegisterForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const email = event.target.email.value
-    const name = event.target.name.value
-    const password = event.target.password.value
-
     if (!(email && name && password)) {
       showError("Please complete your details")
       return
@@ -74,7 +70,10 @@ const RegisterForm = () => {
       return
     }
 
-    window.localStorage.setItem("register", JSON.stringify({ email, name }))
+    window.localStorage.setItem(
+      "WaterfrontRegisterForm",
+      JSON.stringify({ email, name })
+    )
     try {
       await bouncedUserService.createBouncedUser({ email, parentName: name })
       await stripeService.checkout({
@@ -115,19 +114,6 @@ const RegisterForm = () => {
               }}
               alt="logo"
             />
-            <Typography
-              variant="h5"
-              style={{ marginTop: 20, marginBottom: 20, textAlign: "center" }}
-            >
-              {savedQuestion ? (
-                <>
-                  Create an account to send <u>{savedQuestion.name}</u> your
-                  question
-                </>
-              ) : (
-                "Create your account"
-              )}
-            </Typography>
 
             <form onSubmit={handleSubmit}>
               <div>
@@ -140,6 +126,8 @@ const RegisterForm = () => {
                   size="small"
                   style={itemStyle}
                   fullWidth
+                  value={email}
+                  onChange={() => setEmail(event.target.value)}
                 />
               </div>
               <div>
@@ -151,6 +139,8 @@ const RegisterForm = () => {
                   size="small"
                   style={itemStyle}
                   fullWidth
+                  value={name}
+                  onChange={() => setName(event.target.value)}
                 />
               </div>
               <div>
@@ -163,6 +153,8 @@ const RegisterForm = () => {
                   size="small"
                   style={itemStyle}
                   fullWidth
+                  value={password}
+                  onChange={() => setPassword(event.target.value)}
                 />
               </div>
               <Typography variant="subtitle2">
