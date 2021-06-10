@@ -13,6 +13,16 @@ const getTest = async (id) => {
   return response.data
 }
 
+const getNextTest = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  const response = await axios.get(`${url}/next`, config)
+  return response.data
+}
+
 const createTest = async (test) => {
   const response = await axios.post(url, test)
   return response.data
@@ -42,4 +52,11 @@ const deleteTest = async (data) => {
   return response.data
 }
 
-export default { getTest, fetchTests, createTest, submitTest, deleteTest }
+export default {
+  fetchTests,
+  getTest,
+  getNextTest,
+  createTest,
+  submitTest,
+  deleteTest,
+}
