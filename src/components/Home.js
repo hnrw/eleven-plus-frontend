@@ -18,12 +18,14 @@ const Home = () => {
 
   if (!nextTest) return null
 
-  console.log(nextTest)
   return (
     <Container>
       {nextTest === "no more tests" ? (
         <>
-          <Typography>Your next test will be avaiable on date</Typography>
+          <Typography>The next test will be released a week.</Typography>
+          <Typography>
+            We will send you an email when you it's avaiable
+          </Typography>
         </>
       ) : (
         <>
