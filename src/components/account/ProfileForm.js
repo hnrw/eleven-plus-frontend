@@ -7,6 +7,7 @@ import {
   Grid,
   Paper,
   Dialog,
+  Radio,
 } from "@material-ui/core"
 import { Alert } from "@material-ui/lab"
 import { Link } from "react-router-dom"
@@ -14,45 +15,22 @@ import wave from "../../assets/wave.png"
 import stripeService from "../../services/stripeService"
 import bouncedUserService from "../../services/bouncedUserService"
 
-const paper = {
-  marginTop: 20,
-  paddingTop: 20,
-  paddingBottom: 20,
-  width: 280,
-  textAlign: "center",
-  cursor: "pointer",
-}
-
 const styles = {
-  paper: { ...paper, border: "2px solid white" }, // invisible border preserve space
-  activePaper: { ...paper, border: "2px solid #303F9F" },
+  container: {
+    paddingTop: 40,
+    paddingBottom: 40,
+  },
+  heading: {
+    marginBottom: 20,
+  },
 }
-
 const RegisterForm = () => {
-  const [error, setError] = useState(null)
-  const [monthly, setMonthly] = useState(true)
-  const [email, setEmail] = useState("")
-  const [name, setName] = useState("")
-  const [password, setPassword] = useState("")
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [dob, setDob] = useState(null)
+  const [gender, setGender] = useState("")
 
   document.title = "Waterfront - sign up"
-
-  useEffect(() => {
-    const storedFormJSON = window.localStorage.getItem("waterfrontRegisterForm")
-    if (storedFormJSON) {
-      const storedForm = JSON.parse(storedFormJSON)
-      setEmail(storedForm.email)
-      setName(storedForm.name)
-    }
-  }, [])
-
-  const showError = (message, duration = 3000) => {
-    setError(message)
-    setTimeout(() => {
-      setError(null)
-    }, duration)
-    return null
-  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -66,10 +44,6 @@ const RegisterForm = () => {
       return
     }
 
-    window.localStorage.setItem(
-      "waterfrontRegisterForm",
-      JSON.stringify({ email, name })
-    )
     try {
       await bouncedUserService.createBouncedUser({ email, parentName: name })
       await stripeService.checkout({
@@ -93,110 +67,78 @@ const RegisterForm = () => {
     marginTop: 5,
     marginBottom: 5,
   }
+
+  const Field = ({ display, type, placeholder, value, setFunction }) => {
+    return (
+      <div>
+        <Typography variant="subtitle2">{display}</Typography>
+        <TextField
+          variant="outlined"
+          type={type}
+          placeholder={placeholder}
+          size="small"
+          style={itemStyle}
+          fullWidth
+          value={value}
+          onChange={() => setFunction(event.target.value)}
+        />
+      </div>
+    )
+  }
+
   return (
-    <Dialog open>
-      {error && <Alert severity="error">{error}</Alert>}
-      <Grid container style={{ marginTop: 30 }}>
-        <Grid item sm={4} xs={2} />
-        <Grid item sm={4} xs={8}>
-          <Container maxWidth="md">
-            <img
-              src={wave}
-              style={{
-                marginLeft: "auto",
-                marginRight: "auto",
-                display: "block",
-                width: 40,
-              }}
-              alt="logo"
+    <Dialog open maxWidth="sm" fullWidth>
+      <Container maxWidth="md" style={styles.container}>
+        <div style={styles.heading}>
+          <Typography variant="h6">Welcome to Waterfront!</Typography>
+          <Typography>
+            Please complete your child's information to get started
+          </Typography>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <Field
+            display="Child's first name"
+            value={firstName}
+            setFunction={setFirstName}
+          />
+          <Field
+            display="Child's last name"
+            value={lastName}
+            setFunction={setLastName}
+          />
+          <Field
+            display="Child's date of birth"
+            type="date"
+            value={dob}
+            setFunction={setDob}
+          />
+
+          <div>
+            <Typography variant="subtitle2">Child's gender</Typography>
+            <Typography display="inline">Male</Typography>
+            <Radio
+              checked={gender === "male"}
+              onChange={() => setGender(event.target.value)}
+              value="male"
+              style={{ marginRight: 10 }}
+              color="primary"
             />
+            <Typography display="inline">Female</Typography>
+            <Radio
+              checked={gender === "female"}
+              onChange={() => setGender(event.target.value)}
+              value="female"
+              color="primary"
+            />
+          </div>
 
-            <form onSubmit={handleSubmit}>
-              <div>
-                <Typography variant="subtitle2">Parent's Email</Typography>
-                <TextField
-                  variant="outlined"
-                  type="email"
-                  placeholder="tommy@theroom.com"
-                  name="email"
-                  size="small"
-                  style={itemStyle}
-                  fullWidth
-                  value={email}
-                  onChange={() => setEmail(event.target.value)}
-                />
-              </div>
-              <div>
-                <Typography variant="subtitle2">Parent's Name</Typography>
-                <TextField
-                  variant="outlined"
-                  placeholder="Tommy Wiseau"
-                  name="name"
-                  size="small"
-                  style={itemStyle}
-                  fullWidth
-                  value={name}
-                  onChange={() => setName(event.target.value)}
-                />
-              </div>
-              <div>
-                <Typography variant="subtitle2">Password</Typography>
-                <TextField
-                  variant="outlined"
-                  type="password"
-                  name="password"
-                  placeholder="********"
-                  size="small"
-                  style={itemStyle}
-                  fullWidth
-                  value={password}
-                  onChange={() => setPassword(event.target.value)}
-                />
-              </div>
-              <Typography variant="subtitle2">
-                Which plan works best for you?
-              </Typography>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Paper
-                  onClick={() => setMonthly(true)}
-                  style={monthly ? styles.activePaper : styles.paper}
-                >
-                  <Typography>Monthly</Typography>
-                  <Typography>£47 / month</Typography>
-                </Paper>
-                <Paper
-                  onClick={() => setMonthly(false)}
-                  style={!monthly ? styles.activePaper : styles.paper}
-                >
-                  <Typography>Annual (2 months free)</Typography>
-                  <Typography>£39 / month</Typography>
-                </Paper>
-              </div>
-
-              <div style={{ marginTop: 15, marginBottom: 45 }}>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                >
-                  Next step
-                </Button>
-              </div>
-            </form>
-            <Typography variant="body2" style={{ textAlign: "center" }}>
-              Already have an account? <Link to="/login">Log in here</Link>
-            </Typography>
-          </Container>
-        </Grid>
-        <Grid item sm={4} xs={2} />
-      </Grid>
+          <div style={{ marginTop: 15, marginBottom: 45 }}>
+            <Button type="submit" variant="contained" color="primary" fullWidth>
+              Save
+            </Button>
+          </div>
+        </form>
+      </Container>
     </Dialog>
   )
 }
