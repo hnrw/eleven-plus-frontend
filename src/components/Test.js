@@ -54,7 +54,12 @@ const Test = ({ manualTest }) => {
       })),
       token: user.token,
     }
-    await gradedTestService.submitTest(data)
+    try {
+      const gradedTest = await gradedTestService.submitTest(data)
+      history.push(`/results/${gradedTest.id}`)
+    } catch (err) {
+      toast.error("sorry, there was an unexpected error")
+    }
   }
 
   if (!renderedTest) return null
