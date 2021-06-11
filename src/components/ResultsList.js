@@ -26,6 +26,9 @@ const ResultsList = () => {
 
   return (
     <Container>
+      {gradedTestsList.length === 0 && (
+        <Typography>Take your first test to see results</Typography>
+      )}
       {gradedTestsList.map((gt) => {
         const d = new Date(gt.date)
         return (
