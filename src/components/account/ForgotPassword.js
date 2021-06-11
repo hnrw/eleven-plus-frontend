@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { TextField, Button, Typography } from "@material-ui/core"
 import { Alert } from "@material-ui/lab"
 
-// import emailService from "../services/emailService"
+import emailService from "../../services/emailService"
 
 const ForgotPassword = () => {
   const [error, setError] = useState(null)

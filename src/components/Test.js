@@ -67,7 +67,7 @@ const Test = ({ manualTest }) => {
 
   return (
     <Container>
-      <Timer mins={1} />
+      {/* <Timer mins={1} /> */}
       {renderedTest.problems.map((problem) => (
         <Problem key={problem.question} problem={problem} />
       ))}

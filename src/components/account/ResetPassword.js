@@ -62,7 +62,7 @@ const ResetPassword = () => {
       <div>
         {error && <Alert severity="error">{error}</Alert>}
         {success && (
-          <Link to="/">
+          <Link to="/login">
             <Alert severity="success">{success}</Alert>
           </Link>
         )}
