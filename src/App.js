@@ -31,6 +31,7 @@ import { setProfile } from "./reducers/profileReducer"
 import profileService from "./services/profileService"
 
 import autoLogin from "./helpers/autoLogin"
+import incompleteProfile from "./helpers/incompleteProfile"
 
 const App = () => {
   const dispatch = useDispatch()
@@ -57,6 +58,7 @@ const App = () => {
         <div style={{ paddingBottom: "2.5rem" }}>
           <MyToaster />
           <Header />
+          {profile && incompleteProfile(profile) && <ProfileForm />}
           <Switch>
             <Route path="/results/:id">
               <Results />

@@ -6,6 +6,7 @@ import {
   TextField,
   Grid,
   Paper,
+  Dialog,
 } from "@material-ui/core"
 import { Alert } from "@material-ui/lab"
 import { Link } from "react-router-dom"
@@ -93,7 +94,7 @@ const RegisterForm = () => {
     marginBottom: 5,
   }
   return (
-    <Container>
+    <Dialog open>
       {error && <Alert severity="error">{error}</Alert>}
       <Grid container style={{ marginTop: 30 }}>
         <Grid item sm={4} xs={2} />
@@ -196,7 +197,7 @@ const RegisterForm = () => {
         </Grid>
         <Grid item sm={4} xs={2} />
       </Grid>
-    </Container>
+    </Dialog>
   )
 }
 
