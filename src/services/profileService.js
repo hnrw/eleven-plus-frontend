@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = process.env.REACT_APP_API
-const url = `${api}/profile`
+const url = `${api}/profiles`
 
 const fetchProfiles = async () => {
   const response = await axios.get(url)
