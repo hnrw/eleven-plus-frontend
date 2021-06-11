@@ -17,6 +17,7 @@ import bouncedUserService from "../../services/bouncedUserService"
 import profileService from "../../services/profileService"
 import { setProfile } from "../../reducers/profileReducer"
 import { useDispatch, useSelector } from "react-redux"
+import { toast } from "react-hot-toast"
 
 const styles = {
   container: {
@@ -34,7 +35,7 @@ const RegisterForm = () => {
   const [dob, setDob] = useState("2010-01-01")
   const [gender, setGender] = useState("")
   const user = useSelector((state) => state.user)
-  console.log(dob)
+  const dispatch = useDispatch()
 
   document.title = "Waterfront - sign up"
 

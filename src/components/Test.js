@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-hot-toast"
 
 import Problem from "./Problem"
+import Timer from "./Timer"
 import testService from "../services/testService"
 import gradedTestService from "../services/gradedTestService"
 import answerService from "../services/answerService"
@@ -66,6 +67,7 @@ const Test = ({ manualTest }) => {
 
   return (
     <Container>
+      <Timer mins={1} />
       {renderedTest.problems.map((problem) => (
         <Problem key={problem.question} problem={problem} />
       ))}
