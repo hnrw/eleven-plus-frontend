@@ -23,6 +23,7 @@ import LoginForm from "./components/account/LoginForm"
 import RegisterForm from "./components/account/RegisterForm"
 import ForgotPassword from "./components/account/ForgotPassword"
 import ResetPassword from "./components/account/ResetPassword"
+import ProfileForm from "./components/account/ProfileForm"
 
 import { setMobile } from "./reducers/mobileReducer"
 
