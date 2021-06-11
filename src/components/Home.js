@@ -18,6 +18,16 @@ const Home = () => {
 
   if (!nextTest) return null
 
+  const startTest = () => {
+    if (
+      window.confirm(
+        "The test will take 45m and you will not be able to pause or restart the test. Are you ready to begin?"
+      )
+    ) {
+      history.push(`tests/${nextTest.id}`)
+    }
+  }
+
   return (
     <Container>
       {nextTest === "no more tests" ? (
@@ -29,17 +39,16 @@ const Home = () => {
         </>
       ) : (
         <>
-          <Typography>You have a new test ready</Typography>
-          <Button
-            variant="contained"
-            onClick={() => history.push(`tests/${nextTest.id}`)}
-          >
+          <Typography paragraph>You have a new test ready.</Typography>
+          <Typography paragraph>
+            Please make sure you have 45m to take the test.
+          </Typography>
+          <Typography paragraph>
+            Once you begin, you will not be able to pause or restart the test.
+          </Typography>
+          <Button variant="contained" onClick={startTest}>
             Begin Test
           </Button>
-          <Typography>
-            Please make sure you have 45m to take the test. Once you begin, you
-            will not be able to pause or restart the test.
-          </Typography>
         </>
       )}
     </Container>
