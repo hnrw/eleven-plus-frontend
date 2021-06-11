@@ -27,7 +27,12 @@ const ResultsList = () => {
   return (
     <Container>
       {gradedTestsList.length === 0 && (
-        <Typography>Take your first test to see results</Typography>
+        <>
+          <Typography>Take your first test to see results</Typography>
+          <Link to="/home">
+            <Button>Home</Button>
+          </Link>
+        </>
       )}
       {gradedTestsList.map((gt) => {
         const d = new Date(gt.date)

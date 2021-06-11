@@ -45,7 +45,6 @@ const Results = () => {
   const { id } = useParams()
 
   useEffect(() => {
-    console.log(user)
     if (user) {
       gradedTestService
         .getTest({ token: user.token, testId: id })

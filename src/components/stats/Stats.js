@@ -9,7 +9,7 @@ import Percentile from "./Percentile"
 const Stats = () => {
   return (
     <>
-      <Radar />
+      {/* <Radar /> */}
       <Percentile />
       <HalfPie />
       <Container maxWidth="sm">
