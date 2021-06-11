@@ -26,12 +26,16 @@ import ResetPassword from "./components/account/ResetPassword"
 import ProfileForm from "./components/account/ProfileForm"
 
 import { setMobile } from "./reducers/mobileReducer"
+import { setProfile } from "./reducers/profileReducer"
+
+import profileService from "./services/profileService"
 
 import autoLogin from "./helpers/autoLogin"
 
 const App = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
+  const profile = useSelector((state) => state.profile)
 
   useEffect(() => {
     autoLogin(dispatch)
@@ -41,7 +45,11 @@ const App = () => {
     if (window.innerWidth < 500) {
       dispatch(setMobile())
     }
-  }, [dispatch])
+
+    if (user) {
+      profileService.getProfile(user.id).then((p) => dispatch(setProfile(p)))
+    }
+  }, [dispatch, user])
 
   return (
     <Router>
