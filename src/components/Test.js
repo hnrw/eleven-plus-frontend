@@ -24,6 +24,7 @@ import Timer from "./Timer"
 import testService from "../services/testService"
 import gradedTestService from "../services/gradedTestService"
 import answerService from "../services/answerService"
+import testSessionService from "../services/testSessionService"
 import { setTest } from "../reducers/testReducer"
 
 const Test = ({ manualTest }) => {
