@@ -8,13 +8,8 @@ const fetchProfiles = async () => {
   return response.data
 }
 
-const getProfile = async (token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-  const response = await axios.get(url, config)
+const getProfile = async (id) => {
+  const response = await axios.get(`${url}/${id}`)
   return response.data
 }
 
