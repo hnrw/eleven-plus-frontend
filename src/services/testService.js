@@ -28,18 +28,6 @@ const createTest = async (test) => {
   return response.data
 }
 
-const submitTest = async (data) => {
-  const { testId, answers, token } = data
-  const body = { testId, answers }
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-  const response = await axios.post(`${url}/submit`, body, config)
-  return response.data
-}
-
 const deleteTest = async (data) => {
   const { token, id } = data
   const config = {
@@ -57,6 +45,5 @@ export default {
   getTest,
   getNextTest,
   createTest,
-  submitTest,
   deleteTest,
 }

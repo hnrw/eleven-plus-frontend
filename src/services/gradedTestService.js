@@ -27,4 +27,16 @@ const getTest = async (data) => {
   return response.data
 }
 
-export default { fetchTests, getTest }
+const submitTest = async (data) => {
+  const { testId, answers, token } = data
+  const body = { testId, answers }
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  const response = await axios.post(`${url}/submit`, body, config)
+  return response.data
+}
+
+export default { fetchTests, getTest, submitTest }
