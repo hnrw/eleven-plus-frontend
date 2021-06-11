@@ -37,7 +37,7 @@ const RegisterForm = () => {
   document.title = "Waterfront - sign up"
 
   useEffect(() => {
-    const storedFormJSON = window.localStorage.getItem("WaterfrontRegisterForm")
+    const storedFormJSON = window.localStorage.getItem("waterfrontRegisterForm")
     if (storedFormJSON) {
       const storedForm = JSON.parse(storedFormJSON)
       setEmail(storedForm.email)
@@ -66,7 +66,7 @@ const RegisterForm = () => {
     }
 
     window.localStorage.setItem(
-      "WaterfrontRegisterForm",
+      "waterfrontRegisterForm",
       JSON.stringify({ email, name })
     )
     try {

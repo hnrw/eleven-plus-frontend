@@ -18,6 +18,11 @@ const LoginForm = () => {
   const [error, setError] = useState(null)
   document.title = "Waterfront - Login"
 
+  useEffect(() => {
+    // later can be in the autologin link that stripe redirects to
+    window.localStorage.removeItem("waterfrontRegisterForm")
+  }, [])
+
   const showError = (message, duration = 3000) => {
     setError(message)
     setTimeout(() => {
