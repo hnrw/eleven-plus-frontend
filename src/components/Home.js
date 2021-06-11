@@ -36,6 +36,10 @@ const Home = () => {
           >
             Begin Test
           </Button>
+          <Typography>
+            Please make sure you have 45m to take the test. Once you begin, you
+            will not be able to pause or restart the test.
+          </Typography>
         </>
       )}
     </Container>
