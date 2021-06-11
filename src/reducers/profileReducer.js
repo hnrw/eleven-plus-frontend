@@ -5,10 +5,19 @@ export const setProfile = (profile) => {
   }
 }
 
+export const updateProfile = (profile) => {
+  return {
+    type: "UPDATE_PROFILE",
+    data: profile,
+  }
+}
+
 const profileReducer = (state = null, action) => {
   switch (action.type) {
     case "SET_PROFILE":
       return action.data
+    case "UPDATE_PROFILE":
+      return { ...state, ...action.data }
     default:
       return state
   }

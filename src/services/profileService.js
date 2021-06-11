@@ -22,6 +22,7 @@ const updateProfile = async (data) => {
       Authorization: `Bearer ${token}`,
     },
   }
+
   const response = await axios.put(`${api}/users`, profileData, config)
   return response.data
 }

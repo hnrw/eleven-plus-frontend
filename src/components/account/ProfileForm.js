@@ -14,6 +14,9 @@ import { Link } from "react-router-dom"
 import wave from "../../assets/wave.png"
 import stripeService from "../../services/stripeService"
 import bouncedUserService from "../../services/bouncedUserService"
+import profileService from "../../services/profileService"
+import { setProfile } from "../../reducers/profileReducer"
+import { useDispatch, useSelector } from "react-redux"
 
 const styles = {
   container: {
@@ -24,66 +27,46 @@ const styles = {
     marginBottom: 20,
   },
 }
+
 const RegisterForm = () => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
-  const [dob, setDob] = useState(null)
+  const [dob, setDob] = useState("2010-01-01")
   const [gender, setGender] = useState("")
+  const user = useSelector((state) => state.user)
+  console.log(dob)
 
   document.title = "Waterfront - sign up"
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    if (!(email && name && password)) {
-      showError("Please complete your details")
-      return
-    }
+    // if (!(email && name && password)) {
+    //   showError("Please complete your details")
+    //   return
+    // }
 
-    if (password.length < 3) {
-      showError("password must be at least 8 characters")
-      return
-    }
+    const d = new Date(dob)
 
     try {
-      await bouncedUserService.createBouncedUser({ email, parentName: name })
-      await stripeService.checkout({
-        item: monthly ? "month" : "year",
-        email,
-        parentName: name,
-        password,
+      const p = await profileService.updateProfile({
+        token: user.token,
+        profileData: {
+          firstName,
+          lastName,
+          dob: d.getTime(),
+          gender,
+        },
       })
-    } catch (err) {
-      const serverError = err.response && err.response.data.error
-      if (serverError === "email already in use") {
-        showError("email already in use")
-        return
-      }
 
-      showError("unexpected error")
+      dispatch(setProfile(p))
+    } catch (err) {
+      toast.error("there was an unexpected error")
     }
   }
 
   const itemStyle = {
     marginTop: 5,
     marginBottom: 5,
-  }
-
-  const Field = ({ display, type, placeholder, value, setFunction }) => {
-    return (
-      <div>
-        <Typography variant="subtitle2">{display}</Typography>
-        <TextField
-          variant="outlined"
-          type={type}
-          placeholder={placeholder}
-          size="small"
-          style={itemStyle}
-          fullWidth
-          value={value}
-          onChange={() => setFunction(event.target.value)}
-        />
-      </div>
-    )
   }
 
   return (
@@ -96,23 +79,44 @@ const RegisterForm = () => {
           </Typography>
         </div>
         <form onSubmit={handleSubmit}>
-          <Field
-            display="Child's first name"
-            value={firstName}
-            setFunction={setFirstName}
-          />
-          <Field
-            display="Child's last name"
-            value={lastName}
-            setFunction={setLastName}
-          />
-          <Field
-            display="Child's date of birth"
-            type="date"
-            value={dob}
-            setFunction={setDob}
-          />
-
+          <div>
+            <Typography variant="subtitle2">Child's first name</Typography>
+            <TextField
+              variant="outlined"
+              size="small"
+              style={itemStyle}
+              fullWidth
+              value={firstName}
+              onChange={() => setFirstName(event.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <Typography variant="subtitle2">Child's last name</Typography>
+            <TextField
+              variant="outlined"
+              size="small"
+              style={itemStyle}
+              fullWidth
+              value={lastName}
+              onChange={() => setLastName(event.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <Typography variant="subtitle2">Child's date of birth</Typography>
+            <TextField
+              variant="outlined"
+              type="date"
+              size="small"
+              style={itemStyle}
+              fullWidth
+              onChange={() => setDob(event.target.value)}
+              defaultValue="2010-01-01"
+              required
+              // InputLabelProps={{ shrink: true, required: true }}
+            />
+          </div>
           <div>
             <Typography variant="subtitle2">Child's gender</Typography>
             <Typography display="inline">Male</Typography>
