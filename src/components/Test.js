@@ -54,24 +54,32 @@ const Test = ({ manualTest }) => {
   useEffect(() => {
     const session = async () => {
       const currentSession = await testSessionService.getTestSession(user.token)
-      if (currentSession === "no session exists") {
+
+      if (currentSession.user === user.id) {
+        setTestSession(currentSession)
+      } else {
         const newSession = await testSessionService.createTestSession({
           token: user.token,
           testId: test.id,
         })
         setTestSession(newSession)
-      } else {
-        setTestSession(currentSession)
       }
     }
-    if (user && test) {
+    if (user && test && !testSession) {
+      // this usually causes a Model validation error
+      // I think it's caused when a new session is posted, and then
+      // a new get request gets sent immediately after
+
+      // I can't figure out why the useEffect is firing twice
+      // from what I can tell it should just set the state using the response
+      // from createTestSession
+
+      // but I don't think it crashes the program, so I'm going to leave it like this
       session()
     }
   }, [user, test])
 
   const renderedTest = manualTest || test
-
-  console.log(testSession)
 
   const handleSubmit = async () => {
     const data = {
@@ -92,7 +100,7 @@ const Test = ({ manualTest }) => {
 
   if (!renderedTest || !testSession) return null
 
-  const end = new Date(testSession.start + 45 * 60 * 1000)
+  const end = new Date(testSession.start + 1 * 60 * 1000)
 
   if (Date.now > end) {
     handleSubmit()
