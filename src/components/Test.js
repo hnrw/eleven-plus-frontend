@@ -102,7 +102,7 @@ const Test = ({ manualTest }) => {
 
   const end = new Date(testSession.start + 1 * 60 * 1000)
 
-  if (Date.now > end) {
+  if (Date.now() > end) {
     handleSubmit()
   }
 
