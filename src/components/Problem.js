@@ -10,7 +10,11 @@ const Problem = ({ problem, viewOnly }) => {
     <div style={{ marginBottom: 20 }}>
       <Typography>{problem.question}</Typography>
       {problem.image && <img style={{ width: 200 }} src={problem.image} />}
-      <MultipleChoice problem={problem} viewOnly={viewOnly} />
+      {problem.multi ? (
+        <MultipleChoice problem={problem} viewOnly={viewOnly} />
+      ) : (
+        <InputAnswer problem={problem} viewOnly={viewOnly} />
+      )}
     </div>
   )
 }
@@ -43,6 +47,23 @@ const MultipleChoice = ({ problem, viewOnly }) => {
           </Button>
         )
       })}
+    </>
+  )
+}
+
+const InputAnswer = ({ problem, viewOnly }) => {
+  const dispatch = useDispatch()
+  return (
+    <>
+      {!viewOnly && (
+        <TextField
+          type="number"
+          onChange={() =>
+            dispatch(selectOption(problem.question, event.target.value))
+          }
+          variant="outlined"
+        />
+      )}
     </>
   )
 }
