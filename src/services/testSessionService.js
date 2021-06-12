@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = process.env.REACT_APP_API
-const url = `${api}/test-session`
+const url = `${api}/test-sessions`
 
 const getTestSession = async (token) => {
   const config = {
@@ -26,7 +26,7 @@ const createTestSession = async (data) => {
     testId,
   }
 
-  response = await axios.post(url, body, config)
+  const response = await axios.post(url, body, config)
   return response.data
 }
 

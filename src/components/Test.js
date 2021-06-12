@@ -47,8 +47,6 @@ const Test = ({ manualTest }) => {
   // }, [test])
 
   useEffect(() => {
-    testSessionService.getTestSession(user.token).then((s) => {})
-
     const session = async () => {
       const currentSession = await testSessionService.getTestSession(user.token)
       if (currentSession === "no session exists") {
@@ -61,8 +59,10 @@ const Test = ({ manualTest }) => {
         setTestSession(currentSession)
       }
     }
-    session()
-  }, [])
+    if (user && test) {
+      session()
+    }
+  }, [user, test])
 
   const renderedTest = manualTest || test
 
