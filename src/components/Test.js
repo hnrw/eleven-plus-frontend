@@ -92,15 +92,19 @@ const Test = ({ manualTest }) => {
 
   if (!renderedTest || !testSession) return null
 
-  const d = new Date(testSession.start + 45 * 60 * 1000)
+  const end = new Date(testSession.start + 45 * 60 * 1000)
+
+  if (Date.now > end) {
+    handleSubmit()
+  }
 
   return (
     <Container>
       {/* <Timer mins={1} /> */}
       <div style={styles.heading}>
         <Typography>
-          You have until <b>{d.toLocaleTimeString("en-US")}</b> to complete this
-          test.
+          You have until <b>{end.toLocaleTimeString("en-US")}</b> to complete
+          this test.
         </Typography>
       </div>
       {renderedTest.problems.map((problem) => (
