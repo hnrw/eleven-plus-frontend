@@ -30,6 +30,7 @@ import { setTest } from "../reducers/testReducer"
 const Test = ({ manualTest }) => {
   const dispatch = useDispatch()
   const history = useHistory()
+  const [testSession, setTestSession] = useState(null)
   const test = useSelector((state) => state.test)
   const user = useSelector((state) => state.user)
   const testId = useParams().id
@@ -41,9 +42,27 @@ const Test = ({ manualTest }) => {
     }
   }, [])
 
+  // useEffect(() => {
+  //   window.localStorage.setItem("waterfrontTest", JSON.stringify(test))
+  // }, [test])
+
   useEffect(() => {
-    window.localStorage.setItem("waterfrontTest", JSON.stringify(test))
-  }, [test])
+    testSessionService.getTestSession(user.token).then((s) => {})
+
+    const session = async () => {
+      const currentSession = await testSessionService.getTestSession(user.token)
+      if (currentSession === "no session exists") {
+        const newSession = await testSessionService.createTestSession({
+          token: user.token,
+          testId: test.id,
+        })
+        setTestSession(newSession)
+      } else {
+        setTestSession(currentSession)
+      }
+    }
+    session()
+  }, [])
 
   const renderedTest = manualTest || test
 
