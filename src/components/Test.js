@@ -27,6 +27,11 @@ import answerService from "../services/answerService"
 import testSessionService from "../services/testSessionService"
 import { setTest } from "../reducers/testReducer"
 
+const styles = {
+  heading: {
+    marginBottom: 20,
+  },
+}
 const Test = ({ manualTest }) => {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -66,6 +71,8 @@ const Test = ({ manualTest }) => {
 
   const renderedTest = manualTest || test
 
+  console.log(testSession)
+
   const handleSubmit = async () => {
     const data = {
       testId: test.id,
@@ -83,16 +90,26 @@ const Test = ({ manualTest }) => {
     }
   }
 
-  if (!renderedTest) return null
+  if (!renderedTest || !testSession) return null
+
+  const d = new Date(testSession.start + 45 * 60 * 1000)
 
   return (
     <Container>
       {/* <Timer mins={1} /> */}
+      <div style={styles.heading}>
+        <Typography>
+          You have until <b>{d.toLocaleTimeString("en-US")}</b> to complete this
+          test.
+        </Typography>
+      </div>
       {renderedTest.problems.map((problem) => (
         <Problem key={problem.question} problem={problem} />
       ))}
       <div>
-        <Button onClick={handleSubmit}>Submit</Button>
+        <Button variant="contained" color="primary" onClick={handleSubmit}>
+          Submit
+        </Button>
       </div>
     </Container>
   )
