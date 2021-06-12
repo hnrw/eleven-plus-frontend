@@ -13,7 +13,7 @@ const Answers = ({ gradedProblems }) => {
             </Typography>
             <Typography>{problem.question}</Typography>
             <Typography>
-              <i>{problem.selected} </i>
+              <i>{problem.selected || "You did not answer this question"} </i>
               {correct ? "✔️" : "❌"}
             </Typography>
             {!correct && (
