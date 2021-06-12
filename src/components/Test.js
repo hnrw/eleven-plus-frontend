@@ -106,6 +106,10 @@ const Test = ({ manualTest }) => {
           You have until <b>{end.toLocaleTimeString("en-US")}</b> to complete
           this test.
         </Typography>
+        <Typography>
+          Please do not close this page. You cannot restart the timer once you
+          have started the test.
+        </Typography>
       </div>
       {renderedTest.problems.map((problem) => (
         <Problem key={problem.question} problem={problem} />
