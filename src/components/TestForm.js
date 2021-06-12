@@ -21,7 +21,8 @@ const TestForm = () => {
 
     const createOptions = problems.map((p) => ({
       ...p,
-      options: p.options.split(",").concat(p.correct),
+      options: p.options ? p.options.split(",").concat(p.correct) : null,
+      multi: !!p.options,
     }))
 
     const test = {
