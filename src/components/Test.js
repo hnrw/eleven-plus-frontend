@@ -107,7 +107,7 @@ const Test = ({ manualTest }) => {
   }
 
   return (
-    <Container>
+    <Container maxWidth="sm">
       {/* <Timer mins={1} /> */}
       <div style={styles.heading}>
         <Typography>
