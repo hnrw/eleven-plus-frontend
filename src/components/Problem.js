@@ -118,7 +118,9 @@ const InputAnswer = ({ problem, viewOnly }) => {
               dispatch(selectOption(problem.question, event.target.value))
             }
           />
-          {problem.unit && <Typography>{problem.unit}</Typography>}
+          {problem.unit && (
+            <Typography display="inline">{problem.unit}</Typography>
+          )}
         </>
       )}
     </>
