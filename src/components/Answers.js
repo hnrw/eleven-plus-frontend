@@ -3,11 +3,11 @@ import { Typography, Container } from "@material-ui/core"
 import _ from "lodash"
 
 const Answers = ({ gradedProblems }) => {
-  const orderedGradedProblems = _.orderBy(gradedProblems, ["num"], ["asc"])
+  const orderedGradedProblems = _.sortBy(gradedProblems, (p) => p.num)
 
   return (
     <Container>
-      {gradedProblems.map((problem, index) => {
+      {orderedGradedProblems.map((problem, index) => {
         const correct = problem.correct === problem.selected
         return (
           <div key={problem.question} style={{ marginBottom: 20 }}>
