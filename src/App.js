@@ -21,6 +21,7 @@ import Stats from "./components/stats/Stats"
 
 import LoginForm from "./components/account/LoginForm"
 import RegisterForm from "./components/account/RegisterForm"
+import RegisterFormSecret from "./components/account/RegisterFormSecret"
 import ForgotPassword from "./components/account/ForgotPassword"
 import ResetPassword from "./components/account/ResetPassword"
 import ProfileForm from "./components/account/ProfileForm"
@@ -86,6 +87,9 @@ const App = () => {
             </Route>
             <Route path="/forgot-password">
               <ForgotPassword />
+            </Route>
+            <Route path="/test">
+              <RegisterFormSecret />
             </Route>
             <Route path="/reset-password/:token/:id">
               <ResetPassword />
