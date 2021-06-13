@@ -116,8 +116,8 @@ const InputAnswer = ({ problem, viewOnly }) => {
           onChange={() =>
             dispatch(selectOption(problem.question, event.target.value))
           }
-          variant="outlined"
         />
+        {problem.unit && <Typography>{problem.unit}</Typography>}
       )}
     </>
   )
