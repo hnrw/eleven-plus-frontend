@@ -15,6 +15,7 @@ import bouncedUserService from "../../services/bouncedUserService"
 import userService from "../../services/userService"
 import { setUser } from "../../reducers/userReducer"
 import { useDispatch, useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
 
 const paper = {
   marginTop: 20,
@@ -37,6 +38,7 @@ const RegisterForm = () => {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const dispatch = useDispatch()
+  const history = useHistory()
 
   document.title = "Waterfront - sign up"
 
@@ -154,32 +156,6 @@ const RegisterForm = () => {
                   onChange={() => setPassword(event.target.value)}
                 />
               </div>
-              <Typography variant="subtitle2">
-                Which plan works best for you?
-              </Typography>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Paper
-                  onClick={() => setMonthly(true)}
-                  style={monthly ? styles.activePaper : styles.paper}
-                >
-                  <Typography>Monthly</Typography>
-                  <Typography>£47 / month</Typography>
-                </Paper>
-                <Paper
-                  onClick={() => setMonthly(false)}
-                  style={!monthly ? styles.activePaper : styles.paper}
-                >
-                  <Typography>Annual (2 months free)</Typography>
-                  <Typography>£39 / month</Typography>
-                </Paper>
-              </div>
-
               <div style={{ marginTop: 15, marginBottom: 45 }}>
                 <Button
                   type="submit"
