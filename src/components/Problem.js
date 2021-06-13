@@ -28,7 +28,11 @@ const Problem = ({ problem, viewOnly }) => {
         <b>Question {problem.num}</b>
       </Typography>
       <Typography style={{ marginBottom: 10 }}>{problem.question}</Typography>
-      {problem.image && <img style={{ width: 200 }} src={problem.image} />}
+      {problem.img && (
+        <div>
+          <img src={problem.img} />
+        </div>
+      )}
       {problem.multi ? (
         <MultipleChoice problem={problem} viewOnly={viewOnly} />
       ) : (
