@@ -99,7 +99,7 @@ const Test = ({ manualTest }) => {
   }
 
   if (!renderedTest || !testSession) return null
-  renderedTest.problems = _.orderBy(renderedTest.problems, ["num"], ["asc"])
+  renderedTest.problems = _.sort(renderedTest.problems, (p) => p.num)
 
   const end = new Date(testSession.start + 450 * 60 * 1000)
 
