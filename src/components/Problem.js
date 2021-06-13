@@ -111,13 +111,15 @@ const InputAnswer = ({ problem, viewOnly }) => {
   return (
     <>
       {!viewOnly && (
-        <TextField
-          type="number"
-          onChange={() =>
-            dispatch(selectOption(problem.question, event.target.value))
-          }
-        />
-        {problem.unit && <Typography>{problem.unit}</Typography>}
+        <>
+          <TextField
+            type="number"
+            onChange={() =>
+              dispatch(selectOption(problem.question, event.target.value))
+            }
+          />
+          {problem.unit && <Typography>{problem.unit}</Typography>}
+        </>
       )}
     </>
   )
