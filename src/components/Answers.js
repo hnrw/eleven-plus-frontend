@@ -5,10 +5,17 @@ import _ from "lodash"
 const Answers = ({ gradedProblems }) => {
   const orderedGradedProblems = _.sortBy(gradedProblems, (p) => p.num)
 
+  const isCorrect = (p) => {
+    if (p.multi) {
+      return p.selected === p.correct
+    }
+    return Number(p.selected) === Number(p.correct)
+  }
+
   return (
     <Container>
       {orderedGradedProblems.map((problem, index) => {
-        const correct = problem.correct === problem.selected
+        const correct = isCorrect(problem)
         return (
           <div key={problem.question} style={{ marginBottom: 20 }}>
             <Typography>
