@@ -23,6 +23,8 @@ const Footer = () => {
             textAlign: "center",
             textDecoration: "none",
           }}
+          target="_blank"
+          rel="noopener"
         >
           <Typography color="textPrimary">
             Get in touch: henry@henrywu.co.uk
