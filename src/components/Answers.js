@@ -1,7 +1,10 @@
 import React from "react"
 import { Typography, Container } from "@material-ui/core"
+import _ from "lodash"
 
 const Answers = ({ gradedProblems }) => {
+  const orderedGradedProblems = _.orderBy(gradedProblems, ["num"], ["asc"])
+
   return (
     <Container>
       {gradedProblems.map((problem, index) => {
