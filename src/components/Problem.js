@@ -24,6 +24,9 @@ const styles = {
 const Problem = ({ problem, viewOnly }) => {
   return (
     <div style={{ marginBottom: 50 }}>
+      <Typography>
+        <b>Question {problem.num}</b>
+      </Typography>
       <Typography style={{ marginBottom: 10 }}>{problem.question}</Typography>
       {problem.image && <img style={{ width: 200 }} src={problem.image} />}
       {problem.multi ? (
