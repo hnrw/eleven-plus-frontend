@@ -19,6 +19,11 @@ const styles = {
     paddingLeft: 20,
     marginRight: 20,
   },
+  center: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
 }
 
 const Problem = ({ problem, viewOnly }) => {
@@ -29,7 +34,7 @@ const Problem = ({ problem, viewOnly }) => {
       </Typography>
       <Typography style={{ marginBottom: 10 }}>{problem.question}</Typography>
       {problem.img && (
-        <div>
+        <div style={styles.center}>
           <img src={problem.img} />
         </div>
       )}
