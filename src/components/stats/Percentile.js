@@ -13,8 +13,8 @@ const Percentile = () => {
   return (
     <>
       <Container style={styles.container}>
-        <Typography>Simons's marks are better than</Typography>
-        <Typography variant="h3">83%</Typography>
+        <Typography variant="h4">Oli's results are better than</Typography>
+        <Typography variant="h1">83%</Typography>
         <Typography>of Waterfront students</Typography>
       </Container>
     </>
