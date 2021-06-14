@@ -1,6 +1,25 @@
 import React from "react"
-import { Typography, Container } from "@material-ui/core"
+import { Paper, Typography, Container } from "@material-ui/core"
 import _ from "lodash"
+
+const paperStyle = {
+  paddingTop: 10,
+  paddingBottom: 10,
+  paddingRight: 20,
+  paddingLeft: 20,
+  marginRight: 20,
+  cursor: "pointer",
+}
+
+const styles = {
+  paperSelected: { ...paperStyle, backgroundColor: "red" },
+  paper: paperStyle,
+  flex: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+}
 
 const Answers = ({ gradedProblems }) => {
   console.log(gradedProblems)
@@ -24,6 +43,25 @@ const Answers = ({ gradedProblems }) => {
             </Typography>
             <Typography>{problem.question}</Typography>
             <img src={problem.img} />
+            <div style={styles.flex}>
+              {problem.options.map((option) => {
+                const selected = true
+                return (
+                  <Paper
+                    key={option}
+                    style={selected ? styles.paperSelected : styles.paper}
+                  >
+                    <Typography
+                      style={{
+                        color: selected ? "white" : null,
+                      }}
+                    >
+                      {option}
+                    </Typography>
+                  </Paper>
+                )
+              })}
+            </div>
             <Typography>
               <i>{problem.selected || "You did not answer this question"} </i>
               {correct ? "✔️" : "❌"}
