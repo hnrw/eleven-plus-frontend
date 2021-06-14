@@ -3,6 +3,7 @@ import { Typography, Container } from "@material-ui/core"
 import _ from "lodash"
 
 const Answers = ({ gradedProblems }) => {
+  console.log(gradedProblems)
   const orderedGradedProblems = _.sortBy(gradedProblems, (p) => p.num)
 
   const isCorrect = (p) => {
@@ -22,6 +23,7 @@ const Answers = ({ gradedProblems }) => {
               <b>Question {index + 1}</b>
             </Typography>
             <Typography>{problem.question}</Typography>
+            <img src={problem.img} />
             <Typography>
               <i>{problem.selected || "You did not answer this question"} </i>
               {correct ? "✔️" : "❌"}
