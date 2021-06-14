@@ -67,18 +67,6 @@ const MultipleChoice = ({ problem, viewOnly }) => {
       {shuffledOptions.map((option) => {
         const selected = problem.selected === option
         return (
-          // <Button
-          //   variant={selected ? "contained" : "outlined"}
-          //   color={selected ? "primary" : "default"}
-          //   onClick={
-          //     viewOnly
-          //       ? null
-          //       : () => dispatch(selectOption(problem.question, option))
-          //   }
-          //   key={option}
-          // >
-          //   {option}
-          // </Button>
           <Paper
             key={option}
             style={{
