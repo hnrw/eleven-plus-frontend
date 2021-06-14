@@ -17,7 +17,7 @@ const Header = () => {
   const handleLogout = (event) => {
     event.preventDefault()
     dispatch(clearUser())
-    history.push("/login")
+    history.push("/")
   }
 
   const handlePortal = async () => {
