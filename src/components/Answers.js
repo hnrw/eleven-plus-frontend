@@ -98,16 +98,18 @@ const Answers = ({ gradedProblems }) => {
                 )
               })}
             </div>
+            {!problem.selected && (
+              <Typography style={{ marginTop: 30 }}>
+                <i>You did not answer this question</i>
+              </Typography>
+            )}
             {!problem.multi && (
               <>
-                {/* <Typography style={{ color: "green" }}> */}
                 <Typography>
-                  {problem.selected ? (
+                  {problem.selected && (
                     <>
                       You answered: <b>{problem.selected}</b>
                     </>
-                  ) : (
-                    "You did not answer this question"
                   )}
                 </Typography>
                 {!correct && (
