@@ -110,6 +110,9 @@ const InputAnswer = ({ problem, viewOnly }) => {
             onChange={() =>
               dispatch(selectOption(problem.question, event.target.value))
             }
+            onWheelCapture={(e) => {
+              e.target.blur()
+            }}
           />
           {problem.unit && (
             <Typography display="inline">{problem.unit}</Typography>
