@@ -30,7 +30,7 @@ const LandingFooter = ({ textBlack }) => {
           variant="contained"
           color="primary"
           fullWidth
-          onClick={() => stripeService.stripeCheckout({ item: "27" })}
+          onClick={() => history.push("/signup")}
           style={{ marginBottom: 20, paddingTop: 10, paddingBottom: 10 }}
         >
           Sign up

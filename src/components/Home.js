@@ -46,6 +46,10 @@ const Home = () => {
           <Typography paragraph>
             Once you begin, you will not be able to pause or restart the test.
           </Typography>
+          <Typography paragraph>
+            You will only need a pen/pencil and paper. Calculators are not
+            allowed.
+          </Typography>
           <Button variant="contained" onClick={startTest}>
             Begin Test
           </Button>

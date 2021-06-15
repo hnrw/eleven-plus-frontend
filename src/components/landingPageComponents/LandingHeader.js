@@ -35,8 +35,7 @@ const LandingHeader = ({ textBlack }) => {
               variant="contained"
               color="primary"
               style={{ marginBottom: 20, paddingTop: 10, paddingBottom: 10 }}
-              // onClick={() => history.push("/signup")}
-              onClick={() => stripeService.stripeCheckout({ item: "27" })}
+              onClick={() => history.push("/signup")}
             >
               Get Started
             </Button>
