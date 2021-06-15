@@ -34,21 +34,13 @@ const Answers = ({ gradedProblems }) => {
   }
 
   const calculateColor = (problem, option) => {
-    const paperStyle = {
-      paddingTop: 10,
-      paddingBottom: 10,
-      paddingRight: 20,
-      paddingLeft: 20,
-      marginRight: 20,
-      cursor: "pointer",
-    }
     if (option === problem.correct) {
-      return { ...paperStyle, backgroundColor: "green" }
+      return "green"
     }
     if (option === problem.selected) {
-      return { ...paperStyle, backgroundColor: "red" }
+      return "red"
     }
-    return paperStyle
+    return null
   }
 
   return (
@@ -64,12 +56,19 @@ const Answers = ({ gradedProblems }) => {
             <img src={problem.img} />
             <div style={styles.flex}>
               {problem.options.map((option) => {
-                const selected = true
+                const color = calculateColor(problem, option)
                 return (
                   <Paper
                     key={option}
                     // style={selected ? styles.paperSelected : styles.paper}
                     style={calculateColor(problem, option)}
+                    style={
+                      color === "green"
+                        ? styles.paperGreen
+                        : color === "red"
+                        ? styles.paperRed
+                        : styles.paper
+                    }
                   >
                     <Typography
                       style={
