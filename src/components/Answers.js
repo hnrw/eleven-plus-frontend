@@ -1,5 +1,5 @@
 import React from "react"
-import { Paper, Typography, Container } from "@material-ui/core"
+import { Divider, Paper, Typography, Container } from "@material-ui/core"
 import _ from "lodash"
 
 const paperStyle = {
@@ -21,6 +21,12 @@ const styles = {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+  },
+  root: {
+    marginBottom: 20,
+  },
+  divider: {
+    marginTop: 40,
   },
 }
 
@@ -50,7 +56,7 @@ const Answers = ({ gradedProblems }) => {
       {orderedGradedProblems.map((problem, index) => {
         const correct = isCorrect(problem)
         return (
-          <div key={problem.question} style={{ marginBottom: 20 }}>
+          <div key={problem.question} style={styles.root}>
             <Typography>
               <b>Question {index + 1}</b>
               {correct ? " ✔️" : " ❌"}
@@ -94,19 +100,24 @@ const Answers = ({ gradedProblems }) => {
             </div>
             {!problem.multi && (
               <>
+                {/* <Typography style={{ color: "green" }}> */}
                 <Typography>
-                  <i>
-                    {problem.selected || "You did not answer this question"}{" "}
-                  </i>
-                  {correct ? "✔️" : "❌"}
+                  {problem.selected ? (
+                    <>
+                      You answered: <b>{problem.selected}</b>
+                    </>
+                  ) : (
+                    "You did not answer this question"
+                  )}
                 </Typography>
                 {!correct && (
                   <Typography>
-                    The correct answer was <b>{problem.correct}</b>
+                    The correct answer was: <b>{problem.correct}</b>
                   </Typography>
                 )}
               </>
             )}
+            <Divider style={styles.divider} />
           </div>
         )
       })}
