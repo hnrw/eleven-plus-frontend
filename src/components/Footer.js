@@ -18,7 +18,7 @@ const Footer = () => {
         }}
       >
         <Link
-          href="mailto:henry@henrywu.co.uk"
+          href="mailto:supoprt@waterfrontlearn.com"
           style={{
             textAlign: "center",
             textDecoration: "none",
@@ -27,7 +27,7 @@ const Footer = () => {
           rel="noopener"
         >
           <Typography color="textPrimary">
-            Get in touch: henry@henrywu.co.uk
+            Get in touch: support@waterfrontlearn.com
           </Typography>
         </Link>
       </div>
