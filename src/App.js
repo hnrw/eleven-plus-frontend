@@ -25,6 +25,8 @@ import RegisterFormSecret from "./components/account/RegisterFormSecret"
 import ForgotPassword from "./components/account/ForgotPassword"
 import ResetPassword from "./components/account/ResetPassword"
 import ProfileForm from "./components/account/ProfileForm"
+import PrivacyPolicy from "./components/legal/PrivacyPolicy"
+import TermsAndConditions from "./components/legal/TermsAndConditions"
 
 import { setMobile } from "./reducers/mobileReducer"
 import { setProfile } from "./reducers/profileReducer"
@@ -90,6 +92,12 @@ const App = () => {
             </Route>
             <Route path="/test">
               <RegisterFormSecret />
+            </Route>
+            <Route path="/privacy">
+              <PrivacyPolicy />
+            </Route>
+            <Route path="/terms">
+              <TermsAndConditions />
             </Route>
             <Route path="/reset-password/:token/:id">
               <ResetPassword />
