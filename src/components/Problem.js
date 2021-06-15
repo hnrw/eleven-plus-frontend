@@ -24,6 +24,10 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
   },
+  img: {
+    marginTop: 10,
+    marginBottom: 20,
+  },
 }
 
 const Problem = ({ problem, viewOnly }) => {
@@ -35,7 +39,7 @@ const Problem = ({ problem, viewOnly }) => {
       <Typography style={{ marginBottom: 10 }}>{problem.question}</Typography>
       {problem.img && (
         <div style={styles.center}>
-          <img src={problem.img} />
+          <img style={styles.img} src={problem.img} />
         </div>
       )}
       {problem.multi ? (
