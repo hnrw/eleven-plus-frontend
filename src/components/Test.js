@@ -31,6 +31,11 @@ const styles = {
   heading: {
     marginBottom: 20,
   },
+  submit: {
+    marginBottom: 30,
+    width: 300,
+  },
+  flex: { display: "flex", flexDirection: "column", alignItems: "center" },
 }
 const Test = ({ manualTest }) => {
   const dispatch = useDispatch()
@@ -82,19 +87,21 @@ const Test = ({ manualTest }) => {
   const renderedTest = manualTest || test
 
   const handleSubmit = async () => {
-    const data = {
-      testId: test.id,
-      answers: test.problems.map((p) => ({
-        selected: p.selected,
-        problemId: p.id,
-      })),
-      token: user.token,
-    }
-    try {
-      const gradedTest = await gradedTestService.submitTest(data)
-      history.push(`/results/${gradedTest.id}`)
-    } catch (err) {
-      toast.error("sorry, there was an unexpected error")
+    if (window.confirm("Are you sure you're ready to submit your test?")) {
+      const data = {
+        testId: test.id,
+        answers: test.problems.map((p) => ({
+          selected: p.selected,
+          problemId: p.id,
+        })),
+        token: user.token,
+      }
+      try {
+        const gradedTest = await gradedTestService.submitTest(data)
+        history.push(`/results/${gradedTest.id}`)
+      } catch (err) {
+        toast.error("sorry, there was an unexpected error")
+      }
     }
   }
 
@@ -123,8 +130,15 @@ const Test = ({ manualTest }) => {
       {renderedTest.problems.map((problem) => (
         <Problem key={problem.question} problem={problem} />
       ))}
-      <div>
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
+      <div style={styles.flex}>
+        <Button
+          style={styles.submit}
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit}
+          fullWidth={true}
+          size="large"
+        >
           Submit
         </Button>
       </div>
