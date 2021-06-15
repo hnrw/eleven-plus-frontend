@@ -34,6 +34,13 @@ const styles = {
   divider: {
     marginTop: 40,
   },
+  buttonContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 20,
+    marginBottom: 20,
+  },
 }
 
 const Answers = ({ gradedProblems }) => {
@@ -47,9 +54,6 @@ const Answers = ({ gradedProblems }) => {
       : view === "correct"
       ? gradedProblems.filter(correct)
       : gradedProblems.filter(incorrect)
-
-  console.log(view)
-  console.log(filteredProblems)
 
   const orderedGradedProblems = _.sortBy(filteredProblems, (p) => p.num)
 
@@ -72,9 +76,26 @@ const Answers = ({ gradedProblems }) => {
 
   return (
     <Container>
-      <Button onClick={() => setView("all")}>All</Button>
-      <Button onClick={() => setView("correct")}>Correct</Button>
-      <Button onClick={() => setView("incorrect")}>Incorrect</Button>
+      <Container style={styles.buttonContainer}>
+        <Button
+          color={view === "all" ? "primary" : "default"}
+          onClick={() => setView("all")}
+        >
+          All
+        </Button>
+        <Button
+          color={view === "correct" ? "primary" : "default"}
+          onClick={() => setView("correct")}
+        >
+          Correct
+        </Button>
+        <Button
+          color={view === "incorrect" ? "primary" : "default"}
+          onClick={() => setView("incorrect")}
+        >
+          Incorrect
+        </Button>
+      </Container>
       {orderedGradedProblems.map((problem) => {
         const correct = isCorrect(problem)
         return (
