@@ -110,6 +110,7 @@ const InputAnswer = ({ problem, viewOnly }) => {
             onChange={() =>
               dispatch(selectOption(problem.question, event.target.value))
             }
+            // prevents scroll changing the input
             onWheelCapture={(e) => {
               e.target.blur()
             }}
