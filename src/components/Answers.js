@@ -75,12 +75,12 @@ const Answers = ({ gradedProblems }) => {
       <Button onClick={() => setView("all")}>All</Button>
       <Button onClick={() => setView("correct")}>Correct</Button>
       <Button onClick={() => setView("incorrect")}>Incorrect</Button>
-      {orderedGradedProblems.map((problem, index) => {
+      {orderedGradedProblems.map((problem) => {
         const correct = isCorrect(problem)
         return (
           <div key={problem.question} style={styles.root}>
             <Typography>
-              <b>Question {index + 1}</b>
+              <b>Question {problem.num}</b>
               {correct ? " ✔️" : " ❌"}
             </Typography>
             <Typography>{problem.question}</Typography>
@@ -91,7 +91,6 @@ const Answers = ({ gradedProblems }) => {
                 return (
                   <Paper
                     key={option}
-                    // style={selected ? styles.paperSelected : styles.paper}
                     style={
                       color === "green"
                         ? styles.paperGreen
