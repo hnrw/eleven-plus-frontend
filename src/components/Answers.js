@@ -12,7 +12,8 @@ const paperStyle = {
 }
 
 const styles = {
-  paperSelected: { ...paperStyle, backgroundColor: "red" },
+  paperRed: { ...paperStyle, backgroundColor: "red" },
+  paperGreen: { ...paperStyle, backgroundColor: "green" },
   paper: paperStyle,
   flex: {
     display: "flex",
@@ -32,6 +33,24 @@ const Answers = ({ gradedProblems }) => {
     return Number(p.selected) === Number(p.correct)
   }
 
+  const calculateColor = (problem, option) => {
+    const paperStyle = {
+      paddingTop: 10,
+      paddingBottom: 10,
+      paddingRight: 20,
+      paddingLeft: 20,
+      marginRight: 20,
+      cursor: "pointer",
+    }
+    if (option === problem.correct) {
+      return { ...paperStyle, backgroundColor: "green" }
+    }
+    if (option === problem.selected) {
+      return { ...paperStyle, backgroundColor: "red" }
+    }
+    return paperStyle
+  }
+
   return (
     <Container>
       {orderedGradedProblems.map((problem, index) => {
@@ -49,12 +68,15 @@ const Answers = ({ gradedProblems }) => {
                 return (
                   <Paper
                     key={option}
-                    style={selected ? styles.paperSelected : styles.paper}
+                    // style={selected ? styles.paperSelected : styles.paper}
+                    style={calculateColor(problem, option)}
                   >
                     <Typography
-                      style={{
-                        color: selected ? "white" : null,
-                      }}
+                      style={
+                        {
+                          // color: selected ? "white" : null,
+                        }
+                      }
                     >
                       {option}
                     </Typography>
