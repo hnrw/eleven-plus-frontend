@@ -1,5 +1,11 @@
-import React from "react"
-import { Divider, Paper, Typography, Container } from "@material-ui/core"
+import React, { useState } from "react"
+import {
+  Button,
+  Divider,
+  Paper,
+  Typography,
+  Container,
+} from "@material-ui/core"
 import _ from "lodash"
 
 const paperStyle = {
@@ -31,8 +37,21 @@ const styles = {
 }
 
 const Answers = ({ gradedProblems }) => {
-  console.log(gradedProblems)
-  const orderedGradedProblems = _.sortBy(gradedProblems, (p) => p.num)
+  const [view, setView] = useState("all")
+  const correct = (p) => p.selected === p.correct
+  const incorrect = (p) => p.selected !== p.correct
+
+  const filteredProblems =
+    view === "all"
+      ? gradedProblems
+      : view === "correct"
+      ? gradedProblems.filter(correct)
+      : gradedProblems.filter(incorrect)
+
+  console.log(view)
+  console.log(filteredProblems)
+
+  const orderedGradedProblems = _.sortBy(filteredProblems, (p) => p.num)
 
   const isCorrect = (p) => {
     if (p.multi) {
@@ -53,6 +72,9 @@ const Answers = ({ gradedProblems }) => {
 
   return (
     <Container>
+      <Button onClick={() => setView("all")}>All</Button>
+      <Button onClick={() => setView("correct")}>Correct</Button>
+      <Button onClick={() => setView("incorrect")}>Incorrect</Button>
       {orderedGradedProblems.map((problem, index) => {
         const correct = isCorrect(problem)
         return (
