@@ -8,12 +8,14 @@ const paperStyle = {
   paddingRight: 20,
   paddingLeft: 20,
   marginRight: 20,
-  cursor: "pointer",
 }
 
 const styles = {
-  paperRed: { ...paperStyle, backgroundColor: "red" },
-  paperGreen: { ...paperStyle, backgroundColor: "green" },
+  paperRed: { ...paperStyle, backgroundColor: "#FDE2DD" },
+  paperGreen: {
+    ...paperStyle,
+    backgroundColor: "#CBF4C9",
+  },
   paper: paperStyle,
   flex: {
     display: "flex",
@@ -51,6 +53,7 @@ const Answers = ({ gradedProblems }) => {
           <div key={problem.question} style={{ marginBottom: 20 }}>
             <Typography>
               <b>Question {index + 1}</b>
+              {correct ? " ✔️" : " ❌"}
             </Typography>
             <Typography>{problem.question}</Typography>
             <img src={problem.img} />
@@ -61,7 +64,6 @@ const Answers = ({ gradedProblems }) => {
                   <Paper
                     key={option}
                     // style={selected ? styles.paperSelected : styles.paper}
-                    style={calculateColor(problem, option)}
                     style={
                       color === "green"
                         ? styles.paperGreen
@@ -71,11 +73,18 @@ const Answers = ({ gradedProblems }) => {
                     }
                   >
                     <Typography
-                      style={
-                        {
-                          // color: selected ? "white" : null,
-                        }
-                      }
+                      style={{
+                        color:
+                          color === "green"
+                            ? "#0E6245"
+                            : color === "red"
+                            ? "#A41C4E"
+                            : null,
+                        fontWeight:
+                          color === "green" || color === "red" ? "bold" : null,
+                        letterSpacing:
+                          color === "green" || color === "red" ? 0.5 : null,
+                      }}
                     >
                       {option}
                     </Typography>
@@ -83,14 +92,20 @@ const Answers = ({ gradedProblems }) => {
                 )
               })}
             </div>
-            <Typography>
-              <i>{problem.selected || "You did not answer this question"} </i>
-              {correct ? "✔️" : "❌"}
-            </Typography>
-            {!correct && (
-              <Typography>
-                The correct answer was <b>{problem.correct}</b>
-              </Typography>
+            {!problem.multi && (
+              <>
+                <Typography>
+                  <i>
+                    {problem.selected || "You did not answer this question"}{" "}
+                  </i>
+                  {correct ? "✔️" : "❌"}
+                </Typography>
+                {!correct && (
+                  <Typography>
+                    The correct answer was <b>{problem.correct}</b>
+                  </Typography>
+                )}
+              </>
             )}
           </div>
         )
