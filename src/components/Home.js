@@ -9,6 +9,7 @@ const Home = () => {
   document.title = "Waterfront"
   const [nextTest, setNextTest] = useState(null)
   const user = useSelector((state) => state.user)
+  const profile = useSelector((state) => state.profile)
 
   useEffect(() => {
     if (user) {
@@ -41,7 +42,8 @@ const Home = () => {
         <>
           <Typography paragraph>You have a new test ready.</Typography>
           <Typography paragraph>
-            Please make sure you have 45m to take the test.
+            Please make sure {profile.firstName} has 45 minutes avaiable to take
+            the test.
           </Typography>
           <Typography paragraph>
             Once you begin, you will not be able to pause or restart the test.
