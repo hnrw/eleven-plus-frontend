@@ -108,7 +108,7 @@ const Test = ({ manualTest }) => {
   if (!renderedTest || !testSession) return null
   renderedTest.problems = _.sortBy(renderedTest.problems, (p) => p.num)
 
-  const end = new Date(testSession.start + 450 * 60 * 1000)
+  const end = new Date(testSession.start + 45 * 60 * 1000)
 
   if (Date.now() > end) {
     handleSubmit()
