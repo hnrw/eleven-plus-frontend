@@ -150,13 +150,14 @@ const Answers = ({ gradedProblems }) => {
                 <Typography>
                   {problem.selected && (
                     <>
-                      You answered: <b>{problem.selected}</b>
+                      You answered: <b>{problem.selected}</b> {problem.unit}
                     </>
                   )}
                 </Typography>
                 {!correct && (
                   <Typography>
-                    The correct answer was: <b>{problem.correct}</b>
+                    The correct answer was: <b>{problem.correct}</b>{" "}
+                    {problem.unit}
                   </Typography>
                 )}
               </>
