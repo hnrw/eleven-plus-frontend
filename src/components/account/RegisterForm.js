@@ -167,14 +167,14 @@ const RegisterForm = () => {
                   style={monthly ? styles.activePaper : styles.paper}
                 >
                   <Typography>Monthly</Typography>
-                  <Typography>£47 / month</Typography>
+                  <Typography>£69 / month</Typography>
                 </Paper>
                 <Paper
                   onClick={() => setMonthly(false)}
                   style={!monthly ? styles.activePaper : styles.paper}
                 >
                   <Typography>Annual (2 months free)</Typography>
-                  <Typography>£39 / month</Typography>
+                  <Typography>£57 / month</Typography>
                 </Paper>
               </div>
 
