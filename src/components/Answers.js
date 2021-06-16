@@ -41,6 +41,15 @@ const styles = {
     marginTop: 20,
     marginBottom: 20,
   },
+  img: {
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  center: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
 }
 
 const Answers = ({ gradedProblems }) => {
@@ -105,7 +114,9 @@ const Answers = ({ gradedProblems }) => {
               {correct ? " ✔️" : " ❌"}
             </Typography>
             <Typography>{problem.question}</Typography>
-            <img src={problem.img} />
+            <div style={styles.center}>
+              <img style={styles.img} src={problem.img} />
+            </div>
             <div style={styles.flex}>
               {problem.options.map((option) => {
                 const color = calculateColor(problem, option)
