@@ -35,12 +35,16 @@ const styles = {
   centerText: {
     textAlign: "center",
   },
+  retry: {
+    marginTop: 10,
+  },
 }
 
 const Results = () => {
   const [gt, setGt] = useState(null)
   const user = useSelector((state) => state.user)
   document.title = "Waterfront - Results"
+  const history = useHistory()
 
   const { id } = useParams()
 
@@ -66,6 +70,14 @@ const Results = () => {
         <Typography style={{ textAlign: "center" }}>
           {`${gt.marks}/${gt.total}`} marks
         </Typography>
+        <Button
+          variant="contained"
+          // color="primary"
+          onClick={() => history.push(`/tests/${gt.test}`)}
+          style={styles.retry}
+        >
+          Retry test
+        </Button>
       </Paper>
       <Answers gradedProblems={gt.gradedProblems} />
     </Container>
