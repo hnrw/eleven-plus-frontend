@@ -58,6 +58,7 @@ const Results = () => {
 
   if (!gt) return null
 
+  console.log(gt)
   return (
     <Container style={styles.root}>
       <Paper style={styles.paper}>
@@ -72,8 +73,7 @@ const Results = () => {
         </Typography>
         <Button
           variant="contained"
-          // color="primary"
-          onClick={() => history.push(`/tests/${gt.test}`)}
+          onClick={() => history.push(`/tests/${gt.testId}`)}
           style={styles.retry}
         >
           Retry test
