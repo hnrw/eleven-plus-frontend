@@ -15,6 +15,7 @@ import {
   useHistory,
   useParams,
 } from "react-router-dom"
+import dayjs from "dayjs"
 import _ from "lodash"
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-hot-toast"
@@ -108,9 +109,10 @@ const Test = ({ manualTest }) => {
   if (!renderedTest || !testSession) return null
   renderedTest.problems = _.sortBy(renderedTest.problems, (p) => p.num)
 
-  const end = new Date(testSession.start + 45 * 60 * 1000)
+  const end = dayjs(testSession.start).add(45, "minutes")
+  const endFormat = end.format("h:mm:ss a")
 
-  if (Date.now() > end) {
+  if (dayjs() > end) {
     handleSubmit()
   }
 
@@ -119,8 +121,7 @@ const Test = ({ manualTest }) => {
       {/* <Timer mins={1} /> */}
       <div style={styles.heading}>
         <Typography>
-          You have until <b>{end.toLocaleTimeString("en-US")}</b> to complete
-          this test.
+          You have until <b>{endFormat}</b> to complete this test.
         </Typography>
         <Typography>
           Please do not close this page. You cannot restart the timer once you
