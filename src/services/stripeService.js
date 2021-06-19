@@ -11,14 +11,12 @@ const checkout = async (data) => {
   // Get Stripe.js instance
   const stripe = await stripePromise
 
-  const { item, email, password, parentName } = data
+  const { item, email } = data
 
   // Call your backend to create the Checkout Session
   const checkoutData = {
     item,
     email,
-    password,
-    parentName,
   }
   const response = await axios.post(`${url}/checkout`, checkoutData)
 
