@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { TextField, Typography, Container, Button } from "@material-ui/core"
+import dayjs from "dayjs"
 import gradedTestService from "../services/gradedTestService"
 import { useDispatch, useSelector } from "react-redux"
 import {
@@ -34,22 +35,19 @@ const ResultsList = () => {
           </Link>
         </>
       )}
-      {gradedTestsList.map((gt) => {
-        const d = new Date(gt.date)
-        return (
-          <Link
-            to={`/results/${gt.id}`}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <Typography variant="h4">Maths Test {gt.num}</Typography>
-            <Typography>{d.toDateString()}</Typography>
-            <Typography>{gt.percent}%</Typography>
-            <Typography>
-              {gt.marks}/{gt.total} marks
-            </Typography>
-          </Link>
-        )
-      })}
+      {gradedTestsList.map((gt) => (
+        <Link
+          to={`/results/${gt.id}`}
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <Typography variant="h4">Maths Test {gt.num}</Typography>
+          <Typography>{dayjs(gt.date).format("D MMM h:mma")}</Typography>
+          <Typography>{gt.percent}%</Typography>
+          <Typography>
+            {gt.marks}/{gt.total} marks
+          </Typography>
+        </Link>
+      ))}
     </Container>
   )
 }
