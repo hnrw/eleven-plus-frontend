@@ -31,16 +31,20 @@ import TermsAndConditions from "./components/legal/TermsAndConditions"
 
 import { setMobile } from "./reducers/mobileReducer"
 import { setProfile } from "./reducers/profileReducer"
+import { setStripe } from "./reducers/stripeReducer"
 
 import profileService from "./services/profileService"
+import userService from "./services/userService"
 
 import autoLogin from "./helpers/autoLogin"
 import incompleteProfile from "./helpers/incompleteProfile"
+import incompleteStripe from "./helpers/incompleteStripe"
 
 const App = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
   const profile = useSelector((state) => state.profile)
+  const stripe = useSelector((state) => state.stripe)
 
   useEffect(() => {
     autoLogin(dispatch)
@@ -53,10 +57,11 @@ const App = () => {
 
     if (user) {
       profileService.getProfile(user.id).then((p) => dispatch(setProfile(p)))
+      userService.getStripe(user.token).then((s) => dispatch(setStripe(s)))
     }
   }, [dispatch, user])
 
-  if (true) {
+  if (stripe && incompleteStripe(stripe)) {
     return (
       <Router>
         <Header />
