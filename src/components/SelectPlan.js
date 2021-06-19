@@ -62,6 +62,9 @@ const SelectPlan = () => {
             color="primary"
             disableElevation
             style={styles.button}
+            onClick={() =>
+              stripeService.checkout({ item: "year", email: user.email })
+            }
           >
             Choose Plan
           </Button>
