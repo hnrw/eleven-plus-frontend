@@ -151,7 +151,7 @@ const RegisterForm = () => {
                   onChange={() => setPassword(event.target.value)}
                 />
               </div>
-              <Typography variant="subtitle2">
+              {/* <Typography variant="subtitle2">
                 Which plan works best for you?
               </Typography>
               <div
@@ -175,7 +175,7 @@ const RegisterForm = () => {
                   <Typography>Annual (2 months free)</Typography>
                   <Typography>£57 / month</Typography>
                 </Paper>
-              </div>
+              </div> */}
 
               <div style={{ marginTop: 15, marginBottom: 45 }}>
                 <Button
