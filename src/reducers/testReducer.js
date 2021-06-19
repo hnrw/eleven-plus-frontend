@@ -15,7 +15,7 @@ export const selectOption = (question, option) => {
 
 export const clearTest = () => {
   return {
-    type: SET_TEST,
+    type: "SET_TEST",
     action: null,
   }
 }
