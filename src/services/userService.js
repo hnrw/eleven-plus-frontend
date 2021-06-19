@@ -32,6 +32,16 @@ const fetchUsers = async (token) => {
   return response.data
 }
 
+const getStripe = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  const response = await axios.get(`${baseUrl}/stripe`, config)
+  return response.data
+}
+
 const createUser = async (email, parentName, password) => {
   const object = {
     email,
@@ -72,6 +82,7 @@ export default {
   getProfile,
   getData,
   createUser,
+  getStripe,
   fetchUsers,
   searchUsers,
   editUser,
