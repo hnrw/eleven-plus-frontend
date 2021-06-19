@@ -18,23 +18,8 @@ import bouncedUserService from "../../services/bouncedUserService"
 import userService from "../../services/userService"
 import loginService from "../../services/loginService"
 
-const paper = {
-  marginTop: 20,
-  paddingTop: 20,
-  paddingBottom: 20,
-  width: 280,
-  textAlign: "center",
-  cursor: "pointer",
-}
-
-const styles = {
-  paper: { ...paper, border: "2px solid white" }, // invisible border preserve space
-  activePaper: { ...paper, border: "2px solid #303F9F" },
-}
-
 const RegisterForm = () => {
   const [error, setError] = useState(null)
-  const [monthly, setMonthly] = useState(true)
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")

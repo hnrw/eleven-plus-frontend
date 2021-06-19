@@ -15,6 +15,7 @@ import Home from "./components/Home"
 import Test from "./components/Test"
 import Results from "./components/Results"
 import Footer from "./components/Footer"
+import SelectPlan from "./components/SelectPlan"
 import LandingPage from "./components/LandingPage"
 import Header from "./components/Header"
 import Stats from "./components/stats/Stats"
@@ -54,6 +55,15 @@ const App = () => {
       profileService.getProfile(user.id).then((p) => dispatch(setProfile(p)))
     }
   }, [dispatch, user])
+
+  if (true) {
+    return (
+      <Router>
+        <Header />
+        <SelectPlan />
+      </Router>
+    )
+  }
 
   return (
     <Router>
