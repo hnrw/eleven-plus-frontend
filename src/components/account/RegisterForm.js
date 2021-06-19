@@ -78,7 +78,7 @@ const RegisterForm = () => {
     )
 
     try {
-      wait userService.createUser(email, name, password)
+      await userService.createUser(email, name, password)
       const loggedUser = await loginService.login({
         email,
         password,
