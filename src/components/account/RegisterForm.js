@@ -71,10 +71,11 @@ const RegisterForm = () => {
     )
     try {
       await userService.createUser({ email, parentName, password })
-      await stripeService.checkout({
-        item: monthly ? "month" : "year",
+      await loginService.login({
         email,
+        password,
       })
+      history.push("/")
     } catch (err) {
       const serverError = err.response && err.response.data.error
       if (serverError === "email already in use") {
