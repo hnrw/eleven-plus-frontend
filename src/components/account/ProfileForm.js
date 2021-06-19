@@ -46,15 +46,13 @@ const RegisterForm = () => {
     //   return
     // }
 
-    const d = new Date(dob)
-
     try {
       const p = await profileService.updateProfile({
         token: user.token,
         profileData: {
           firstName,
           lastName,
-          dob: d.getTime(),
+          dob: dayjs(dob).toDate(),
           gender,
         },
       })
