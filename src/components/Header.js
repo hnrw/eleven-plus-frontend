@@ -8,6 +8,9 @@ import wave from "../assets/wave.png"
 import logotext from "../assets/logotext.png"
 
 import { clearUser } from "../reducers/userReducer"
+import { clearProfile } from "../reducers/profileReducer"
+import { clearTest } from "../reducers/testReducer"
+import { clearStripe } from "../reducers/stripeReducer"
 
 const Header = () => {
   const history = useHistory()
@@ -17,6 +20,9 @@ const Header = () => {
   const handleLogout = (event) => {
     event.preventDefault()
     dispatch(clearUser())
+    dispatch(clearProfile())
+    dispatch(clearTest())
+    dispatch(clearStripe())
     history.push("/")
   }
 

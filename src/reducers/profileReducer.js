@@ -5,6 +5,13 @@ export const setProfile = (profile) => {
   }
 }
 
+export const clearProfile = () => {
+  return {
+    type: "SET_PROFILE",
+    data: null,
+  }
+}
+
 export const updateProfile = (profile) => {
   return {
     type: "UPDATE_PROFILE",

@@ -5,6 +5,13 @@ export const setStripe = (stripeData) => {
   }
 }
 
+export const clearStripe = () => {
+  return {
+    type: "SET_STRIPE",
+    data: null,
+  }
+}
+
 const stripeReducer = (state = null, action) => {
   switch (action.type) {
     case "SET_STRIPE":

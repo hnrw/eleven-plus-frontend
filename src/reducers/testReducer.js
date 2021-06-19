@@ -13,6 +13,13 @@ export const selectOption = (question, option) => {
   }
 }
 
+export const clearTest = () => {
+  return {
+    type: SET_TEST,
+    action: null,
+  }
+}
+
 const testReducer = (state = null, action) => {
   switch (action.type) {
     case "SET_TEST":
