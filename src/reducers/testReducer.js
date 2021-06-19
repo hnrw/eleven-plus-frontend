@@ -1,7 +1,7 @@
 export const setTest = (test) => {
   return {
     type: "SET_TEST",
-    test,
+    data: test,
   }
 }
 
@@ -16,14 +16,14 @@ export const selectOption = (question, option) => {
 export const clearTest = () => {
   return {
     type: "SET_TEST",
-    action: null,
+    data: null,
   }
 }
 
 const testReducer = (state = null, action) => {
   switch (action.type) {
     case "SET_TEST":
-      return action.test
+      return action.data
     case "SELECT_OPTION":
       return {
         ...state,
