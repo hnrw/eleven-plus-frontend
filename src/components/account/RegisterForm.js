@@ -7,11 +7,16 @@ import {
   Grid,
   Paper,
 } from "@material-ui/core"
+import { useHistory } from "react-router-dom"
 import { Alert } from "@material-ui/lab"
 import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { setUser } from "../../reducers/userReducer"
 import wave from "../../assets/wave.png"
 import stripeService from "../../services/stripeService"
 import bouncedUserService from "../../services/bouncedUserService"
+import userService from "../../services/userService"
+import loginService from "../../services/loginService"
 
 const paper = {
   marginTop: 20,
@@ -33,6 +38,8 @@ const RegisterForm = () => {
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
+  const history = useHistory()
+  const dispatch = useDispatch()
 
   document.title = "Waterfront - sign up"
 
@@ -69,13 +76,15 @@ const RegisterForm = () => {
       "waterfrontRegisterForm",
       JSON.stringify({ email, name })
     )
+
     try {
-      await userService.createUser({ email, parentName, password })
-      await loginService.login({
+      wait userService.createUser(email, name, password)
+      const loggedUser = await loginService.login({
         email,
         password,
       })
-      history.push("/")
+      dispatch(setUser(loggedUser))
+      history.push(`/`)
     } catch (err) {
       const serverError = err.response && err.response.data.error
       if (serverError === "email already in use") {
@@ -151,32 +160,6 @@ const RegisterForm = () => {
                   onChange={() => setPassword(event.target.value)}
                 />
               </div>
-              {/* <Typography variant="subtitle2">
-                Which plan works best for you?
-              </Typography>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Paper
-                  onClick={() => setMonthly(true)}
-                  style={monthly ? styles.activePaper : styles.paper}
-                >
-                  <Typography>Monthly</Typography>
-                  <Typography>£69 / month</Typography>
-                </Paper>
-                <Paper
-                  onClick={() => setMonthly(false)}
-                  style={!monthly ? styles.activePaper : styles.paper}
-                >
-                  <Typography>Annual (2 months free)</Typography>
-                  <Typography>£57 / month</Typography>
-                </Paper>
-              </div> */}
-
               <div style={{ marginTop: 15, marginBottom: 45 }}>
                 <Button
                   type="submit"
