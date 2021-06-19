@@ -4,11 +4,10 @@ import { TextField, Typography, Container, Button } from "@material-ui/core"
 const SelectPlan = () => {
   return (
     <Container>
-      <Typography>This is line one</Typography>
-      <Button>This is a button</Button>
       <Typography variant="subtitle2">
         Which plan works best for you?
       </Typography>
+      <Typography>All plans come with a 7 day free trial.</Typography>
       <div
         style={{
           display: "flex",
