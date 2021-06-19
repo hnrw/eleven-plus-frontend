@@ -32,10 +32,10 @@ const fetchUsers = async (token) => {
   return response.data
 }
 
-const newUser = async (email, name, password) => {
+const createUser = async (email, parentName, password) => {
   const object = {
     email,
-    name,
+    parentName,
     password,
   }
 
@@ -71,7 +71,7 @@ const deleteUser = async (token, deleteId) => {
 export default {
   getProfile,
   getData,
-  newUser,
+  createUser,
   fetchUsers,
   searchUsers,
   editUser,

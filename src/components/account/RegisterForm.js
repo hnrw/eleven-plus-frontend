@@ -70,12 +70,10 @@ const RegisterForm = () => {
       JSON.stringify({ email, name })
     )
     try {
-      await bouncedUserService.createBouncedUser({ email, parentName: name })
+      await userService.createUser({ email, parentName, password })
       await stripeService.checkout({
         item: monthly ? "month" : "year",
         email,
-        parentName: name,
-        password,
       })
     } catch (err) {
       const serverError = err.response && err.response.data.error
