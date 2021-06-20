@@ -14,6 +14,17 @@ const fetchTests = async (token) => {
   return response.data
 }
 
+const fetchSortedTests = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.get(`${url}/test-sorted`, config)
+  return response.data
+}
+
 const getTest = async (data) => {
   const { token, testId } = data
 
@@ -39,4 +50,4 @@ const submitTest = async (data) => {
   return response.data
 }
 
-export default { fetchTests, getTest, submitTest }
+export default { fetchTests, fetchSortedTests, getTest, submitTest }

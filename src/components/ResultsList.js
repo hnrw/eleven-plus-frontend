@@ -17,6 +17,8 @@ const ResultsList = () => {
   const user = useSelector((state) => state.user)
   document.title = "Waterfront - Results"
 
+  console.log(gradedTestsList)
+
   useEffect(() => {
     if (user) {
       gradedTestService
