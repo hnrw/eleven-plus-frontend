@@ -26,7 +26,7 @@ const styles = {
   button: { marginTop: 10 },
 }
 
-const SelectPlan = () => {
+const SelectPlan = ({ canceled }) => {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
@@ -45,7 +45,11 @@ const SelectPlan = () => {
       <Typography variant="subtitle2">
         Which plan works best for you?
       </Typography>
-      <Typography>All plans come with a 7 day free trial.</Typography>
+      {canceled ? (
+        <Typography>Choose your plan to resume your subscription</Typography>
+      ) : (
+        <Typography>All plans come with a 7 day free trial.</Typography>
+      )}
       <div
         style={{
           display: "flex",

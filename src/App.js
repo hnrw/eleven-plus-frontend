@@ -77,7 +77,7 @@ const App = () => {
     return (
       <Router>
         <Header />
-        <SelectPlan cancelled />
+        <SelectPlan canceled />
       </Router>
     )
   }
