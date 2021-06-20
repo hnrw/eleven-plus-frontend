@@ -69,6 +69,18 @@ const App = () => {
       </Router>
     )
   }
+  const subCancelled = (stripe) => {
+    return stripe.subscription.status === "cancelled"
+  }
+
+  if (stripe && subCancelled(stripe)) {
+    return (
+      <Router>
+        <Header />
+        <SelectPlan cancelled />
+      </Router>
+    )
+  }
 
   return (
     <Router>
