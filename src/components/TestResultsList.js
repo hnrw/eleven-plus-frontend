@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core"
 import dayjs from "dayjs"
 import { Link } from "react-router-dom"
+import TestLineProgress from "./stats/TestLineProgress"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
@@ -41,11 +42,22 @@ const TestResultsList = () => {
   if (testsList.length === 0) {
     return null
   }
-  console.log(testsList)
 
   const test = testsList.filter((t) => t.testId === id)[0]
   const { attempts } = test
-  console.log(test)
+
+  const lineEntry = attempts.map((a, i) => ({
+    x: i + 1,
+    y: a.percent,
+  }))
+
+  const data = [
+    {
+      id: "maths",
+      color: "hsl(80, 70%, 50%)",
+      data: lineEntry,
+    },
+  ]
 
   return (
     <Container>
@@ -70,6 +82,9 @@ const TestResultsList = () => {
           <Divider style={styles.divider} />
         </Link>
       ))}
+      <div style={{ height: 400 }}>
+        <TestLineProgress data={data} />
+      </div>
     </Container>
   )
 }
