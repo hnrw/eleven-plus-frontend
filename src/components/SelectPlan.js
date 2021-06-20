@@ -7,6 +7,8 @@ import {
   Paper,
 } from "@material-ui/core"
 import stripeService from "../services/stripeService"
+import userService from "../services/userService"
+import { setStripe } from "../reducers/stripeReducer"
 import { useDispatch, useSelector } from "react-redux"
 
 const paper = {
@@ -26,6 +28,18 @@ const styles = {
 
 const SelectPlan = () => {
   const user = useSelector((state) => state.user)
+  const dispatch = useDispatch()
+
+  const interval = setInterval(async () => {
+    if (user) {
+      const stripe = await userService.getStripe(user.token)
+      if (stripe.stripeId) {
+        dispatch(setStripe(stripe))
+        clearInterval(interval)
+      }
+    }
+  }, 1000)
+
   return (
     <Container>
       <Typography variant="subtitle2">
