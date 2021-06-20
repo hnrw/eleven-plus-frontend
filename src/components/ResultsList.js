@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { TextField, Typography, Container, Button } from "@material-ui/core"
+import {
+  Divider,
+  TextField,
+  Typography,
+  Container,
+  Button,
+} from "@material-ui/core"
 import dayjs from "dayjs"
 import gradedTestService from "../services/gradedTestService"
 import { useDispatch, useSelector } from "react-redux"
@@ -12,6 +18,12 @@ import {
   useHistory,
 } from "react-router-dom"
 
+const styles = {
+  divider: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+}
 const ResultsList = () => {
   const [testsList, setTestsList] = useState([])
   const user = useSelector((state) => state.user)
@@ -38,13 +50,20 @@ const ResultsList = () => {
       {testsList.map((t) => {
         const multi = t.attempts.length > 1
         return (
-          <Link
-            to={`/results/${t.id}`}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <Typography variant="h4">Maths Test {t.num}</Typography>
-            {multi ? <MultipleAttempts test={t} /> : <SingleAttempt test={t} />}
-          </Link>
+          <>
+            <Link
+              to={`/results/${t.id}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <Typography variant="h4">Maths Test {t.num}</Typography>
+              {multi ? (
+                <MultipleAttempts test={t} />
+              ) : (
+                <SingleAttempt test={t} />
+              )}
+            </Link>
+            <Divider style={styles.divider} />
+          </>
         )
       })}
     </Container>
