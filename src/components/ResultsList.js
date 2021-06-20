@@ -13,23 +13,21 @@ import {
 } from "react-router-dom"
 
 const ResultsList = () => {
-  const [gradedTestsList, setGradedTestsList] = useState([])
+  const [testsList, setTestsList] = useState([])
   const user = useSelector((state) => state.user)
   document.title = "Waterfront - Results"
-
-  console.log(gradedTestsList)
 
   useEffect(() => {
     if (user) {
       gradedTestService
-        .fetchTests(user.token)
-        .then((r) => setGradedTestsList(r))
+        .fetchSortedTests(user.token)
+        .then((r) => setTestsList(r))
     }
   }, [user])
 
   return (
     <Container>
-      {gradedTestsList.length === 0 && (
+      {testsList.length === 0 && (
         <>
           <Typography>Take your first test to see results</Typography>
           <Link to="/home">
@@ -37,21 +35,50 @@ const ResultsList = () => {
           </Link>
         </>
       )}
-      {gradedTestsList.map((gt) => (
-        <Link
-          to={`/results/${gt.id}`}
-          style={{ textDecoration: "none", color: "black" }}
-        >
-          <Typography variant="h4">Maths Test {gt.num}</Typography>
-          <Typography>{dayjs(gt.date).format("D MMM h:mma")}</Typography>
-          <Typography>{gt.percent}%</Typography>
-          <Typography>
-            {gt.marks}/{gt.total} marks
-          </Typography>
-        </Link>
-      ))}
+      {testsList.map((t) => {
+        const multi = t.attempts.length > 1
+        return (
+          <Link
+            to={`/results/${t.id}`}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <Typography variant="h4">Maths Test {t.num}</Typography>
+            {multi ? <MultipleAttempts test={t} /> : <SingleAttempt test={t} />}
+          </Link>
+        )
+      })}
     </Container>
   )
 }
 
+const SingleAttempt = ({ test }) => {
+  const gt = test.attempts[0]
+  return (
+    <>
+      <Typography>{dayjs(gt.date).format("D MMM h:mma")}</Typography>
+      <Typography>{gt.percent}%</Typography>
+      <Typography>
+        {gt.marks}/{gt.total} marks
+      </Typography>
+    </>
+  )
+}
+const MultipleAttempts = ({ test }) => {
+  const profile = useSelector((state) => state.profile)
+  const attempts = test.attempts.length
+  const averagePercent = _.meanBy(test.attempts, (a) => a.percent)
+  const averageMarks = _.meanBy(test.attempts, (a) => a.marks)
+  const totalMarks = test.attempts[0].total
+  return (
+    <>
+      <Typography>
+        {profile.firstName} has attempted this test {attempts} times
+      </Typography>
+      <Typography>{averagePercent}%</Typography>
+      <Typography>
+        {averageMarks}/{totalMarks} marks
+      </Typography>
+    </>
+  )
+}
 export default ResultsList
