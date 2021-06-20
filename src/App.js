@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux"
 import MyToaster from "./components/MyToaster"
 import Admin from "./components/Admin"
 import ResultsList from "./components/ResultsList"
+import TestResultsList from "./components/TestResultsList"
 import TestForm from "./components/TestForm"
 import Home from "./components/Home"
 import Test from "./components/Test"
@@ -90,6 +91,9 @@ const App = () => {
           <Header />
           {profile && incompleteProfile(profile) && <ProfileForm />}
           <Switch>
+            <Route path="/results/test/:id">
+              <TestResultsList />
+            </Route>
             <Route path="/results/:id">
               <Results />
             </Route>

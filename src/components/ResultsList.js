@@ -83,7 +83,7 @@ const MultipleAttempts = ({ test }) => {
   console.log(test.attempts)
   return (
     <Link
-      // to={`/results/${t.id}`}
+      to={`/results/test/${test.testId}`}
       style={{ textDecoration: "none", color: "black", cursor: "pointer" }}
     >
       <Typography variant="h4">Maths Test {test.attempts[0].num}</Typography>
