@@ -24,6 +24,7 @@ const styles = {
     marginBottom: 20,
   },
 }
+
 const ResultsList = () => {
   const [testsList, setTestsList] = useState([])
   const user = useSelector((state) => state.user)
@@ -37,33 +38,31 @@ const ResultsList = () => {
     }
   }, [user])
 
+  if (testsList.length === 0) {
+    return null
+  }
+
   return (
     <Container>
-      {testsList.length === 0 && (
-        <>
-          <Typography>Take your first test to see results</Typography>
-          <Link to="/home">
-            <Button>Home</Button>
-          </Link>
-        </>
-      )}
       {testsList.map((t) => {
         return t.attempts.length > 1 ? (
           <MultipleAttempts test={t} />
         ) : (
-          <SingleAttempt test={t} />
+          <SingleAttempt gt={t.attempts[0]} />
         )
       })}
     </Container>
   )
 }
 
-const SingleAttempt = ({ test }) => {
-  const gt = test.attempts[0]
+const SingleAttempt = ({ gt }) => {
   return (
     <Link
-      to={`/results/${test.id}`}
-      style={{ textDecoration: "none", color: "black" }}
+      to={`/results/${gt.id}`}
+      style={{
+        textDecoration: "none",
+        color: "black",
+      }}
     >
       <Typography variant="h4">Maths Test {gt.num}</Typography>
       <Typography>{dayjs(gt.date).format("D MMM h:mma")}</Typography>
@@ -81,14 +80,15 @@ const MultipleAttempts = ({ test }) => {
   const averagePercent = _.meanBy(test.attempts, (a) => a.percent)
   const averageMarks = _.meanBy(test.attempts, (a) => a.marks)
   const totalMarks = test.attempts[0].total
+  console.log(test.attempts)
   return (
     <Link
       // to={`/results/${t.id}`}
-      style={{ textDecoration: "none", color: "black" }}
+      style={{ textDecoration: "none", color: "black", cursor: "pointer" }}
     >
       <Typography variant="h4">Maths Test {test.attempts[0].num}</Typography>
       <Typography>
-        {profile.firstName} has attempted this test {attempts} times
+        {profile?.firstName} has attempted this test {attempts} times
       </Typography>
       <Typography>{averagePercent}%</Typography>
       <Typography>
