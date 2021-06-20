@@ -70,7 +70,7 @@ const App = () => {
     )
   }
   const subCancelled = (stripe) => {
-    return stripe.subscription.status === "cancelled"
+    return stripe.subscription?.status === "cancelled"
   }
 
   if (stripe && subCancelled(stripe)) {

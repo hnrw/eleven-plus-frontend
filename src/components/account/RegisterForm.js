@@ -85,6 +85,7 @@ const RegisterForm = () => {
     marginTop: 5,
     marginBottom: 5,
   }
+
   return (
     <Container>
       {error && <Alert severity="error">{error}</Alert>}
