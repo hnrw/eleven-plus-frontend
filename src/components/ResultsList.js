@@ -48,22 +48,10 @@ const ResultsList = () => {
         </>
       )}
       {testsList.map((t) => {
-        const multi = t.attempts.length > 1
-        return (
-          <>
-            <Link
-              to={`/results/${t.id}`}
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <Typography variant="h4">Maths Test {t.num}</Typography>
-              {multi ? (
-                <MultipleAttempts test={t} />
-              ) : (
-                <SingleAttempt test={t} />
-              )}
-            </Link>
-            <Divider style={styles.divider} />
-          </>
+        return t.attempts.length > 1 ? (
+          <MultipleAttempts test={t} />
+        ) : (
+          <SingleAttempt test={t} />
         )
       })}
     </Container>
@@ -73,13 +61,18 @@ const ResultsList = () => {
 const SingleAttempt = ({ test }) => {
   const gt = test.attempts[0]
   return (
-    <>
+    <Link
+      to={`/results/${test.id}`}
+      style={{ textDecoration: "none", color: "black" }}
+    >
+      <Typography variant="h4">Maths Test {gt.num}</Typography>
       <Typography>{dayjs(gt.date).format("D MMM h:mma")}</Typography>
       <Typography>{gt.percent}%</Typography>
       <Typography>
         {gt.marks}/{gt.total} marks
       </Typography>
-    </>
+      <Divider style={styles.divider} />
+    </Link>
   )
 }
 const MultipleAttempts = ({ test }) => {
@@ -89,7 +82,11 @@ const MultipleAttempts = ({ test }) => {
   const averageMarks = _.meanBy(test.attempts, (a) => a.marks)
   const totalMarks = test.attempts[0].total
   return (
-    <>
+    <Link
+      // to={`/results/${t.id}`}
+      style={{ textDecoration: "none", color: "black" }}
+    >
+      <Typography variant="h4">Maths Test {test.attempts[0].num}</Typography>
       <Typography>
         {profile.firstName} has attempted this test {attempts} times
       </Typography>
@@ -97,7 +94,8 @@ const MultipleAttempts = ({ test }) => {
       <Typography>
         {averageMarks}/{totalMarks} marks
       </Typography>
-    </>
+      <Divider style={styles.divider} />
+    </Link>
   )
 }
 export default ResultsList
