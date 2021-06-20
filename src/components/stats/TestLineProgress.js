@@ -16,12 +16,13 @@ const TestLineProgress = ({ data }) => {
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
-        min: "auto",
-        max: "auto",
+        min: 0,
+        max: 100,
         stacked: true,
         reverse: false,
       }}
       yFormat=" >-.2f"
+      enableArea
       axisTop={null}
       axisRight={null}
       axisBottom={{
@@ -29,7 +30,7 @@ const TestLineProgress = ({ data }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "transportation",
+        legend: "attempt",
         legendOffset: 36,
         legendPosition: "middle",
       }}
@@ -38,7 +39,7 @@ const TestLineProgress = ({ data }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "count",
+        legend: "percent",
         legendOffset: -40,
         legendPosition: "middle",
       }}
@@ -48,6 +49,7 @@ const TestLineProgress = ({ data }) => {
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
       useMesh={true}
+      tooltip={(p) => `${p.point.data.y}%`}
       legends={[
         {
           anchor: "bottom-right",
