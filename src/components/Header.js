@@ -16,6 +16,7 @@ const Header = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
+  const stripe = useSelector((state) => state.stripe)
 
   const handleLogout = (event) => {
     event.preventDefault()
@@ -27,7 +28,7 @@ const Header = () => {
   }
 
   const handlePortal = async () => {
-    const url = await stripeService.portal("cus_JdpOfqNdv2VRhP")
+    const url = await stripeService.portal(stripe.stripeId)
     window.location.replace(url)
   }
 
