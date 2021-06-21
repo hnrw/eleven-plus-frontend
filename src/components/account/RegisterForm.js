@@ -13,8 +13,6 @@ import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { setUser } from "../../reducers/userReducer"
 import wave from "../../assets/wave.png"
-import stripeService from "../../services/stripeService"
-import bouncedUserService from "../../services/bouncedUserService"
 import userService from "../../services/userService"
 import loginService from "../../services/loginService"
 
