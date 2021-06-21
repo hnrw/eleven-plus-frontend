@@ -6,6 +6,7 @@ import {
   Button,
   Paper,
 } from "@material-ui/core"
+import { Alert } from "@material-ui/lab"
 import stripeService from "../services/stripeService"
 import userService from "../services/userService"
 import { setStripe } from "../reducers/stripeReducer"
@@ -24,6 +25,9 @@ const styles = {
   paper: { ...paper, border: "2px solid white" }, // invisible border preserve space
   activePaper: { ...paper, border: "2px solid #303F9F" },
   button: { marginTop: 10 },
+  banner: {
+    backgroundColor: "green",
+  },
 }
 
 const SelectPlan = ({ canceled }) => {
@@ -41,54 +45,58 @@ const SelectPlan = ({ canceled }) => {
   }, 1000)
 
   return (
-    <Container>
-      <Typography variant="subtitle2">
-        Which plan works best for you?
-      </Typography>
-      {canceled ? (
-        <Typography>Choose your plan to resume your subscription</Typography>
-      ) : (
-        <Typography>All plans come with a 7 day free trial.</Typography>
-      )}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Paper style={styles.paper}>
-          <Typography>Monthly</Typography>
-          <Typography>£69 / month</Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            disableElevation
-            style={styles.button}
-            onClick={() =>
-              stripeService.checkout({ item: "month", email: user.email })
-            }
-          >
-            Choose Plan
-          </Button>
-        </Paper>
-        <Paper style={styles.paper}>
-          <Typography>Annual (2 months free)</Typography>
-          <Typography>£57 / month</Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            disableElevation
-            style={styles.button}
-            onClick={() =>
-              stripeService.checkout({ item: "year", email: user.email })
-            }
-          >
-            Choose Plan
-          </Button>
-        </Paper>
-      </div>
-    </Container>
+    <>
+      <Alert>This is a banner</Alert>
+      {/* <Alert>This is a banner</Alert> */}
+      <Container>
+        <Typography variant="subtitle2">
+          Which plan works best for you?
+        </Typography>
+        {canceled ? (
+          <Typography>Choose your plan to resume your subscription</Typography>
+        ) : (
+          <Typography>All plans come with a 7 day free trial.</Typography>
+        )}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Paper style={styles.paper}>
+            <Typography>Monthly</Typography>
+            <Typography>£69 / month</Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              disableElevation
+              style={styles.button}
+              onClick={() =>
+                stripeService.checkout({ item: "month", email: user.email })
+              }
+            >
+              Choose Plan
+            </Button>
+          </Paper>
+          <Paper style={styles.paper}>
+            <Typography>Annual (2 months free)</Typography>
+            <Typography>£57 / month</Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              disableElevation
+              style={styles.button}
+              onClick={() =>
+                stripeService.checkout({ item: "year", email: user.email })
+              }
+            >
+              Choose Plan
+            </Button>
+          </Paper>
+        </div>
+      </Container>
+    </>
   )
 }
 

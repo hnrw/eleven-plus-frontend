@@ -61,10 +61,7 @@ const Header = () => {
 
   return (
     <>
-      <span>
-        {user?.email} {user?.name}
-      </span>
-      <AppBar position="fixed" style={{ margin: 0, backgroundColor: "white" }}>
+      <AppBar position="static" style={{ margin: 0, backgroundColor: "white" }}>
         <Toolbar>
           <Link to="/" style={{ textDecoration: "none", color: "black" }}>
             <span>
@@ -76,9 +73,7 @@ const Header = () => {
             {user ? loggedIn() : loggedOut()}
           </section>
         </Toolbar>
-        <Divider />
       </AppBar>
-      <Toolbar />
     </>
   )
 }
