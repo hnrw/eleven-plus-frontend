@@ -74,7 +74,6 @@ const RegisterForm = () => {
         showError("email already in use")
         return
       }
-
       showError("unexpected error")
     }
   }
