@@ -26,8 +26,12 @@ const styles = {
   activePaper: { ...paper, border: "2px solid #303F9F" },
   button: { marginTop: 10 },
   banner: {
-    backgroundColor: "green",
+    border: "1px solid #BCC3BC",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
   },
+  centerText: {},
 }
 
 const SelectPlan = ({ canceled }) => {
@@ -46,8 +50,9 @@ const SelectPlan = ({ canceled }) => {
 
   return (
     <>
-      <Alert>This is a banner</Alert>
-      {/* <Alert>This is a banner</Alert> */}
+      <Alert style={styles.banner}>
+        Please choose a plan to continue using Waterfront
+      </Alert>
       <Container>
         <Typography variant="subtitle2">
           Which plan works best for you?
