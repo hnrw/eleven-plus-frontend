@@ -1,41 +1,64 @@
 import React, { useEffect, useState } from "react"
 import { ResponsiveRadar } from "@nivo/radar"
+import gradedCategoryService from "../../services/gradedCategoryService"
+import { useDispatch, useSelector } from "react-redux"
+
+// const radar = [
+//   {
+//     skill: "Arithmetic",
+//     Simon: 50,
+//     Average: 50,
+//   },
+//   {
+//     skill: "Numbers",
+//     Simon: 86,
+//     Average: 50,
+//   },
+//   {
+//     skill: "Shapes",
+//     Simon: 30,
+//     Average: 50,
+//   },
+//   {
+//     skill: "Units",
+//     Simon: 60,
+//     Average: 50,
+//   },
+//   {
+//     skill: "Algebra",
+//     Simon: 90,
+//     Average: 50,
+//   },
+// ]
 
 const Radar = () => {
-  const radar = [
-    {
-      skill: "Arithmetic",
-      Simon: 50,
-      Average: 50,
-    },
-    {
-      skill: "Numbers",
-      Simon: 86,
-      Average: 50,
-    },
-    {
-      skill: "Shapes",
-      Simon: 30,
-      Average: 50,
-    },
-    {
-      skill: "Units",
-      Simon: 60,
-      Average: 50,
-    },
-    {
-      skill: "Algebra",
-      Simon: 90,
-      Average: 50,
-    },
-  ]
+  const user = useSelector((state) => state.user)
+  const [gcs, setGcs] = useState(null)
+
+  useEffect(() => {
+    if (user) {
+      gradedCategoryService
+        .getGradedCategories(user.token)
+        .then((gc) => setGcs(gc))
+    }
+  }, [user])
+
+  if (!gcs) return null
+  const calculatePercent = (gc) => Math.round((100 * gc.correct) / gc.attempts)
+
+  const data = gcs.map((gc) => ({
+    category: gc.categoryName,
+    Score: calculatePercent(gc),
+  }))
+  console.log(data)
+
   return (
     <>
       <div style={{ height: 500, fontFamily: "Roboto" }}>
         <ResponsiveRadar
-          data={radar}
-          keys={["Simon", "Average"]}
-          indexBy="skill"
+          data={data}
+          keys={["Score"]}
+          indexBy="category"
           maxValue={100}
           margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
           curve="linearClosed"

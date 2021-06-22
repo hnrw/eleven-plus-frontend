@@ -12,10 +12,12 @@ const Stats = () => {
   const capitalize = ([first, ...rest]) =>
     first.toUpperCase() + rest.join("").toLowerCase()
 
+  if (!profile) return null
+
   const name = capitalize(profile.firstName)
   return (
     <>
-      {/* <Radar /> */}
+      <Radar />
       <Container maxWidth="md">
         <Typography variant="h4" style={{ textAlign: "center" }}>
           We are currently processing {name}'s results.

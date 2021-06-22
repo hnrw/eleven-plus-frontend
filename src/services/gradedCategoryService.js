@@ -9,7 +9,7 @@ const getGradedCategories = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   }
-  const response = await axios.get(url)
+  const response = await axios.get(url, config)
   return response.data
 }
 
