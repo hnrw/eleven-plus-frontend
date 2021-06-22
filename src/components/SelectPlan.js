@@ -18,20 +18,33 @@ const paper = {
   paddingBottom: 20,
   width: 280,
   textAlign: "center",
-  cursor: "pointer",
 }
 
 const styles = {
-  paper: { ...paper, border: "2px solid white" }, // invisible border preserve space
-  activePaper: { ...paper, border: "2px solid #303F9F" },
-  button: { marginTop: 10 },
+  paper: {
+    ...paper,
+    border: "2px solid white",
+    margin: 10,
+  },
+  button: {
+    marginTop: 10,
+  },
   banner: {
     border: "1px solid #BCC3BC",
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
+    marginBottom: 20,
   },
-  centerText: {},
+  centerText: {
+    textAlign: "center",
+    marginBottom: 10,
+  },
+  flexRow: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
 }
 
 const SelectPlan = ({ canceled }) => {
@@ -54,21 +67,24 @@ const SelectPlan = ({ canceled }) => {
         Please choose a plan to continue using Waterfront
       </Alert>
       <Container>
-        <Typography variant="subtitle2">
-          Which plan works best for you?
+        <Typography variant="h4" color="textPrimary" style={styles.centerText}>
+          <b>Choose a plan</b>
         </Typography>
         {canceled ? (
-          <Typography>Choose your plan to resume your subscription</Typography>
+          <Typography style={styles.centerText}>
+            Choose your plan to resume your subscription
+          </Typography>
         ) : (
-          <Typography>All plans come with a 7 day free trial.</Typography>
+          <>
+            <Typography style={styles.centerText}>
+              Don't worry, you can change your plan at any time
+            </Typography>
+            <Typography style={styles.centerText}>
+              All plans come with a <b>7 day free trial</b>
+            </Typography>
+          </>
         )}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <div style={styles.flexRow}>
           <Paper style={styles.paper}>
             <Typography>Monthly</Typography>
             <Typography>£69 / month</Typography>
@@ -100,6 +116,15 @@ const SelectPlan = ({ canceled }) => {
             </Button>
           </Paper>
         </div>
+        <Container maxWidth="sm">
+          <Typography style={styles.centerText}>
+            One mock maths test per week
+          </Typography>
+          <Typography style={styles.centerText}>
+            See how your child's results compare to other 11+ students
+          </Typography>
+          <Typography style={styles.centerText}>Detailed stats</Typography>
+        </Container>
       </Container>
     </>
   )
