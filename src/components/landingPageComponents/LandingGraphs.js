@@ -26,19 +26,19 @@ const LandingGraphs = () => {
     <Container maxWidth="md">
       <div style={styles.section}>
         <Typography style={styles.header} variant="h3">
+          <b>Track your child's progress over time</b>
+        </Typography>
+        <LandingLineProgress />
+      </div>
+
+      <div style={styles.section}>
+        <Typography style={styles.header} variant="h3">
           <b>Detailed breakdown of your child's strength and weaknesses</b>
         </Typography>
         <Typography style={styles.header} variant="h3">
           {/* <b>Detailed Breakdown of your Child's Strength and Weaknesses</b> */}
         </Typography>
         <LandingRadar />
-      </div>
-
-      <div style={styles.section}>
-        <Typography style={styles.header} variant="h3">
-          <b>Track your child's progress over time</b>
-        </Typography>
-        <LandingLineProgress />
       </div>
 
       <div style={styles.section}>
