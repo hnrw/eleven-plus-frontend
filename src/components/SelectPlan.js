@@ -11,6 +11,7 @@ import stripeService from "../services/stripeService"
 import userService from "../services/userService"
 import { setStripe } from "../reducers/stripeReducer"
 import { useDispatch, useSelector } from "react-redux"
+import useInterval from "../hooks/useInterval"
 
 const paper = {
   marginTop: 20,
@@ -51,12 +52,11 @@ const SelectPlan = ({ canceled }) => {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
-  const interval = setInterval(async () => {
+  useInterval(async () => {
     if (user) {
       const stripe = await userService.getStripe(user.token)
       if (stripe.stripeId) {
         dispatch(setStripe(stripe))
-        clearInterval(interval)
       }
     }
   }, 1000)
