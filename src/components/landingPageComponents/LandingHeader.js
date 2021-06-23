@@ -63,7 +63,7 @@ const LandingHeader = ({ textBlack }) => {
               <Typography component="span">
                 <pre style={styles.buttonTop}>Get started today</pre>
                 <pre style={styles.buttonBottom}>
-                  Try waterfront free for 14-days
+                  Try Waterfront free for 14-days
                 </pre>
               </Typography>
             </Button>

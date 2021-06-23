@@ -15,14 +15,14 @@ const genData = (data) => {
     d = [
       {
         x: 1,
-        y: 50,
+        y: 10,
       },
     ]
   }
 
   const lastEntry = d[d.length - 1]
   const nextIndex = lastEntry.x + 1
-  const max = Math.min(100, lastEntry.y + 10)
+  const max = Math.min(100, lastEntry.y + 20)
 
   d = d.concat({
     x: nextIndex,
@@ -34,7 +34,7 @@ const genData = (data) => {
 const initData = [
   {
     x: 1,
-    y: 50,
+    y: 10,
   },
 ]
 
@@ -58,7 +58,7 @@ const LandingLineProgress = () => {
 
   return (
     <>
-      <LineProgress data={data} />
+      <LineProgress data={data} bottomLabel="week" />
     </>
   )
 }

@@ -65,8 +65,13 @@ const App = () => {
   if (stripe && incompleteStripe(stripe)) {
     return (
       <Router>
-        <Header />
-        <SelectPlan />
+        <div style={{ minHeight: "100vh", position: "relative" }}>
+          <div style={{ paddingBottom: "2.5rem" }}>
+            <Header />
+            <SelectPlan />
+          </div>
+          <Footer />
+        </div>
       </Router>
     )
   }
@@ -77,8 +82,13 @@ const App = () => {
   if (stripe && subCancelled(stripe)) {
     return (
       <Router>
-        <Header />
-        <SelectPlan canceled />
+        <div style={{ minHeight: "100vh", position: "relative" }}>
+          <div style={{ paddingBottom: "2.5rem" }}>
+            <Header />
+            <SelectPlan canceled />
+            <Footer />
+          </div>
+        </div>
       </Router>
     )
   }

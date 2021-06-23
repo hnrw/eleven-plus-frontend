@@ -46,6 +46,19 @@ const styles = {
     flexDirection: "row",
     justifyContent: "center",
   },
+  bullets: {
+    fontSize: 16,
+  },
+  bulletHeading: {
+    fontSize: 20,
+  },
+  bulletsContainer: {
+    marginTop: 40,
+  },
+  subHeading: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
 }
 
 const SelectPlan = ({ canceled }) => {
@@ -80,13 +93,13 @@ const SelectPlan = ({ canceled }) => {
               Don't worry, you can change your plan at any time
             </Typography>
             <Typography style={styles.centerText}>
-              All plans come with a <b>7 day free trial</b>
+              All plans come with a <b>14-day free trial</b>
             </Typography>
           </>
         )}
         <div style={styles.flexRow}>
           <Paper style={styles.paper}>
-            <Typography>Monthly</Typography>
+            <Typography style={styles.subHeading}>Monthly</Typography>
             <Typography>£69 / month</Typography>
             <Button
               variant="contained"
@@ -101,7 +114,9 @@ const SelectPlan = ({ canceled }) => {
             </Button>
           </Paper>
           <Paper style={styles.paper}>
-            <Typography>Annual (2 months free)</Typography>
+            <Typography style={styles.subHeading}>
+              Annual (2 months free)
+            </Typography>
             <Typography>£57 / month</Typography>
             <Button
               variant="contained"
@@ -116,14 +131,41 @@ const SelectPlan = ({ canceled }) => {
             </Button>
           </Paper>
         </div>
-        <Container maxWidth="sm">
-          <Typography style={styles.centerText}>
-            One mock maths test per week
+        <Container style={styles.bulletsContainer} maxWidth="xs">
+          <Typography style={styles.bulletHeading}>
+            Included with your subscription:
           </Typography>
-          <Typography style={styles.centerText}>
-            See how your child's results compare to other 11+ students
+          <Typography style={styles.bullets}>
+            ✔️ One new 11+ maths mock every per week
           </Typography>
-          <Typography style={styles.centerText}>Detailed stats</Typography>
+          <Typography style={styles.bullets}>
+            ✔️Compare your child's results to other 11+ students
+          </Typography>
+          <Typography style={styles.bullets}>
+            ✔️Detailed result analytics
+          </Typography>
+          <Typography style={styles.bullets}>
+            ✔️ Retry tests an unlimited amount
+          </Typography>
+          <Typography style={styles.bullets}>
+            ✔️ Track your child's progress
+          </Typography>
+          <Typography style={styles.bullets}>
+            ✔️ Rewards and certificates for top students
+          </Typography>
+          <Typography style={styles.bullets} paragraph>
+            ✔️ ️Easy to use online test taking platform
+          </Typography>
+          <Typography style={styles.bulletHeading}>Coming soon:</Typography>
+          <Typography style={styles.bullets}>
+            ⏳ Daily practice problems
+          </Typography>
+          <Typography style={styles.bullets}>
+            ⏳ AI problems tailored for your child's weaknesses
+          </Typography>
+          <Typography style={styles.bullets}>
+            ⏳ Ranking and level up system
+          </Typography>
         </Container>
       </Container>
     </>

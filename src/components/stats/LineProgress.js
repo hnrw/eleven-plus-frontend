@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core"
 import { ResponsiveLine } from "@nivo/line"
 
-const LineProgress = ({ data }) => {
+const LineProgress = ({ data, bottomLabel }) => {
   console.log(data)
   return (
     <div style={{ height: 400, fontFamily: "Roboto" }}>
@@ -33,7 +33,7 @@ const LineProgress = ({ data }) => {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "attempt",
+          legend: bottomLabel,
           legendOffset: 36,
           legendPosition: "middle",
         }}
