@@ -11,7 +11,7 @@ import LineProgress from "../stats/LineProgress"
 const LandingLineProgress = () => {
   return (
     <>
-      <TestLineProgress />
+      {/* <LineProgress /> */}
       <Typography>This is line one</Typography>
       <Button>This is a button</Button>
     </>

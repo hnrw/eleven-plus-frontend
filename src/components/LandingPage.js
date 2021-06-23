@@ -34,6 +34,7 @@ const LandingPage = () => {
         <Percentile />
         <HalfPie />
         <LandingRadar />
+        <LandingLineProgress />
       </Container>
       <HowItWorks textBlack={textBlack} />
 
