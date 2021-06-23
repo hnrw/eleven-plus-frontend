@@ -49,6 +49,8 @@ const TestResultsList = () => {
   const user = useSelector((state) => state.user)
   const { id } = useParams()
 
+  // this should fetch just the correct test from the id
+  // currently fetches them all, then filters. idk why
   useEffect(() => {
     if (user) {
       gradedTestService
