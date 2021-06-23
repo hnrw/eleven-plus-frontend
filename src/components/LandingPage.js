@@ -1,7 +1,13 @@
 import React, { useState } from "react"
+import {
+  TextField,
+  Container,
+  Button,
+  Typography,
+  Grid,
+} from "@material-ui/core"
 import { useSelector } from "react-redux"
 import { Redirect } from "react-router-dom"
-import { Container } from "@material-ui/core"
 
 import LandingHeader from "./landingPageComponents/LandingHeader"
 import WhatsBackstage from "./landingPageComponents/WhatsBackstage"
@@ -14,6 +20,12 @@ import HalfPie from "./stats/HalfPie"
 import LandingRadar from "./landingPageComponents/LandingRadar"
 import LandingLineProgress from "./landingPageComponents/LandingLineProgress"
 
+const styles = {
+  section: {
+    marginTop: 80,
+  },
+}
+
 const LandingPage = () => {
   const user = useSelector((state) => state.user)
   document.title = "Waterfront 11+ Exam Preparation"
@@ -24,19 +36,39 @@ const LandingPage = () => {
       <LandingHeader textBlack={textBlack} />
       <WhatsBackstage textBlack={textBlack} />
 
-      <Container
+      {/* <Container
         style={{
           backgroundColor: "#FFEEE2",
           marginTop: 30,
           paddingTop: 20,
         }}
-      >
-        <Percentile />
-        <HalfPie />
-        <LandingRadar />
-        <LandingLineProgress />
-      </Container>
+      > */}
+
       <HowItWorks textBlack={textBlack} />
+
+      <Container maxWidth="md">
+        <div style={styles.section}>
+          <Typography style={{ textAlign: "center" }} variant="h3">
+            <b>Detailed breakdown of your child's strength and weaknesses</b>
+          </Typography>
+          <LandingRadar />
+        </div>
+
+        <div style={styles.section}>
+          <Typography style={{ textAlign: "center" }} variant="h3">
+            <b>Track your child's progress over time</b>
+          </Typography>
+          <LandingLineProgress />
+        </div>
+
+        <div style={styles.section}>
+          <Typography style={{ textAlign: "center" }} variant="h3">
+            <b>See how your child ranks against the competition</b>
+          </Typography>
+          {/* <Percentile /> */}
+          <HalfPie />
+        </div>
+      </Container>
 
       <LandingFooter textBlack={textBlack} />
     </>

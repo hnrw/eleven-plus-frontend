@@ -6,7 +6,7 @@ const HowItWorks = ({ textBlack }) => {
     <Container
       maxWidth={false}
       style={{
-        // backgroundColor: "#FFEEE2",
+        backgroundColor: "#FFEEE2",
         paddingTop: 40,
         paddingBottom: 40,
       }}

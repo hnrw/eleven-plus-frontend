@@ -76,7 +76,8 @@ const HalfPie = () => {
         arcLabel="id"
         arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
         enableArcLinkLabels={false}
-        colors={{ datum: "data.color" }}
+        // colors={{ datum: "data.color" }}
+        colors={{ scheme: "green_blue" }}
         theme={{ fontSize: 14 }}
         isInteractive={false}
       />
