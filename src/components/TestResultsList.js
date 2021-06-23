@@ -82,9 +82,7 @@ const TestResultsList = () => {
           <Divider style={styles.divider} />
         </Link>
       ))}
-      <div style={{ height: 400, fontFamily: "Roboto" }}>
-        <TestLineProgress data={data} />
-      </div>
+      <TestLineProgress data={data} />
     </Container>
   )
 }
