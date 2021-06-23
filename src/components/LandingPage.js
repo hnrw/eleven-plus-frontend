@@ -14,17 +14,10 @@ import WhatsBackstage from "./landingPageComponents/WhatsBackstage"
 import HowItWorks from "./landingPageComponents/HowItWorks"
 import LandingMain from "./landingPageComponents/LandingMain"
 import LandingFooter from "./landingPageComponents/LandingFooter"
+import LandingGraphs from "./landingPageComponents/LandingGraphs"
 
 import Percentile from "./stats/Percentile"
-import HalfPie from "./stats/HalfPie"
-import LandingRadar from "./landingPageComponents/LandingRadar"
-import LandingLineProgress from "./landingPageComponents/LandingLineProgress"
 
-const styles = {
-  section: {
-    marginTop: 80,
-  },
-}
 
 const LandingPage = () => {
   const user = useSelector((state) => state.user)
@@ -45,30 +38,7 @@ const LandingPage = () => {
       > */}
 
       <HowItWorks textBlack={textBlack} />
-
-      <Container maxWidth="md">
-        <div style={styles.section}>
-          <Typography style={{ textAlign: "center" }} variant="h3">
-            <b>Detailed breakdown of your child's strength and weaknesses</b>
-          </Typography>
-          <LandingRadar />
-        </div>
-
-        <div style={styles.section}>
-          <Typography style={{ textAlign: "center" }} variant="h3">
-            <b>Track your child's progress over time</b>
-          </Typography>
-          <LandingLineProgress />
-        </div>
-
-        <div style={styles.section}>
-          <Typography style={{ textAlign: "center" }} variant="h3">
-            <b>See how your child ranks against the competition</b>
-          </Typography>
-          {/* <Percentile /> */}
-          <HalfPie />
-        </div>
-      </Container>
+      <LandingGraphs />
 
       <LandingFooter textBlack={textBlack} />
     </>

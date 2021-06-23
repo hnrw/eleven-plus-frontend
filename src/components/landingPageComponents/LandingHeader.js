@@ -5,6 +5,26 @@ import { useDispatch, useSelector } from "react-redux"
 
 import stripeService from "../../services/stripeService"
 
+const styles = {
+  button: {
+    marginBottom: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+    fontSize: 20,
+    textTransform: "none",
+  },
+  buttonTop: {
+    fontFamily: "inherit",
+    fontSize: 34,
+    margin: 0,
+  },
+  buttonBottom: {
+    fontFamily: "inherit",
+    fontSize: 16,
+    margin: 0,
+  },
+}
+
 const LandingHeader = ({ textBlack }) => {
   const history = useHistory()
   const mobile = useSelector((state) => state.mobile)
@@ -34,10 +54,18 @@ const LandingHeader = ({ textBlack }) => {
             <Button
               variant="contained"
               color="primary"
-              style={{ marginBottom: 20, paddingTop: 10, paddingBottom: 10 }}
+              // style={{ marginBottom: 20, paddingTop: 10, paddingBottom: 10 }}
+              style={styles.button}
               onClick={() => history.push("/signup")}
+              fullWidth
             >
-              Get Started
+              {/* Get started today */}
+              <Typography component="span">
+                <pre style={styles.buttonTop}>Get started today</pre>
+                <pre style={styles.buttonBottom}>
+                  Try waterfront free for 14-days
+                </pre>
+              </Typography>
             </Button>
           </Grid>
           <Grid item xs={12} sm={6}>

@@ -69,7 +69,7 @@ const LandingRadar = () => {
 
   useInterval(() => {
     setRadarData(genData)
-  }, 1500)
+  }, 1000)
 
   return (
     <>

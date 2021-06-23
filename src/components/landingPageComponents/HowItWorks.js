@@ -1,6 +1,12 @@
 import React from "react"
 import { Typography, Container, Grid } from "@material-ui/core"
 
+const styles = {
+  text: {
+    fontSize: 22,
+    color: "#121D1E",
+  },
+}
 const HowItWorks = ({ textBlack }) => {
   return (
     <Container
@@ -12,8 +18,12 @@ const HowItWorks = ({ textBlack }) => {
       }}
     >
       <Container maxWidth="lg">
-        <Typography variant="h5" align="center" style={{ marginBottom: 20 }}>
-          How it works
+        <Typography
+          variant="h4"
+          align="center"
+          style={{ marginBottom: 20, color: textBlack }}
+        >
+          <b>How it works</b>
         </Typography>
 
         <Grid container spacing={3}>
@@ -23,7 +33,7 @@ const HowItWorks = ({ textBlack }) => {
             >
               1
             </Typography>
-            <Typography align="center" paragraph variant="body1">
+            <Typography align="center" paragraph style={styles.text}>
               Every week your child completes an 11+ maths exam on our website
             </Typography>
           </Grid>
@@ -31,7 +41,7 @@ const HowItWorks = ({ textBlack }) => {
             <Typography style={{ fontSize: 60, textAlign: "center" }}>
               2
             </Typography>
-            <Typography align="center" paragraph variant="body1">
+            <Typography align="center" paragraph style={styles.text}>
               Compare their results to other children competing for grammar
               school spots
             </Typography>
@@ -40,7 +50,7 @@ const HowItWorks = ({ textBlack }) => {
             <Typography style={{ fontSize: 60, textAlign: "center" }}>
               3
             </Typography>
-            <Typography align="center" paragraph variant="body1">
+            <Typography align="center" paragraph style={styles.text}>
               Track your child's weekly progress as their results improve
             </Typography>
           </Grid>

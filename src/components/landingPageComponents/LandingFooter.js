@@ -3,38 +3,59 @@ import { Typography, Button, Container } from "@material-ui/core"
 import { useHistory } from "react-router-dom"
 import stripeService from "../../services/stripeService"
 
+const styles = {
+  container: {
+    backgroundColor: "#D8E2FC",
+    paddingTop: 40,
+    paddingBottom: 40,
+  },
+  header: {
+    textAlign: "center",
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  subHeadher: {
+    letterSpacing: 1,
+    textAlign: "center",
+    color: "121D1E",
+    marginBottom: 80,
+  },
+  text: {
+    textAlign: "center",
+    color: "121D1E",
+  },
+  button: {
+    marginBottom: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+    fontSize: 20,
+    textTransform: "none",
+  },
+}
+
 const LandingFooter = ({ textBlack }) => {
   const history = useHistory()
   return (
-    <Container
-      maxWidth={false}
-      style={{
-        backgroundColor: "#D8E2FC",
-        paddingTop: 40,
-        paddingBottom: 40,
-      }}
-    >
+    <Container maxWidth={false} style={styles.container}>
       <Container maxWidth="sm">
-        <Typography
-          variant="h4"
-          style={{
-            marginBottom: 20,
-            letterSpacing: 1,
-            textAlign: "center",
-            color: textBlack,
-          }}
-        >
-          <b>Get started today</b>
+        <Typography style={styles.header} variant="h3">
+          <b>Unlock your best new revenue channel today.</b>
+        </Typography>
+        <Typography variant="h5" style={styles.subHeadher}>
+          Get started immediately, with zero risk
         </Typography>
         <Button
           variant="contained"
           color="primary"
           fullWidth
           onClick={() => history.push("/signup")}
-          style={{ marginBottom: 20, paddingTop: 10, paddingBottom: 10 }}
+          style={styles.button}
         >
-          Sign up
+          Start preparing for the 11+ exam
         </Button>
+        <Typography style={styles.text}>
+          Try Waterfront free for 14-days
+        </Typography>
       </Container>
     </Container>
   )
