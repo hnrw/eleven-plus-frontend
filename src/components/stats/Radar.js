@@ -98,6 +98,7 @@ const Radar = () => {
           animate={true}
           motionConfig="wobbly"
           isInteractive={true}
+          tooltipFormat={(value, key) => `${value}%`}
           legends={[
             {
               anchor: "top-left",
