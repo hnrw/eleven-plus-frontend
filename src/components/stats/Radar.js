@@ -33,31 +33,48 @@ import { useDispatch, useSelector } from "react-redux"
 
 const Radar = () => {
   const user = useSelector((state) => state.user)
+  const profile = useSelector((state) => state.profile)
   const [gcs, setGcs] = useState(null)
+  const [averageGcs, setAverageGcs] = useState(null)
 
   useEffect(() => {
     if (user) {
       gradedCategoryService
         .getGradedCategories(user.token)
         .then((gc) => setGcs(gc))
+
+      gradedCategoryService.getAverageGcs().then((av) => setAverageGcs(av))
     }
   }, [user])
 
-  if (!gcs) return null
+  if (!gcs || !averageGcs || !profile) return null
+
   const calculatePercent = (gc) => Math.round((100 * gc.correct) / gc.attempts)
 
-  const data = gcs.map((gc) => ({
+  const withAverage = gcs.map((gc) => {
+    const matchedAverage = averageGcs.filter(
+      (agc) => agc.name === gc.categoryName
+    )
+    const average = matchedAverage[0].average
+    const roundedAverage = Math.round(average)
+    return {
+      ...gc,
+      average: roundedAverage,
+    }
+  })
+
+  const data = withAverage.map((gc) => ({
     category: gc.categoryName,
-    Score: calculatePercent(gc),
+    [profile.firstName]: calculatePercent(gc),
+    Average: gc.average,
   }))
-  console.log(data)
 
   return (
     <>
       <div style={{ height: 500, fontFamily: "Roboto" }}>
         <ResponsiveRadar
           data={data}
-          keys={["Score"]}
+          keys={["Average", profile.firstName]}
           indexBy="category"
           maxValue={100}
           margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
