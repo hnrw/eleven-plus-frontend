@@ -8,6 +8,7 @@ import {
   Paper,
 } from "@material-ui/core"
 import dayjs from "dayjs"
+import _ from "lodash"
 import { Link } from "react-router-dom"
 import TestLineProgress from "./stats/TestLineProgress"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
@@ -22,6 +23,23 @@ const styles = {
   },
   heading: {
     marginBottom: 10,
+  },
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  paper: {
+    paddingRight: 90,
+    paddingLeft: 90,
+    paddingTop: 20,
+    paddingBottom: 20,
+  },
+  centerText: {
+    textAlign: "center",
+  },
+  retry: {
+    marginTop: 10,
   },
 }
 
@@ -59,11 +77,37 @@ const TestResultsList = () => {
     },
   ]
 
+  const averagePercent = Math.round(_.meanBy(test.attempts, (a) => a.percent))
+  const averageMarks = Math.round(_.meanBy(test.attempts, (a) => a.marks))
+  const totalMarks = test.attempts[0].total
+
   return (
     <Container>
       <Typography style={styles.heading} variant="h4">
         Maths Test {test.num}
       </Typography>
+
+      <Container style={styles.root}>
+        <Paper style={styles.paper}>
+          <Typography style={styles.centerText} variant="h6">
+            Your average on this test
+          </Typography>
+          <Typography style={styles.centerText} variant="h3">
+            {averagePercent}%
+          </Typography>
+          <Typography style={{ textAlign: "center" }}>
+            {`${averageMarks}/${totalMarks}`} marks
+          </Typography>
+          <Button
+            variant="contained"
+            onClick={() => history.push(`/tests/${gt.testId}`)}
+            style={styles.retry}
+            fullWidth
+          >
+            Retry test
+          </Button>
+        </Paper>
+      </Container>
 
       {attempts.map((a, i) => (
         <Link
