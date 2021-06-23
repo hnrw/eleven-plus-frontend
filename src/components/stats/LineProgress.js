@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core"
 import { ResponsiveLine } from "@nivo/line"
 
-const TestLineProgress = ({ data }) => {
+const LineProgress = ({ data }) => {
   return (
     <div style={{ height: 400, fontFamily: "Roboto" }}>
       <ResponsiveLine
@@ -82,4 +82,4 @@ const TestLineProgress = ({ data }) => {
   )
 }
 
-export default TestLineProgress
+export default LineProgress

@@ -12,6 +12,7 @@ import LandingFooter from "./landingPageComponents/LandingFooter"
 import Percentile from "./stats/Percentile"
 import HalfPie from "./stats/HalfPie"
 import LandingRadar from "./landingPageComponents/LandingRadar"
+import LandingLineProgress from "./landingPageComponents/LandingLineProgress"
 
 const LandingPage = () => {
   const user = useSelector((state) => state.user)

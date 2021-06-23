@@ -10,7 +10,7 @@ import {
 import dayjs from "dayjs"
 import _ from "lodash"
 import { Link } from "react-router-dom"
-import TestLineProgress from "./stats/TestLineProgress"
+import LineProgress from "./stats/LineProgress"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
@@ -128,7 +128,7 @@ const TestResultsList = () => {
           <Divider style={styles.divider} />
         </Link>
       ))}
-      <TestLineProgress data={data} />
+      <LineProgress data={data} />
     </Container>
   )
 }
