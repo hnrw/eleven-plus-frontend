@@ -77,8 +77,8 @@ const SingleAttempt = ({ gt }) => {
 const MultipleAttempts = ({ test }) => {
   const profile = useSelector((state) => state.profile)
   const attempts = test.attempts.length
-  const averagePercent = _.meanBy(test.attempts, (a) => a.percent)
-  const averageMarks = _.meanBy(test.attempts, (a) => a.marks)
+  const averagePercent = Math.round(_.meanBy(test.attempts, (a) => a.percent))
+  const averageMarks = Math.round(_.meanBy(test.attempts, (a) => a.marks))
   const totalMarks = test.attempts[0].total
   console.log(test.attempts)
   return (
