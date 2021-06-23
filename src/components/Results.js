@@ -25,6 +25,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    marginTop: 20,
   },
   paper: {
     paddingRight: 90,

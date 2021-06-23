@@ -48,6 +48,22 @@ const LandingGraphs = () => {
         {/* <Percentile /> */}
         <HalfPie />
       </div>
+
+      <div style={styles.section}>
+        <Typography style={styles.header} variant="h3">
+          <b>One new expertly written maths test every week</b>
+        </Typography>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginBottom: 80,
+          }}
+        >
+          <img src="https://i.imgur.com/Fn56Ft1.png" style={{ width: 800 }} />
+        </div>
+      </div>
     </Container>
   )
 }
