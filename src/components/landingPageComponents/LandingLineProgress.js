@@ -11,7 +11,7 @@ import useInterval from "../../hooks/useInterval"
 
 const genData = (data) => {
   let d = data
-  if (d.length > 9) {
+  if (d.length > 11) {
     d = [
       {
         x: 1,
@@ -22,7 +22,7 @@ const genData = (data) => {
 
   const lastEntry = d[d.length - 1]
   const nextIndex = lastEntry.x + 1
-  const max = lastEntry.y > 100 ? 100 : lastEntry.y + 10
+  const max = Math.min(100, lastEntry.y + 10)
 
   d = d.concat({
     x: nextIndex,
@@ -51,7 +51,6 @@ const LandingLineProgress = () => {
 
   const data = [
     {
-      color: "hsl(80, 70%, 50%)",
       id: "maths",
       data: lineData,
     },
