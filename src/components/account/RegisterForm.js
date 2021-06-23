@@ -100,6 +100,13 @@ const RegisterForm = () => {
               }}
               alt="logo"
             />
+            <Typography
+              color="textPrimary"
+              style={{ textAlign: "center", marginTop: 10, marginBottom: 20 }}
+            >
+              Track your child's progress and start working towards their
+              grammar school spot.
+            </Typography>
 
             <form onSubmit={handleSubmit}>
               <div>
