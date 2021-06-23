@@ -5,77 +5,33 @@ import { useDispatch, useSelector } from "react-redux"
 
 // const radar = [
 //   {
-//     skill: "Arithmetic",
+//     category: "Arithmetic",
 //     Simon: 50,
 //     Average: 50,
 //   },
 //   {
-//     skill: "Numbers",
+//     category: "Numbers",
 //     Simon: 86,
 //     Average: 50,
 //   },
 //   {
-//     skill: "Shapes",
+//     category: "Shapes",
 //     Simon: 30,
-//     Average: 50,
-//   },
-//   {
-//     skill: "Units",
-//     Simon: 60,
-//     Average: 50,
-//   },
-//   {
-//     skill: "Algebra",
-//     Simon: 90,
 //     Average: 50,
 //   },
 // ]
 
 import { toast } from "react-hot-toast"
-const Radar = () => {
-  const user = useSelector((state) => state.user)
-  const profile = useSelector((state) => state.profile)
-  const [gcs, setGcs] = useState(null)
-  const [averageGcs, setAverageGcs] = useState(null)
-
-  useEffect(() => {
-    if (user) {
-      gradedCategoryService
-        .getGradedCategories(user.token)
-        .then((gc) => setGcs(gc))
-
-      gradedCategoryService.getAverageGcs().then((av) => setAverageGcs(av))
-    }
-  }, [user])
-
-  if (!gcs || !averageGcs || !profile) return null
-
-  const calculatePercent = (gc) => Math.round((100 * gc.correct) / gc.attempts)
-
-  const withAverage = gcs.map((gc) => {
-    const matchedAverage = averageGcs.filter(
-      (agc) => agc.name === gc.categoryName
-    )
-    const average = matchedAverage[0].average
-    const roundedAverage = Math.round(average)
-    return {
-      ...gc,
-      average: roundedAverage,
-    }
-  })
-
-  const data = withAverage.map((gc) => ({
-    category: gc.categoryName,
-    [profile.firstName]: calculatePercent(gc),
-    Average: gc.average,
-  }))
+const Radar = ({ data }) => {
+  const objKeys = Object.keys(data[0])
+  const keys = objKeys.filter((k) => k !== "category")
 
   return (
     <>
       <div style={{ height: 500, fontFamily: "Roboto" }}>
         <ResponsiveRadar
           data={data}
-          keys={["Average", profile.firstName]}
+          keys={keys}
           indexBy="category"
           maxValue={100}
           margin={{ top: 70, right: 80, bottom: 40, left: 80 }}

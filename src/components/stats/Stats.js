@@ -3,21 +3,58 @@ import { TextField, Typography, Container, Button } from "@material-ui/core"
 import { ResponsiveRadar } from "@nivo/radar"
 import { useDispatch, useSelector } from "react-redux"
 
+import gradedCategoryService from "../../services/gradedCategoryService"
+
 import Radar from "./Radar"
 import HalfPie from "./HalfPie"
 import Percentile from "./Percentile"
 
+const capitalize = ([first, ...rest]) =>
+  first.toUpperCase() + rest.join("").toLowerCase()
+
 const Stats = () => {
   const profile = useSelector((state) => state.profile)
-  const capitalize = ([first, ...rest]) =>
-    first.toUpperCase() + rest.join("").toLowerCase()
+  const user = useSelector((state) => state.user)
+  const [gcs, setGcs] = useState(null)
+  const [averageGcs, setAverageGcs] = useState(null)
 
-  if (!profile) return null
+  useEffect(() => {
+    if (user) {
+      gradedCategoryService
+        .getGradedCategories(user.token)
+        .then((gc) => setGcs(gc))
+
+      gradedCategoryService.getAverageGcs().then((av) => setAverageGcs(av))
+    }
+  }, [user])
+
+  if (!gcs || !averageGcs || !profile) return null
+
+  const calculatePercent = (gc) => Math.round((100 * gc.correct) / gc.attempts)
+
+  const withAverage = gcs.map((gc) => {
+    const matchedAverage = averageGcs.filter(
+      (agc) => agc.name === gc.categoryName
+    )
+    const average = matchedAverage[0].average
+    const roundedAverage = Math.round(average)
+    return {
+      ...gc,
+      average: roundedAverage,
+    }
+  })
+
+  const radarData = withAverage.map((gc) => ({
+    category: gc.categoryName,
+    Average: gc.average,
+    [profile.firstName]: calculatePercent(gc),
+  }))
 
   const name = capitalize(profile.firstName)
+
   return (
     <>
-      <Radar />
+      <Radar data={radarData} />
       <Container maxWidth="md">
         <Typography variant="h4" style={{ textAlign: "center" }}>
           We are currently processing {name}'s results.
