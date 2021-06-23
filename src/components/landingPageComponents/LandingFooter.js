@@ -8,6 +8,8 @@ const styles = {
     backgroundColor: "#D8E2FC",
     paddingTop: 40,
     paddingBottom: 40,
+    paddingRight: 100,
+    paddingLeft: 100,
   },
   header: {
     textAlign: "center",
@@ -37,12 +39,12 @@ const LandingFooter = ({ textBlack }) => {
   const history = useHistory()
   return (
     <Container maxWidth={false} style={styles.container}>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Typography style={styles.header} variant="h3">
-          <b>Unlock your best new revenue channel today.</b>
+          <b>Start your journey to a top grammar school today</b>
         </Typography>
         <Typography variant="h5" style={styles.subHeadher}>
-          Get started immediately, with zero risk
+          Try Waterfront free for 14-days
         </Typography>
         <Button
           variant="contained"
@@ -54,7 +56,7 @@ const LandingFooter = ({ textBlack }) => {
           Start preparing for the 11+ exam
         </Button>
         <Typography style={styles.text}>
-          Try Waterfront free for 14-days
+          Get started today with zero risk
         </Typography>
       </Container>
     </Container>
