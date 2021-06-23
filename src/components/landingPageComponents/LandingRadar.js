@@ -14,60 +14,62 @@ const rand = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-const initData = [
-  {
-    category: "fractions",
-    Oli: rand(10, 30),
-    Average: 60,
-  },
-  {
-    category: "algebra",
-    Oli: rand(10, 30),
-    Average: 65,
-  },
-  {
-    category: "numbers",
-    Oli: rand(10, 30),
-    Average: 80,
-  },
-  {
-    category: "statistics",
-    Oli: rand(10, 30),
-    Average: 74,
-  },
-  {
-    category: "multiplication and division",
-    Oli: rand(10, 30),
-    Average: 69,
-  },
-  {
-    category: "addition and subtraction",
-    Oli: rand(10, 30),
-    Average: 85,
-  },
-  {
-    category: "measurement",
-    Oli: rand(10, 30),
-    Average: 89,
-  },
-  {
-    category: "ratio and proportion",
-    Oli: rand(10, 30),
-    Average: 75,
-  },
-  {
-    category: "geometry",
-    Oli: rand(10, 30),
-    Average: 62,
-  },
-]
-
-const genData = (currentData, iters) => {
-  if (iters > 11) {
+const initData = {
+  its: 1,
+  data: [
+    {
+      category: "fractions",
+      Oli: rand(5, 15),
+      Average: 60,
+    },
+    {
+      category: "algebra",
+      Oli: rand(5, 15),
+      Average: 65,
+    },
+    {
+      category: "numbers",
+      Oli: rand(5, 15),
+      Average: 80,
+    },
+    {
+      category: "statistics",
+      Oli: rand(5, 15),
+      Average: 74,
+    },
+    {
+      category: "multiplication and division",
+      Oli: rand(5, 15),
+      Average: 69,
+    },
+    {
+      category: "addition and subtraction",
+      Oli: rand(5, 15),
+      Average: 85,
+    },
+    {
+      category: "measurement",
+      Oli: rand(5, 15),
+      Average: 89,
+    },
+    {
+      category: "ratio and proportion",
+      Oli: rand(5, 15),
+      Average: 75,
+    },
+    {
+      category: "geometry",
+      Oli: rand(5, 15),
+      Average: 62,
+    },
+  ],
+}
+const genData = (currentData) => {
+  if (currentData.its > 11) {
     return initData
   }
 
-  const foo = currentData.map((d) => {
+  const data = currentData.data.map((d) => {
     const currentValue = d.Oli
     const maxValue = Math.min(100, currentValue + 20)
     const newValue = rand(currentValue, maxValue)
@@ -76,24 +78,23 @@ const genData = (currentData, iters) => {
       Oli: newValue,
     }
   })
-  return foo
+
+  return {
+    its: currentData.its + 1,
+    data,
+  }
 }
 
 const LandingRadar = () => {
   const [radarData, setRadarData] = useState(initData)
-  const [iters, setIters] = useState(0)
 
   useInterval(() => {
-    setRadarData(() => genData(radarData, iters))
-    setIters(() => iters + 1)
-    if (iters > 11) {
-      setIters(0)
-    }
+    setRadarData(() => genData(radarData))
   }, 1000)
 
   return (
     <>
-      <Radar data={radarData} />
+      <Radar data={radarData.data} />
     </>
   )
 }

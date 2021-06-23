@@ -11,7 +11,7 @@ import useInterval from "../../hooks/useInterval"
 
 const genData = (data) => {
   let d = data
-  if (d.length > 11) {
+  if (d.length > 12) {
     d = [
       {
         x: 1,
@@ -35,6 +35,10 @@ const initData = [
   {
     x: 1,
     y: 10,
+  },
+  {
+    x: 2,
+    y: 20,
   },
 ]
 
