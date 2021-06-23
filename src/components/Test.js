@@ -38,10 +38,12 @@ const styles = {
   },
   flex: { display: "flex", flexDirection: "column", alignItems: "center" },
 }
+
 const Test = ({ manualTest }) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [testSession, setTestSession] = useState(null)
+  const [submitting, setSubmitting] = useState(false)
   const test = useSelector((state) => state.test)
   const user = useSelector((state) => state.user)
   const testId = useParams().id
@@ -98,7 +100,10 @@ const Test = ({ manualTest }) => {
         token: user.token,
       }
       try {
+        setSubmitting(true)
+        toast.success("Submitting test...")
         const gradedTest = await gradedTestService.submitTest(data)
+        setSubmitting(false)
         history.push(`/results/${gradedTest.id}`)
       } catch (err) {
         toast.error("sorry, there was an unexpected error")
@@ -139,6 +144,7 @@ const Test = ({ manualTest }) => {
           onClick={handleSubmit}
           fullWidth={true}
           size="large"
+          disabled={submitting}
         >
           Submit
         </Button>
