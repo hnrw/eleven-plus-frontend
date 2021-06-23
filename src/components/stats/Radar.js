@@ -49,7 +49,7 @@ const Radar = ({ data }) => {
           enableDotLabel={true}
           dotLabel="value"
           dotLabelYOffset={-12}
-          colors={{ scheme: "nivo" }}
+          colors={{ scheme: "accent" }}
           fillOpacity={0.25}
           blendMode="multiply"
           animate={true}

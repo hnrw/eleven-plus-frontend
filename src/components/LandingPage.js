@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useSelector } from "react-redux"
 import { Redirect } from "react-router-dom"
 import { Container } from "@material-ui/core"
@@ -11,6 +11,7 @@ import LandingFooter from "./landingPageComponents/LandingFooter"
 
 import Percentile from "./stats/Percentile"
 import HalfPie from "./stats/HalfPie"
+import LandingRadar from "./landingPageComponents/LandingRadar"
 
 const LandingPage = () => {
   const user = useSelector((state) => state.user)
@@ -31,6 +32,7 @@ const LandingPage = () => {
       >
         <Percentile />
         <HalfPie />
+        <LandingRadar />
       </Container>
       <HowItWorks textBlack={textBlack} />
 
