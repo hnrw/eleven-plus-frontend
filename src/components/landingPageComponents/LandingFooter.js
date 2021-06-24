@@ -41,7 +41,7 @@ const LandingFooter = ({ textBlack }) => {
     <Container maxWidth={false} style={styles.container}>
       <Container maxWidth="md">
         <Typography style={styles.header} variant="h3">
-          <b>Start your journey to a top grammar school today</b>
+          <b>Start your child's journey to a top grammar school today</b>
         </Typography>
         <Typography variant="h5" style={styles.subHeadher}>
           Try Waterfront free for 14-days
