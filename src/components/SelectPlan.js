@@ -136,7 +136,7 @@ const SelectPlan = ({ canceled }) => {
             Included with your subscription:
           </Typography>
           <Typography style={styles.bullets}>
-            ✔️ One new 11+ maths mock every per week
+            ✔️ One new 11+ maths mock every week
           </Typography>
           <Typography style={styles.bullets}>
             ✔️Compare your child's results to other 11+ students
@@ -154,7 +154,7 @@ const SelectPlan = ({ canceled }) => {
             ✔️ Rewards and certificates for top students
           </Typography>
           <Typography style={styles.bullets} paragraph>
-            ✔️ ️Easy to use online test taking platform
+            ✔️ ️Easy to use online test-taking platform
           </Typography>
           <Typography style={styles.bulletHeading}>Coming soon:</Typography>
           <Typography style={styles.bullets}>

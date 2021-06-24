@@ -104,8 +104,8 @@ const RegisterForm = () => {
               color="textPrimary"
               style={{ textAlign: "center", marginTop: 10, marginBottom: 20 }}
             >
-              Track your child's progress and start working towards their
-              grammar school spot.
+              Create your account to track your child's progress and start
+              working towards their grammar school spot today.
             </Typography>
 
             <form onSubmit={handleSubmit}>

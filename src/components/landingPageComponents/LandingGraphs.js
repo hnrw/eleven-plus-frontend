@@ -34,7 +34,7 @@ const LandingGraphs = () => {
           <b>Track your child's progress over time</b>
         </Typography>
         <Typography color="textSecondary" style={styles.subHeader}>
-          Experts recommend starting 11+ prepartion in Year 3 - Waterfront lets
+          Experts recommend starting 11+ preparation in Year 3 - Waterfront lets
           you easily visualise your child's progress
         </Typography>
         <LandingLineProgress />
@@ -68,7 +68,7 @@ const LandingGraphs = () => {
           <b>One new expertly written maths test every week</b>
         </Typography>
         <Typography color="textSecondary" style={styles.subHeader}>
-          Develop your child's mathematical problem solving skils - expertly
+          Develop your child's mathematical problem solving skills - expertly
           tailored for real 11+ exams
         </Typography>
         <div
