@@ -9,7 +9,6 @@ import {
 import { ResponsiveLine } from "@nivo/line"
 
 const LineProgress = ({ data, bottomLabel }) => {
-  console.log(data)
   return (
     <div style={{ height: 400, fontFamily: "Roboto" }}>
       <ResponsiveLine

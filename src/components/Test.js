@@ -97,7 +97,6 @@ const Test = ({ manualTest }) => {
   const renderedTest = manualTest || test
 
   const handleSubmit = async (force) => {
-    console.log("runs")
     if (
       force ||
       window.confirm("Are you sure you're ready to submit your test?")

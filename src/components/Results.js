@@ -59,7 +59,6 @@ const Results = () => {
 
   if (!gt) return null
 
-  console.log(gt)
   return (
     <Container style={styles.root}>
       <Paper style={styles.paper}>

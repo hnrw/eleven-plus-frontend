@@ -80,7 +80,6 @@ const MultipleAttempts = ({ test }) => {
   const averagePercent = Math.round(_.meanBy(test.attempts, (a) => a.percent))
   const averageMarks = Math.round(_.meanBy(test.attempts, (a) => a.marks))
   const totalMarks = test.attempts[0].total
-  console.log(test.attempts)
   return (
     <Link
       to={`/results/test/${test.testId}`}
