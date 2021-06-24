@@ -5,11 +5,18 @@ export const setTest = (test) => {
   }
 }
 
-export const selectOption = (question, option) => {
+export const selectOption = (state, question, option) => {
+  const newState = {
+    ...state,
+    problems: state.problems.map((p) =>
+      p.question === question ? { ...p, selected: option } : p
+    ),
+  }
+  window.localStorage.setItem("waterfrontTest", JSON.stringify(newState))
+
   return {
-    type: "SELECT_OPTION",
-    question,
-    option,
+    type: "SET_TEST",
+    data: newState,
   }
 }
 

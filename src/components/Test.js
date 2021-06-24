@@ -51,7 +51,14 @@ const Test = ({ manualTest }) => {
 
   useEffect(() => {
     if (!manualTest) {
-      testService.getTest(testId).then((t) => dispatch(setTest(t)))
+      const savedTestJSON = window.localStorage.getItem("waterfrontTest")
+      const savedTest = JSON.parse(savedTestJSON)
+
+      if (savedTest?.id === testId) {
+        dispatch(setTest(savedTest))
+      } else {
+        testService.getTest(testId).then((t) => dispatch(setTest(t)))
+      }
     }
   }, [])
 
@@ -105,6 +112,7 @@ const Test = ({ manualTest }) => {
         const gradedTest = await gradedTestService.submitTest(data)
         setSubmitting(false)
         history.push(`/results/${gradedTest.id}`)
+        window.localStorage.removeItem("waterfrontTest")
       } catch (err) {
         toast.error("sorry, there was an unexpected error")
       }

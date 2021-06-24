@@ -53,6 +53,7 @@ const Problem = ({ problem, viewOnly }) => {
 
 const MultipleChoice = ({ problem, viewOnly }) => {
   const dispatch = useDispatch()
+  const test = useSelector((state) => state.test)
 
   const [shuffledOptions, setShuffledOptions] = useState([])
 
@@ -86,7 +87,7 @@ const MultipleChoice = ({ problem, viewOnly }) => {
             onClick={
               viewOnly
                 ? null
-                : () => dispatch(selectOption(problem.question, option))
+                : () => dispatch(selectOption(test, problem.question, option))
             }
           >
             <Typography
@@ -105,15 +106,20 @@ const MultipleChoice = ({ problem, viewOnly }) => {
 
 const InputAnswer = ({ problem, viewOnly }) => {
   const dispatch = useDispatch()
+  const test = useSelector((state) => state.test)
+
+  const handleChange = (input) => {
+    dispatch(selectOption(test, problem.question, input))
+  }
+
   return (
     <>
       {!viewOnly && (
         <>
           <TextField
             type="number"
-            onChange={() =>
-              dispatch(selectOption(problem.question, event.target.value))
-            }
+            onChange={() => handleChange(event.target.value)}
+            defaultValue={problem.selected}
             // prevents scroll changing the input
             onWheelCapture={(e) => {
               e.target.blur()
