@@ -42,13 +42,13 @@ const LandingHeader = ({ textBlack }) => {
               variant="h3"
               style={{ color: textBlack, letterSpacing: 3, marginBottom: 20 }}
             >
-              <b>Track your child's 11+ exam preparation </b>
+              <b>Secure your child's grammar school future</b>
             </Typography>
             <Typography
               variant="body1"
               style={{ color: "#121D1E", fontSize: 20, marginBottom: 20 }}
             >
-              Only 1 in 10 children who take the 11+ qualify for grammar
+              Only 1 in 10 children who take the 11+ get accepted to grammar
               schools. See how your child ranks against the competition.
             </Typography>
             <Button

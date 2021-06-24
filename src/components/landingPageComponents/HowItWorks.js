@@ -51,7 +51,7 @@ const HowItWorks = ({ textBlack }) => {
               3
             </Typography>
             <Typography align="center" paragraph style={styles.text}>
-              Track your child's weekly progress as their results improve
+              Use our data-driven insights give you the insights to perfect your child's preparation
             </Typography>
           </Grid>
         </Grid>

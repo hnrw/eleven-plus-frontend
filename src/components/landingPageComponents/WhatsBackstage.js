@@ -21,9 +21,9 @@ const WhatsBackstage = ({ textBlack }) => {
         style={{ lineHeight: 2, fontSize: 20, color: textBlack }}
       >
         Waterfront is the best tool for parents and children in the UK preparing
-        for 11+ exam. Compare how your child does in weekly exams against the
-        rest of the country. Our data-driven insights give you the advantage to
-        perfect your preparation.
+        for 11+ exams. Every week your child takes an expertly written maths
+        mock test on our website. We analyse their progress and track how they
+        rank against the rest of the country.
       </Typography>
     </Container>
   )

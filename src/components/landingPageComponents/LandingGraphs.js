@@ -16,8 +16,13 @@ const styles = {
   },
   header: {
     textAlign: "center",
-    marginBottom: 50,
+    marginBottom: 30,
     color: "#121D1E",
+  },
+  subHeader: {
+    textAlign: "center",
+    marginBottom: 50,
+    fontSize: 22,
   },
 }
 
@@ -28,6 +33,10 @@ const LandingGraphs = () => {
         <Typography style={styles.header} variant="h3">
           <b>Track your child's progress over time</b>
         </Typography>
+        <Typography color="textSecondary" style={styles.subHeader}>
+          Experts recommend starting 11+ prepartion in Year 3 - Waterfront lets
+          you easily visualise your child's progress
+        </Typography>
         <LandingLineProgress />
       </div>
 
@@ -35,8 +44,9 @@ const LandingGraphs = () => {
         <Typography style={styles.header} variant="h3">
           <b>Detailed breakdown of your child's strength and weaknesses</b>
         </Typography>
-        <Typography style={styles.header} variant="h3">
-          {/* <b>Detailed Breakdown of your Child's Strength and Weaknesses</b> */}
+        <Typography color="textSecondary" style={styles.subHeader}>
+          Our insights reveal areas that require work to help you perfect the
+          study plan for your child
         </Typography>
         <LandingRadar />
       </div>
@@ -45,6 +55,10 @@ const LandingGraphs = () => {
         <Typography style={styles.header} variant="h3">
           <b>See how your child ranks against the competition</b>
         </Typography>
+        <Typography color="textSecondary" style={styles.subHeader}>
+          For every 10 children who take the 11+ exam, only one child gets a
+          grammar school spot.
+        </Typography>
         {/* <Percentile /> */}
         <HalfPie />
       </div>
@@ -52,6 +66,10 @@ const LandingGraphs = () => {
       <div style={styles.section}>
         <Typography style={styles.header} variant="h3">
           <b>One new expertly written maths test every week</b>
+        </Typography>
+        <Typography color="textSecondary" style={styles.subHeader}>
+          Develop your child's mathematical problem solving skils - expertly
+          tailored for real 11+ exams
         </Typography>
         <div
           style={{
