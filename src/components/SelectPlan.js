@@ -38,9 +38,14 @@ const styles = {
     justifyContent: "center",
     marginBottom: 20,
   },
+  centerHeading: {
+    textAlign: "center",
+    marginBottom: 10,
+  },
   centerText: {
     textAlign: "center",
     marginBottom: 10,
+    fontSize: 18,
   },
   flexRow: {
     display: "flex",
@@ -68,6 +73,13 @@ const styles = {
     fontWeight: "bold",
     marginBottom: 10,
   },
+  canceledBulletsContainer: {
+    marginBottom: 80,
+  },
+  rowContainer: {
+    display: "flex",
+    flexDirection: "row",
+  },
 }
 
 const SelectPlan = ({ canceled }) => {
@@ -89,7 +101,11 @@ const SelectPlan = ({ canceled }) => {
         Please choose a plan to continue using Waterfront
       </Alert>
       <Container>
-        <Typography variant="h4" color="textPrimary" style={styles.centerText}>
+        <Typography
+          variant="h4"
+          color="textPrimary"
+          style={styles.centerHeading}
+        >
           <b>Choose a plan</b>
         </Typography>
         {canceled ? (
@@ -140,16 +156,16 @@ const SelectPlan = ({ canceled }) => {
             </Button>
           </Paper>
         </div>
-        <Container
-          style={{
-            display: "flex",
-            flexDirection: "row",
-          }}
-          maxWidth="md"
-        >
-          <Questions />
-          <Bullets />
-        </Container>
+        {!canceled ? (
+          <Container style={styles.rowContainer} maxWidth="md">
+            <Questions />
+            <Bullets />
+          </Container>
+        ) : (
+          <Container maxWidth="xs" style={styles.canceledBulletsContainer}>
+            <Bullets />
+          </Container>
+        )}
       </Container>
     </>
   )
