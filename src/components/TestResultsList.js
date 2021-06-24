@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core"
 import dayjs from "dayjs"
 import _ from "lodash"
+import { useHistory } from "react-router-dom"
 import { Link } from "react-router-dom"
 import LineProgress from "./stats/LineProgress"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
@@ -48,6 +49,7 @@ const TestResultsList = () => {
   const [testsList, setTestsList] = useState([])
   const user = useSelector((state) => state.user)
   const { id } = useParams()
+  const history = useHistory()
 
   // this should fetch just the correct test from the id
   // currently fetches them all, then filters. idk why
@@ -102,7 +104,7 @@ const TestResultsList = () => {
           </Typography>
           <Button
             variant="contained"
-            onClick={() => history.push(`/tests/${gt.testId}`)}
+            onClick={() => history.push(`/tests/${test.testId}`)}
             style={styles.retry}
             fullWidth
           >
