@@ -96,8 +96,12 @@ const Test = ({ manualTest }) => {
 
   const renderedTest = manualTest || test
 
-  const handleSubmit = async () => {
-    if (window.confirm("Are you sure you're ready to submit your test?")) {
+  const handleSubmit = async (force) => {
+    console.log("runs")
+    if (
+      force ||
+      window.confirm("Are you sure you're ready to submit your test?")
+    ) {
       const data = {
         testId: test.id,
         answers: test.problems.map((p) => ({
@@ -110,9 +114,9 @@ const Test = ({ manualTest }) => {
         setSubmitting(true)
         toast.success("Submitting test...")
         const gradedTest = await gradedTestService.submitTest(data)
-        setSubmitting(false)
         history.push(`/results/${gradedTest.id}`)
         window.localStorage.removeItem("waterfrontTest")
+        setSubmitting(false)
       } catch (err) {
         toast.error("sorry, there was an unexpected error")
       }
@@ -123,10 +127,13 @@ const Test = ({ manualTest }) => {
   renderedTest.problems = _.sortBy(renderedTest.problems, (p) => p.num)
 
   const end = dayjs(testSession.start).add(45, "minutes")
+  // const end = dayjs(testSession.start).add(5, "seconds")
   const endFormat = end.format("h:mm:ss a")
 
-  if (dayjs() > end) {
-    handleSubmit()
+  if (dayjs() > end && !submitting) {
+    // make sure it only submits once
+    setSubmitting(true)
+    handleSubmit(true)
   }
 
   return (
