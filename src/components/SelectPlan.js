@@ -6,6 +6,7 @@ import {
   Button,
   Paper,
 } from "@material-ui/core"
+import dayjs from "dayjs"
 import { Alert } from "@material-ui/lab"
 import stripeService from "../services/stripeService"
 import userService from "../services/userService"
@@ -48,16 +49,24 @@ const styles = {
   },
   bullets: {
     fontSize: 16,
+    marginBottom: 10,
   },
   bulletHeading: {
     fontSize: 20,
+    fontWeight: "bold",
   },
   bulletsContainer: {
     marginTop: 40,
+    marginLeft: 10,
+  },
+  questionsContainer: {
+    marginTop: 40,
+    marginRight: 10,
   },
   subHeading: {
     fontSize: 20,
     fontWeight: "bold",
+    marginBottom: 10,
   },
 }
 
@@ -131,45 +140,89 @@ const SelectPlan = ({ canceled }) => {
             </Button>
           </Paper>
         </div>
-        <Container style={styles.bulletsContainer} maxWidth="xs">
-          <Typography style={styles.bulletHeading}>
-            Included with your subscription:
-          </Typography>
-          <Typography style={styles.bullets}>
-            ✔️ One new 11+ maths mock every week
-          </Typography>
-          <Typography style={styles.bullets}>
-            ✔️Compare your child's results to other 11+ students
-          </Typography>
-          <Typography style={styles.bullets}>
-            ✔️Detailed result analytics
-          </Typography>
-          <Typography style={styles.bullets}>
-            ✔️ Retry tests an unlimited amount
-          </Typography>
-          <Typography style={styles.bullets}>
-            ✔️ Track your child's progress
-          </Typography>
-          <Typography style={styles.bullets}>
-            ✔️ Rewards and certificates for top students
-          </Typography>
-          <Typography style={styles.bullets} paragraph>
-            ✔️ ️Easy to use online test-taking platform
-          </Typography>
-          <Typography style={styles.bulletHeading}>Coming soon:</Typography>
-          <Typography style={styles.bullets}>
-            ⏳ Daily practice problems
-          </Typography>
-          <Typography style={styles.bullets}>
-            ⏳ AI problems tailored for your child's weaknesses
-          </Typography>
-          <Typography style={styles.bullets}>
-            ⏳ Ranking and level up system
-          </Typography>
+        <Container
+          style={{
+            display: "flex",
+            flexDirection: "row",
+          }}
+          maxWidth="md"
+        >
+          <Questions />
+          <Bullets />
         </Container>
       </Container>
     </>
   )
 }
 
+const Bullets = () => {
+  return (
+    <Container style={styles.bulletsContainer} maxWidth="xs">
+      <Typography paragraph color="textPrimary" style={styles.bulletHeading}>
+        Included with your subscription:
+      </Typography>
+      <Typography style={styles.bullets}>
+        ✔️ One new 11+ maths mock every week
+      </Typography>
+      <Typography style={styles.bullets}>
+        ✔️Compare your child's results to other 11+ students
+      </Typography>
+      <Typography style={styles.bullets}>
+        ✔️Detailed result analytics
+      </Typography>
+      <Typography style={styles.bullets}>
+        ✔️ Retry tests an unlimited amount
+      </Typography>
+      <Typography style={styles.bullets}>
+        ✔️ Track your child's progress
+      </Typography>
+      <Typography style={styles.bullets}>
+        ✔️ Rewards and certificates for top students
+      </Typography>
+      <Typography style={styles.bullets} paragraph>
+        ✔️ ️Easy to use online test-taking platform
+      </Typography>
+      <Typography paragraph color="textPrimary" style={styles.bulletHeading}>
+        Coming soon:
+      </Typography>
+      <Typography style={styles.bullets}>⏳ Daily practice problems</Typography>
+      <Typography style={styles.bullets}>
+        ⏳ AI problems tailored for your child's weaknesses
+      </Typography>
+      <Typography style={styles.bullets}>
+        ⏳ Ranking and level up system
+      </Typography>
+    </Container>
+  )
+}
+
+const Questions = () => {
+  const date = dayjs().add(7, "days").format("MMM D, YYYY")
+  return (
+    <Container maxWidth="xs" style={styles.questionsContainer}>
+      <Typography style={styles.subHeading} color="textPrimary">
+        What's included in the free trial?
+      </Typography>
+      <Typography paragraph>
+        Your 14-Day Trial is completely free and gives you full access to the
+        Waterfront platform until <b>{date}</b>. Cancel any time.
+      </Typography>
+      <Typography style={styles.subHeading} color="textPrimary">
+        Will my card be charged right now?
+      </Typography>
+      <Typography paragraph>
+        No. You won’t be charged until after your free trial ends on{" "}
+        <b>{date}</b>. After your free trial, your plan will continue until you
+        decide to downgrade or cancel.
+      </Typography>
+      <Typography style={styles.subHeading} color="textPrimary">
+        What if I change my mind - can I change or cancel my plan?
+      </Typography>
+      <Typography paragraph>
+        Yes, you cancel your subscription or switch to a new plan anytime from
+        your account dashboard with zero hassle.
+      </Typography>
+    </Container>
+  )
+}
 export default SelectPlan
