@@ -46,8 +46,8 @@ const Stats = () => {
 
   const radarData = withAverage.map((gc) => ({
     category: gc.categoryName,
-    Average: gc.average,
     [profile.firstName]: calculatePercent(gc),
+    Average: gc.average,
   }))
 
   const name = capitalize(profile.firstName)
